@@ -156,7 +156,7 @@ namespace SNI.Views.Customer
                 listWithout.Add(selected_health.healthid);
                 dtr["id"] = selected_health.healthid;
                 dtr["bệnh"] = selected_health.name;
-                dt.Rows.Add(dtr);
+                dt.Rows.InsertAt(dtr,0);
               
                 dataGridView1.DataSource = dt;
                 suckhoetext.Text = "";
@@ -173,8 +173,8 @@ namespace SNI.Views.Customer
                 listWithout.Add(selected_health.healthid);
                 dtr["id"] = selected_health.healthid;
                 dtr["bệnh"] = selected_health.name;
-                dt.Rows.Add(dtr);
-              
+                dt.Rows.InsertAt(dtr, 0);
+
                 dataGridView1.DataSource = dt;
                 suckhoetext.Text = "";
 
