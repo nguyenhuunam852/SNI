@@ -57,7 +57,6 @@ namespace SNI.Views.Health
             loadDataGridView();
             dataGridView1.CellClick += DataGridView1_CellClick;
         }
-
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dataGridView1.Columns["delete"].Index)
@@ -78,18 +77,28 @@ namespace SNI.Views.Health
             }
 
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             TextBox tbx = sender as TextBox;
             loadDataGridView();
         
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             AddHealthForm ahf = new AddHealthForm();
-            ahf.ShowDialog();
+            if(ahf.ShowDialog()==DialogResult.OK)
+            {
+                loadDataGridView();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RecoveryHealth rh = new RecoveryHealth();
+            if(rh.ShowDialog()==DialogResult.OK)
+            {
+                loadDataGridView();
+            }
         }
     }
 }

@@ -106,7 +106,6 @@ namespace SNI.Views.Customer
             ci.idcustomer = dataGridView1.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
             if(ci.ShowDialog()==DialogResult.OK)
             {
-               
                 loadDataGridView();
             }
 

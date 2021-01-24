@@ -10,6 +10,29 @@ namespace SNI.Controllers
 {
     class HealthController
     {
+        public static Health getinformation(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    return context.Healths.Where(hl => hl.healthid == id).FirstOrDefault();
+                }
+                catch(Exception e)
+                {
+                    return null;
+                }
+            
+            } 
+        }
+        public static DataTable FindHealthWithoutselected(string find,List<int> listWithout)
+        {
+            using (var context = new ControllerModel())
+            {
+                var listhealth = context.Healths.Where(heal => heal.available == true && heal.name.Contains(find) && listWithout.Contains(heal.healthid)==false).Take(10).ToList();
+                return loadHealth(listhealth);
+            }
+        }
         public static bool RemoveHealth(int id)
         {
             using (var context = new ControllerModel())
@@ -18,6 +41,7 @@ namespace SNI.Controllers
                 {
                     var health = context.Healths.Where(heal => heal.healthid == id).FirstOrDefault();
                     health.available = false;
+                    health.dayupdate = DateTime.Now;
                     context.SaveChanges();
                     return true;
                 }
@@ -31,25 +55,65 @@ namespace SNI.Controllers
         {
             using (var context = new ControllerModel())
             {
-                int check = context.Healths.Where(heal => heal.name.Trim() == health.Trim()).Count();
-                if (check == 0)
+                try
                 {
-                    var hl = new Health
+                    int check = context.Healths.Where(heal => heal.name.Trim() == health.Trim()).Count();
+                    if (check == 0)
                     {
-                        name = health,
-                        available = true,
-                        dayadd = DateTime.Now,
-                        dayupdate = DateTime.Now
-                    };
-                    context.Healths.Add(hl);
-                    context.SaveChanges();
-                    return true;
+                        var hl = new Health
+                        {
+                            name = health,
+                            available = true,
+                            dayadd = DateTime.Now,
+                            dayupdate = DateTime.Now
+                        };
+                        context.Healths.Add(hl);
+                        context.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
-                else
+                catch(Exception e)
                 {
                     return false;
                 }
                 
+            }
+        }
+        public static bool Recovery(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var health = context.Healths.Where(heal => heal.healthid == id).FirstOrDefault();
+                    health.available = true;
+                    health.dayupdate = DateTime.Now;
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+        }
+        public static DataTable getRemovedHealth()
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var listhealth = context.Healths.Where(health => health.available == false).OrderByDescending(health => health.dayadd).Take(10).ToList();
+                    return loadCustomerWithUpdate(listhealth);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
             }
         }
         public static DataTable getListHealth()
@@ -58,7 +122,7 @@ namespace SNI.Controllers
             {
                 try
                 {
-                    var listhealth = context.Healths.Where(health => health.available == true).OrderBy(health => health.dayadd).Take(10).ToList();
+                    var listhealth = context.Healths.Where(health => health.available == true).OrderByDescending(health => health.dayadd).Take(10).ToList();
                     return loadHealth(listhealth);
                 }
                 catch (Exception e)
@@ -92,7 +156,32 @@ namespace SNI.Controllers
             return dt;
 
         }
-
+        public static DataTable loadCustomerWithUpdate(List<Health> listhealth)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Mã Số");
+                    dt.Columns.Add("Bệnh");
+                    dt.Columns.Add("Ngày Xóa");
+                    foreach (Health hl in listhealth)
+                    {
+                        DataRow dtr = dt.NewRow();
+                        dtr["Mã Số"] = hl.healthid;
+                        dtr["Bệnh"] = hl.name;
+                        dtr["Ngày Xóa"] = hl.dayupdate.Hour + ":" + hl.dayupdate.Minute + "-" + hl.dayupdate.Day + "/" + hl.dayupdate.Month + "/" + hl.dayupdate.Year;
+                        dt.Rows.Add(dtr);
+                    }
+                    return dt;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public static bool addHealthbyExcel(string filename)
         {
             using (var context = new ControllerModel())

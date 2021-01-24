@@ -149,7 +149,7 @@ namespace SNI.Controllers
                 }
             }
         }
-        public static bool AddCustomer(string id,string name,string phone,int gender,int age,string address)
+        public static bool AddCustomer(string id,string name,string phone,int gender,int age,string address,List<int> listwithout)
         {
             using (var context = new ControllerModel())
             {
@@ -168,8 +168,21 @@ namespace SNI.Controllers
                         dayupdate = DateTime.Now
                     };
                     context.Customers.Add(customer);
-                    context.SaveChanges();
+                   
                     addedCustomer = customer;
+                    foreach(int healt in listwithout)
+                    {
+                        var health = new CustomerHealth
+                        {
+                            Customers = context.Customers.Where(cus => cus.localid == id).FirstOrDefault(),
+                            Health = context.Healths.Where(heal=>heal.healthid==healt).FirstOrDefault(),
+                            dayadd = DateTime.Now,
+                            dayupdate = DateTime.Now
+                        };
+                        context.CustomerHealths.Add(health);
+                       
+                    }
+                    context.SaveChanges();
                     return true;
                 }
                 catch(Exception ex)

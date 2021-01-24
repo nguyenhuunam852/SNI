@@ -44,6 +44,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.idtext = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tuoinumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -158,10 +159,12 @@
             // 
             // suckhoetext
             // 
-            this.suckhoetext.Location = new System.Drawing.Point(101, 267);
+            this.suckhoetext.Location = new System.Drawing.Point(101, 266);
             this.suckhoetext.Name = "suckhoetext";
             this.suckhoetext.Size = new System.Drawing.Size(272, 20);
             this.suckhoetext.TabIndex = 5;
+            this.suckhoetext.TextChanged += new System.EventHandler(this.suckhoetext_TextChanged);
+            this.suckhoetext.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suckhoetext_KeyDown);
             // 
             // label6
             // 
@@ -189,11 +192,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(272, 64);
             this.dataGridView1.TabIndex = 16;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(101, 265);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(272, 21);
+            this.comboBox1.TabIndex = 17;
+            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 410);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.idtext);
             this.Controls.Add(this.label6);
@@ -240,5 +254,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox idtext;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
