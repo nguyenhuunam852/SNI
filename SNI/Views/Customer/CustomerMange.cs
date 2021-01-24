@@ -28,13 +28,12 @@ namespace SNI.Views.Customer
         private void LoadDataGridView()
         {
             DataTable dt = CustomerController.getListCustomer();
-            
+            dataGridView1 = Module.MydataGridView(dataGridView1);
             dataGridView1.DataSource = dt;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.ReadOnly = true;
+            if (dataGridView1.Rows.Count > 0)
+            {
+                selectid = dataGridView1.Rows[0].Cells["Mã Số"].Value.ToString();
+            }
         }
         private void CustomerMange_Load(object sender, EventArgs e)
         {
@@ -57,14 +56,18 @@ namespace SNI.Views.Customer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(CustomerController.RemoveCustomer(selectid))
+            DialogResult dlr = MessageBox.Show("Bạn có muốn xóa không", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dlr == DialogResult.Yes)
             {
-                MessageBox.Show("Xóa thành công!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDataGridView();
-            }
-            else
-            {
-                MessageBox.Show("Thất bại!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (CustomerController.RemoveCustomer(selectid))
+                {
+                    MessageBox.Show("Xóa thành công!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show("Thất bại!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -86,7 +89,20 @@ namespace SNI.Views.Customer
         {
             CustomerInformation ci = new CustomerInformation();
             ci.idcustomer = selectid;
-            ci.ShowDialog();
+            if(ci.ShowDialog()==DialogResult.OK)
+            {
+                LoadDataGridView();
+            }
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            RecoveryCustomer rc = new RecoveryCustomer();
+            if(rc.ShowDialog()==DialogResult.OK)
+            {
+                LoadDataGridView();
+            }
         }
     }
 }

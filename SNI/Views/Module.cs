@@ -38,6 +38,16 @@ namespace SNI.Views
 
             return gioitinhcbbox;
         }
-
+        public static DataGridView MydataGridView(DataGridView dtg)
+        {
+            dtg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtg.AllowUserToAddRows = false;
+            dtg.RowHeadersVisible = false;
+            dtg.ReadOnly = true;
+            dtg.AllowUserToResizeRows = false;
+            dtg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            return dtg;
+        }
     }
 }
