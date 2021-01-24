@@ -74,7 +74,7 @@ namespace SNI.Controllers
                 try
                 {
                     var customer = context.Customers.Where(cus => cus.localid == id).FirstOrDefault();
-                    context.Customers.Remove(customer);
+                    customer.available = false;
                     context.SaveChanges();
                     return true;
                 }
@@ -113,6 +113,12 @@ namespace SNI.Controllers
                 }
             }
         }
-
+        public static Customers getinformation(string id)
+        {
+            using (var context = new ControllerModel())
+            {
+               return context.Customers.Where(cus => cus.localid == id).FirstOrDefault();
+            }
+        }
     }
 }

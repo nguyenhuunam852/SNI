@@ -81,5 +81,12 @@ namespace SNI.Views.Customer
                 dataGridView1.DataSource = CustomerController.FindByValue(txb.Text);
             }
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CustomerInformation ci = new CustomerInformation();
+            ci.idcustomer = selectid;
+            ci.ShowDialog();
+        }
     }
 }

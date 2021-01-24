@@ -16,32 +16,6 @@ namespace SNI.Views.Customer
         {
             InitializeComponent();
         }
-        private void loadComboBox()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("display");
-            dt.Columns.Add("value");
-
-            DataRow dtr = dt.NewRow();
-            DataRow dtr1 = dt.NewRow();
-            DataRow dtr2 = dt.NewRow();
-
-
-            dtr["display"] = "Nam";
-            dtr["value"] = 0;
-            dtr1["display"] = "Nữ";
-            dtr1["value"] = 1;
-            dtr2["display"] = "Khác";
-            dtr2["value"] = 2;
-
-            dt.Rows.Add(dtr);
-            dt.Rows.Add(dtr1);
-            dt.Rows.Add(dtr2);
-
-            gioitinhcbbox.DataSource = dt;
-            gioitinhcbbox.DisplayMember = "display";
-            gioitinhcbbox.ValueMember = "value";
-        }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)
@@ -55,8 +29,7 @@ namespace SNI.Views.Customer
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
             idtext.Text = Config.MaChiNhanh + RandomString(4);
-            loadComboBox();
-            gioitinhcbbox.DropDownStyle = ComboBoxStyle.DropDownList;
+            gioitinhcbbox = Module.loadComboBox(gioitinhcbbox);
             //LoadDataGridView();
 
         }
