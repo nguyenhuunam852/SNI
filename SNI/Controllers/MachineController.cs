@@ -65,7 +65,7 @@ namespace SNI.Controllers
             {
                 try
                 {
-                    if(id==0)
+                    if(id<=0)
                     { 
                         var machine = new Machines
                         {
@@ -137,27 +137,27 @@ namespace SNI.Controllers
             }
 
         }
-        public static Machines getinfor(string name)
+        public static Machines getinfor(int idmachine)
         {
             using (var context = new ControllerModel())
             {
-                var mch = tempmachine.Where(machine => machine.name.Trim() == name.Trim()).FirstOrDefault();
+                var mch = tempmachine.Where(machine => machine.machineid == idmachine ).FirstOrDefault();
                 return mch;   
             }
         }
-        public static bool updateMachine(string oldname,string newname,int status,int locationx,int locationy)
+        public static bool updateMachine(int id,string newname,int status,int locationx,int locationy)
         {
             using (var context = new ControllerModel())
             {
                 try
                 {
-                    var machine = tempmachine.Where(mch => mch.name.Trim() == oldname.Trim()).FirstOrDefault();
+                    var machine = tempmachine.Where(mch => mch.machineid == id).FirstOrDefault();
                     machine.name = newname;
                     machine.status = status;
                     machine.locationx = locationx;
                     machine.locationy = locationy;
                     machine.dayupdate = DateTime.Now;
-                    context.SaveChanges();
+                   
                     return true;
                 }
                 catch (Exception e)

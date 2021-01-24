@@ -22,7 +22,7 @@ namespace SNI.Views
         double scalew = 0;
         double scaleh = 0;
         Models.Machines machineob;
-
+        private int idmachine;
         List<Models.Machines> saveList = new List<Models.Machines>();
         private void setupArea()
         {
@@ -34,11 +34,10 @@ namespace SNI.Views
             {
                 if (mch.status != 3)
                 {
-                    Label lb = createLabel(mch.name, mch.status, Convert.ToInt32(mch.locationx / scalew), Convert.ToInt32(mch.locationy / scaleh));
+                    Label lb = createLabel(mch.machineid,mch.name, mch.status, Convert.ToInt32(mch.locationx / scalew), Convert.ToInt32(mch.locationy / scaleh));
                     panel1.Controls.Add(lb);
                 }
             }
-
             ContextMenu cm = new ContextMenu();
             MenuItem item = cm.MenuItems.Add("Thêm ghế tại đây");
             item.Click += Item_Click1;
@@ -53,28 +52,28 @@ namespace SNI.Views
         private void Item_Click1(object sender, EventArgs e)
         {
             NameMachine nm = new NameMachine();
+            int id;
+            try
+            {
+               id  = MachineController.tempmachine.Min(mc => mc.machineid);
+            }
+            catch(Exception ex)
+            {
+               id = 0;
+            }
             if (nm.ShowDialog() == DialogResult.OK)
             {
-                string nameofstring = nm.nameofmachine;
-                int countmachine = MachineController.tempmachine.FindAll(machine => machine.name.Trim() == nameofstring.Trim()).Count;
-                if (countmachine == 0)
+                Label lb = createLabel(id-1, nm.nameofmachine, 1, PanelMouseLocation.X,PanelMouseLocation.Y);
+                panel1.Controls.Add(lb);
+                var machine = new Models.Machines
                 {
-                    Label lb = createLabel(nameofstring, 1, PanelMouseLocation.X,PanelMouseLocation.Y);
-                    panel1.Controls.Add(lb);
-                    var machine = new Models.Machines
-                    {
-                        name = nm.nameofmachine,
-                        locationx = Convert.ToInt32(PanelMouseLocation.X * scalew),
-                        locationy = Convert.ToInt32(PanelMouseLocation.Y * scaleh),
-                        status = 1
-                    };
-                    MachineController.tempmachine.Add(machine);
-
-                }
-                else
-                {
-                    MessageBox.Show("Máy này đã tồn tại", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    machineid = id - 1,
+                    name = nm.nameofmachine,
+                    locationx = Convert.ToInt32(PanelMouseLocation.X * scalew),
+                    locationy = Convert.ToInt32(PanelMouseLocation.Y * scaleh),
+                    status = 1
+                };
+                MachineController.tempmachine.Add(machine);
             }
         }
         public void setPanelSize(int pwidth,int pheight)
@@ -111,7 +110,7 @@ namespace SNI.Views
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private Label createLabel(String name,int status,int locationx,int locationy)
+        private Label createLabel(int id,String name,int status,int locationx,int locationy)
         {
             Label lb = new Label();
             //Thêm thuộc tính
@@ -119,11 +118,13 @@ namespace SNI.Views
                 lb.BackColor = Color.FromArgb(135, 206, 250);
             else
                 lb.BackColor = Color.FromArgb(240, 128, 128);
+            lb.Name = id.ToString();
             lb.Anchor = AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left;
             lb.Location = new System.Drawing.Point(Convert.ToInt32(locationx),Convert.ToInt32(locationy));
             lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             lb.Text = name;
             lb.Size = new Size(panel1.Size.Width / 10, panel1.Size.Height / 10);
+
             //Thêm sự kiện
             lb.MouseDown += Lb_MouseDown;
             lb.MouseMove += Lb_MouseMove;
@@ -135,7 +136,7 @@ namespace SNI.Views
         {
             Label lb = sender as Label;
             MachineInformation mi = new MachineInformation();
-            mi.machinesname = lb.Text;
+            mi.idmachine = Convert.ToInt16(lb.Name);
             if(mi.ShowDialog()==DialogResult.OK)
             {
                 MachineManage_Load(sender, e);
@@ -153,15 +154,13 @@ namespace SNI.Views
 
             int lablex = lbl.Location.X;
             int labley = lbl.Location.Y;
-            int countmachine = MachineController.tempmachine.FindAll(mch => mch.name == lbl.Text).Count;
-            var machine = MachineController.tempmachine.Find(mch => mch.name == lbl.Text);
+            var machine = MachineController.tempmachine.Find(mch => mch.machineid == Convert.ToInt16(lbl.Name));
             if (machine != null)
             {
                 machine.locationx = Convert.ToInt32(lbl.Location.X * scalew);
                 machine.locationy = Convert.ToInt32(lbl.Location.Y * scaleh);
             }
         }
-        private string selectmachine;
         private void Lb_MouseDown(object sender, MouseEventArgs e)
         {
             Label lb = sender as Label;
@@ -173,8 +172,8 @@ namespace SNI.Views
             {
 
                 ContextMenu cm = new ContextMenu();
-                selectmachine = lb.Text;
-                machineob = MachineController.getinfor(selectmachine);
+                idmachine = Convert.ToInt16(lb.Name);
+                machineob = MachineController.getinfor(idmachine);
                 MenuItem item = cm.MenuItems.Add("Xóa ghế");
                 item.Click += Item_Click;
 
@@ -192,7 +191,6 @@ namespace SNI.Views
                 lb.ContextMenu = cm;
             }
         }
-
         private void Item2_Click(object sender, EventArgs e)
         {
             if (MachineController.NotRepairedMachine(machineob))
@@ -200,7 +198,6 @@ namespace SNI.Views
                 setupArea();
             }
         }
-
         private void Item1_Click(object sender, EventArgs e)
         {
             if(MachineController.RepairedMachine(machineob))
@@ -208,11 +205,10 @@ namespace SNI.Views
                 setupArea();
             }
         }
-
         private void Item_Click(object sender, EventArgs e)
         {
-            var smachine = MachineController.tempmachine.Find(machine => machine.name.Trim() == selectmachine.Trim());
-            if (smachine.machineid != 0)
+            var smachine = MachineController.tempmachine.Find(machine => machine.machineid == idmachine);
+            if (smachine.machineid > 0)
             {
                 MachineController.tempmachine.Remove(smachine);
                 MachineController.removemachine.Add(smachine);
@@ -257,13 +253,21 @@ namespace SNI.Views
                     panel1.Controls.Clear();
                     int nextmachinex = 20;
                     int nextmachiney = 20;
+                    int id;
+                    try
+                    {
+                        id = MachineController.tempmachine.Min(mch => mch.machineid);
+                    }
+                    catch
+                    {
+                        id = 0;
+                    }
                     for(int i=0;i<aom.numofmachines;i++)
                     {
                         string name = "ghe " + (i+1).ToString();
 
-                        Label lb = createLabel(name, 1, nextmachinex, nextmachiney);
+                        Label lb = createLabel(id+1,name, 1, nextmachinex, nextmachiney);
                         MachineController.AddnewMachineTemp(name,Convert.ToInt32((double)nextmachinex*(double)scalew),Convert.ToInt32((double)nextmachiney*(double)scaleh),1);
-
                         nextmachinex = nextmachinex + lb.Size.Width + 20;
                         if (nextmachinex > panel1.Size.Width)
                         {
@@ -271,7 +275,6 @@ namespace SNI.Views
                             nextmachiney = nextmachiney + lb.Size.Height + 20;
                         }
                         panel1.Controls.Add(lb);
-
                     }
                 }
             }

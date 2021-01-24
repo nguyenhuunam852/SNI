@@ -16,7 +16,7 @@ namespace SNI.Views.Machine
             InitializeComponent();
         }
 
-        public string machinesname = "";
+        public int idmachine = 0;
         private void loadComboBox()
         {
 
@@ -43,7 +43,7 @@ namespace SNI.Views.Machine
         }
         private void MachineInformation_Load(object sender, EventArgs e)
         {
-            Models.Machines mach = MachineController.getinfor(machinesname);
+            Models.Machines mach = MachineController.getinfor(idmachine);
             textBox1.Text = mach.name;
             numericUpDown1.Value = mach.locationx;
             numericUpDown2.Value = mach.locationy;
@@ -88,7 +88,7 @@ namespace SNI.Views.Machine
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            MachineController.updateMachine(machinesname, textBox1.Text, Convert.ToInt32(comboBox1.SelectedValue), Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value));
+            MachineController.updateMachine(idmachine, textBox1.Text, Convert.ToInt32(comboBox1.SelectedValue), Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value));
             this.DialogResult = DialogResult.OK;
 
         }

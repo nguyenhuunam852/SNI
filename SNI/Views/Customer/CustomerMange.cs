@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SNI.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,21 @@ namespace SNI.Views.Customer
         {
             AddCustomerForm acf = new AddCustomerForm();
             acf.ShowDialog();
+        }
+        private void LoadDataGridView()
+        {
+            List<Models.Customers> listcus = CustomerController.loadCustomer();
+            
+            dataGridView1.DataSource = listcus;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.RowHeadersVisible = false;
+
+        }
+        private void CustomerMange_Load(object sender, EventArgs e)
+        {
+            LoadDataGridView();
+
         }
     }
 }

@@ -116,6 +116,7 @@
             this.Name = "CustomerMange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CustomerMange";
+            this.Load += new System.EventHandler(this.CustomerMange_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
