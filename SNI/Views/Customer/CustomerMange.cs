@@ -16,26 +16,70 @@ namespace SNI.Views.Customer
         {
             InitializeComponent();
         }
-
+        private string selectid = ""; 
         private void button1_Click(object sender, EventArgs e)
         {
             AddCustomerForm acf = new AddCustomerForm();
-            acf.ShowDialog();
+            if(acf.ShowDialog()==DialogResult.OK)
+            {
+                LoadDataGridView();
+            }
         }
         private void LoadDataGridView()
         {
-            List<Models.Customers> listcus = CustomerController.loadCustomer();
+            DataTable dt = CustomerController.getListCustomer();
             
-            dataGridView1.DataSource = listcus;
+            dataGridView1.DataSource = dt;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.RowHeadersVisible = false;
-
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.ReadOnly = true;
         }
         private void CustomerMange_Load(object sender, EventArgs e)
         {
             LoadDataGridView();
 
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selectid = dataGridView1.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
+            if(selectid!="")
+            {
+                button3.Enabled = true;
+            }
+            else
+            {
+                button3.Enabled = false;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(CustomerController.RemoveCustomer(selectid))
+            {
+                MessageBox.Show("Xóa thành công!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadDataGridView();
+            }
+            else
+            {
+                MessageBox.Show("Thất bại!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txb = sender as TextBox;
+            if(txb.Text.Length%3==0)
+            {
+                dataGridView1.DataSource = CustomerController.FindByValue(txb.Text);
+            }
         }
     }
 }

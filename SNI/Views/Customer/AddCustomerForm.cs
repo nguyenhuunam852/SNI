@@ -39,8 +39,19 @@ namespace SNI.Views.Customer
             dt.Rows.Add(dtr2);
 
             gioitinhcbbox.DataSource = dt;
+            gioitinhcbbox.DisplayMember = "display";
+            gioitinhcbbox.ValueMember = "value";
         }
-      
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                button1.PerformClick();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
             idtext.Text = Config.MaChiNhanh + RandomString(4);
@@ -68,7 +79,7 @@ namespace SNI.Views.Customer
             bool check =  CustomerController.AddCustomer(idtext.Text, nametext.Text, sdttext.Text, int.Parse(gioitinhcbbox.SelectedValue.ToString()),Convert.ToInt32(tuoinumber.Value), diachirichtext.Text);
             if(check==true)
             {
-                AddCustomerForm_Load(sender, e);
+                this.DialogResult = DialogResult.OK;
             }
         }
 

@@ -9,7 +9,23 @@ namespace SNI.Controllers
 {
     class CustomerController
     {
-        public static List<Customers> loadCustomer()
+        public static DataTable getListCustomer()
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var listcustomer = context.Customers.Where(cus => cus.available == true).OrderBy(cus => cus.dayadd).Take(10).ToList();
+                    return loadCustomer(listcustomer);
+                    
+                }
+                catch(Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+        public static DataTable loadCustomer(List<Customers> listcustomer)
         {
             using (var context = new ControllerModel())
             {
@@ -19,17 +35,52 @@ namespace SNI.Controllers
                     dt.Columns.Add("Mã Số");
                     dt.Columns.Add("Họ Tên");
                     dt.Columns.Add("Ngày Thêm");
-                    var listcustomer = context.Customers.Where(cus => cus.available == true).OrderBy(cus => cus.dayadd).Take(10).ToList();
                     foreach(Customers cus in listcustomer)
                     {
-
+                        DataRow dtr = dt.NewRow();
+                        dtr["Mã Số"] = cus.localid;
+                        dtr["Họ Tên"] = cus.name;
+                        dtr["Ngày Thêm"] = cus.dayadd.Hour+":"+cus.dayadd.Minute + "-"+cus.dayadd.Day+"/"+cus.dayadd.Month+"/"+cus.dayadd.Year;
+                        dt.Rows.Add(dtr);
                     }
-                    return listcustomer;
+                    return dt;
 
                 }
                 catch(Exception ex)
                 {
                     return null;
+                }
+            }
+        }
+        public static DataTable FindByValue(string find)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var find_customer = context.Customers.Where(cus => cus.localid.Contains(find) || cus.name.Contains(find)).Take(10).ToList();
+                    return loadCustomer(find_customer);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }               
+            }
+        }
+        public static bool RemoveCustomer(string id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var customer = context.Customers.Where(cus => cus.localid == id).FirstOrDefault();
+                    context.Customers.Remove(customer);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch(Exception ex)
+                {
+                    return false;
                 }
             }
         }
@@ -51,6 +102,8 @@ namespace SNI.Controllers
                         dayadd = DateTime.Now,
                         dayupdate = DateTime.Now
                     };
+                    context.Customers.Add(customer);
+                    context.SaveChanges();
 
                     return true;
                 }

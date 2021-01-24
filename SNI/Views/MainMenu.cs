@@ -13,15 +13,14 @@ namespace SNI
         {
             InitializeComponent();
         }
+        double scalew = 1;
+        double scaleh = 1;
+        private Size startSize;
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
-        double scalew = 1;
-        double scaleh = 1;
-
         private void removeAllMachine()
         {
 
@@ -42,15 +41,12 @@ namespace SNI
             lb.DoubleClick += Lb_DoubleClick;
             return lb;
         }
-
         private void Lb_DoubleClick(object sender, EventArgs e)
         {
             Label lb = sender as Label;
             CustomerFind cf = new CustomerFind();
             cf.ShowDialog();
         }
-
-        private Size startSize;
         private void load()
         {
             foreach (Models.Machines machine in MachineController.tempmachine)
@@ -71,7 +67,6 @@ namespace SNI
             MachineController.loadMachine();
             load();
         }
-
         private void panel1_SizeChanged(object sender, EventArgs e)
         {
             Panel pn = sender as Panel;
@@ -84,7 +79,6 @@ namespace SNI
                 load();
             }
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
             MachineManage machine = new MachineManage();
@@ -101,11 +95,14 @@ namespace SNI
             }
 
         }
-
         private void label2_Click(object sender, EventArgs e)
         {
             CustomerMange cm = new CustomerMange();
-            cm.ShowDialog();
+            if(cm.ShowDialog()==DialogResult.OK)
+            {
+                MainMenu_Load(sender, e);
+            }
         }
+
     }
 }

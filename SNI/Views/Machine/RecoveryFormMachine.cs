@@ -19,8 +19,10 @@ namespace SNI.Views.Machine
         {
             dataGridView1.ColumnCount = 4;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.RowHeadersVisible = false;
+            dataGridView1.ReadOnly = true;
 
             dataGridView1.Columns[0].Name = "id";
             dataGridView1.Columns[1].Name = "Tên máy";
