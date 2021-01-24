@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SNI.Controllers;
+using SNI.Models;
 
 namespace SNI.Views.Customer
 {
@@ -16,6 +17,7 @@ namespace SNI.Views.Customer
         {
             InitializeComponent();
         }
+        
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)
@@ -28,6 +30,7 @@ namespace SNI.Views.Customer
 
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
+            
             idtext.Text = Config.MaChiNhanh + RandomString(4);
             gioitinhcbbox = Module.loadComboBox(gioitinhcbbox);
             //LoadDataGridView();

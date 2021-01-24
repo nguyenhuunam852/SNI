@@ -9,6 +9,7 @@ namespace SNI.Controllers
 {
     class CustomerController
     {
+        public static Customers addedCustomer;
         public static DataTable getListCustomer()
         {
             using (var context = new ControllerModel())
@@ -168,7 +169,7 @@ namespace SNI.Controllers
                     };
                     context.Customers.Add(customer);
                     context.SaveChanges();
-
+                    addedCustomer = customer;
                     return true;
                 }
                 catch(Exception ex)
