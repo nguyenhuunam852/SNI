@@ -122,7 +122,7 @@ namespace SNI.Controllers
             {
                 try
                 {
-                    var find_customer = context.Customers.Where(cus => cus.localid.Contains(find) || cus.name.Contains(find) || cus.phone.Contains(find)).Take(10).ToList();
+                    var find_customer = context.Customers.Where(cus => (cus.localid.Contains(find) || cus.name.Contains(find) || cus.phone.Contains(find)) && cus.available==true).Take(10).ToList();
                     return loadCustomer(find_customer);
                 }
                 catch (Exception e)

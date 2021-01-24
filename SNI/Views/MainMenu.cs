@@ -5,6 +5,7 @@ using SNI.Controllers;
 using System.Drawing;
 using SNI.Views.Service;
 using SNI.Views.Customer;
+using SNI.Views.Health;
 namespace SNI
 {
     public partial class MainMenu : Form
@@ -81,9 +82,18 @@ namespace SNI
         }
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+        private void label2_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void quảnLíGhếToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             MachineManage machine = new MachineManage();
             machine.setPanelSize(panel1.Size.Width, panel1.Size.Height);
-            if(machine.ShowDialog()==DialogResult.OK)
+            if (machine.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Lưu thành công!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 panel1.Controls.Clear();
@@ -93,16 +103,21 @@ namespace SNI
             {
                 MainMenu_Load(sender, e);
             }
-
         }
-        private void label2_Click(object sender, EventArgs e)
+
+        private void quảnLíKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomerMange cm = new CustomerMange();
-            if(cm.ShowDialog()==DialogResult.OK)
+            if (cm.ShowDialog() == DialogResult.OK)
             {
                 MainMenu_Load(sender, e);
             }
         }
 
+        private void quảnLíSứcKhỏeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HealthManage hm = new HealthManage();
+            hm.ShowDialog();
+        }
     }
 }

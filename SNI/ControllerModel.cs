@@ -14,6 +14,8 @@ namespace SNI
         }
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Machines> Machines { get; set; }
+        public DbSet<Health> Healths { get; set; }
+        public DbSet<CustomerHealth> CustomerHealths { get; set; }
 
     }
 }

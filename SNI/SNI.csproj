@@ -56,9 +56,12 @@
     <Compile Include="Config.cs" />
     <Compile Include="ControllerModel.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\MachineController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CustomerHealth.cs" />
     <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\Health.cs" />
     <Compile Include="Models\Machines.cs" />
     <Compile Include="Views\Customer\AddCustomerForm.cs">
       <SubType>Form</SubType>
@@ -83,6 +86,24 @@
     </Compile>
     <Compile Include="Views\Customer\RecoveryCustomer.Designer.cs">
       <DependentUpon>RecoveryCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Health\AddHealthbyExcelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Health\AddHealthbyExcelForm.Designer.cs">
+      <DependentUpon>AddHealthbyExcelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Health\AddHealthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Health\AddHealthForm.Designer.cs">
+      <DependentUpon>AddHealthForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Health\HealthManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Health\HealthManage.Designer.cs">
+      <DependentUpon>HealthManage.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Machine\AmountOfMachines.cs">
       <SubType>Form</SubType>
@@ -141,6 +162,15 @@
     <EmbeddedResource Include="Views\Customer\RecoveryCustomer.resx">
       <DependentUpon>RecoveryCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Health\AddHealthbyExcelForm.resx">
+      <DependentUpon>AddHealthbyExcelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Health\AddHealthForm.resx">
+      <DependentUpon>AddHealthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Health\HealthManage.resx">
+      <DependentUpon>HealthManage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Machine\AmountOfMachines.resx">
       <DependentUpon>AmountOfMachines.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,6 +213,34 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
