@@ -46,12 +46,16 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.suckhoetext = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tuoinumbertext)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 326);
+            this.button1.Location = new System.Drawing.Point(372, 156);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 33;
@@ -61,7 +65,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(93, 326);
+            this.button2.Location = new System.Drawing.Point(453, 154);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 28;
@@ -203,11 +207,53 @@
             this.label7.TabIndex = 43;
             this.label7.Text = "Ngày thêm";
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(372, 49);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.MaximumSize = new System.Drawing.Size(272, 150);
+            this.flowLayoutPanel1.MinimumSize = new System.Drawing.Size(272, 20);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(272, 20);
+            this.flowLayoutPanel1.TabIndex = 50;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(372, 25);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(272, 21);
+            this.comboBox1.TabIndex = 49;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(305, 34);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(61, 13);
+            this.label11.TabIndex = 48;
+            this.label11.Text = "Sức khỏe";
+            // 
+            // suckhoetext
+            // 
+            this.suckhoetext.Location = new System.Drawing.Point(372, 26);
+            this.suckhoetext.Name = "suckhoetext";
+            this.suckhoetext.Size = new System.Drawing.Size(217, 20);
+            this.suckhoetext.TabIndex = 47;
+            // 
             // CustomerInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 361);
+            this.ClientSize = new System.Drawing.Size(668, 325);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.suckhoetext);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
@@ -257,5 +303,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox suckhoetext;
     }
 }

@@ -17,65 +17,41 @@ namespace SNI.Views.Customer
         {
             InitializeComponent();
         }
-        DataTable dt = new DataTable();
       
 
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
+
             this.Controls.SetChildIndex(suckhoetext, 0);
             idtext.Text = Config.MaChiNhanh + RandomString(4);
             gioitinhcbbox = Module.loadComboBox(gioitinhcbbox);
-            dataGridView1 = Module.MydataGridView(dataGridView1);
-
-            dt.Columns.Add("id");
-            dt.Columns.Add("bệnh");
-
-
-            dataGridView1.DataSource = dt;
-            DataGridViewButtonColumn testButtonColumn = new DataGridViewButtonColumn();
-            testButtonColumn.Name = "delete";
-            testButtonColumn.Text = "Xóa";
-            testButtonColumn.HeaderText = "";
-            testButtonColumn.UseColumnTextForButtonValue = true;
-            dataGridView1.Columns[0].Visible = false;
-            int columnIndex = dataGridView1.Columns.Count;
-
-            if (dataGridView1.Columns["delete"] == null)
-            {
-                dataGridView1.Columns.Insert(columnIndex, testButtonColumn);
-            }
-            dataGridView1.CellClick += DataGridView1_CellClick;
             //LoadDataGridView();
 
         }
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["delete"].Index)
+
+        }
+        private void loadTag()
+        {
+            flowLayoutPanel1.Controls.Clear();
+            foreach(Models.Health tag in listWithout)
             {
-                DialogResult dlr = MessageBox.Show("Bạn có muốn xóa không", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (dlr == DialogResult.Yes)
-                {
-
-                    string id = dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                    DataRow save = null ;
-                    foreach(DataRow dtr in dt.Rows)
-                    {
-                        if(dtr["id"].ToString()==id)
-                        {
-                            save = dtr;
-                        }
-                    }
-                    if (save != null)
-                    {
-                        dt.Rows.Remove(save);
-                        listWithout.Remove(Convert.ToInt16(id));
-                        dataGridView1.DataSource = dt;
-                        suckhoetext.Text = "";
-                    }
-                }
+                Label lb = new Label();
+                lb.Click += Lb_Click1;
+                Panel pn =Module.createMytab(tag.name, tag.healthid.ToString(), lb);
+                flowLayoutPanel1.Controls.Add(pn);
+               
             }
+        }
 
+        private void Lb_Click1(object sender, EventArgs e)
+        {
+            Label lb = sender as Label;
+            var select_health = listWithout.SingleOrDefault(o => o.healthid == Convert.ToInt32(lb.Name));
+            listWithout.Remove(select_health);
+            loadTag();
         }
 
         private static Random random = new Random();
@@ -150,35 +126,29 @@ namespace SNI.Views.Customer
             }
             if (e.KeyCode == Keys.Enter)
             {
-                comboBox1.DroppedDown = false;
-                selected_health = HealthController.getinformation(Convert.ToInt16(comboBox1.SelectedValue.ToString()));
-                DataRow dtr = dt.NewRow();
-                listWithout.Add(selected_health.healthid);
-                dtr["id"] = selected_health.healthid;
-                dtr["bệnh"] = selected_health.name;
-                dt.Rows.InsertAt(dtr,0);
-              
-                dataGridView1.DataSource = dt;
-                suckhoetext.Text = "";
+                acceptChoose();
             }
         }
-        List<int> listWithout = new List<int>();
+        private void acceptChoose()
+        {
+            comboBox1.DroppedDown = false;
+            selected_health = HealthController.getinformation(Convert.ToInt16(comboBox1.SelectedValue.ToString()));          
+            listWithout.Add(selected_health);
+            loadTag();
+            suckhoetext.Text = "";
+        }
+
+        private void Lb_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        List<Models.Health> listWithout = new List<Models.Health>();
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (suckhoetext.Text != "")
             {
-                comboBox1.DroppedDown = false;
-                selected_health = HealthController.getinformation(Convert.ToInt16(comboBox1.SelectedValue.ToString()));
-                DataRow dtr = dt.NewRow();
-                listWithout.Add(selected_health.healthid);
-                dtr["id"] = selected_health.healthid;
-                dtr["bệnh"] = selected_health.name;
-                dt.Rows.InsertAt(dtr, 0);
-
-                dataGridView1.DataSource = dt;
-                suckhoetext.Text = "";
-
-
+                acceptChoose();
             }
         }
     }

@@ -25,11 +25,12 @@ namespace SNI.Controllers
             
             } 
         }
-        public static DataTable FindHealthWithoutselected(string find,List<int> listWithout)
+        public static DataTable FindHealthWithoutselected(string find,List<Health> listWithout)
         {
             using (var context = new ControllerModel())
             {
-                var listhealth = context.Healths.Where(heal => heal.available == true && heal.name.Contains(find) && listWithout.Contains(heal.healthid)==false).Take(10).ToList();
+                List<int> properties = listWithout.Select(o => o.healthid).ToList();
+                var listhealth = context.Healths.Where(heal => heal.available == true && heal.name.Contains(find) && properties.Contains(heal.healthid)==false).Take(10).ToList();
                 return loadHealth(listhealth);
             }
         }

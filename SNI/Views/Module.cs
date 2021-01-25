@@ -49,5 +49,43 @@ namespace SNI.Views
             dtg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             return dtg;
         }
+
+        public static Panel pn;
+        
+        public static Label getbuttonx(Label label1,string id)
+        {
+            label1.Name = id;
+            label1.AutoSize = false;
+            label1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            label1.Location = new System.Drawing.Point(0, 0);
+            label1.Size = new System.Drawing.Size(15, 13);
+            label1.TabIndex = 3;
+            label1.Text = "x";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            return label1;
+        }
+        public static Label getLabel(Label label2,string text)
+        {
+            label2.Text = text;
+            label2.AutoSize = true;
+            label2.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            label2.Location = new System.Drawing.Point(15, 0);
+            label2.Size = new System.Drawing.Size(62, 13);
+            label2.TabIndex = 2;
+            return label2;
+        }
+        public static Panel createMytab(string text,string id,Label lb)
+        {
+            pn = new Panel();
+            pn.AutoSize = true;
+            pn.TabIndex = 1;
+            pn.Margin = new Padding(0, 0, 0, 0);
+            Label label2 = new Label();
+            label2 = getLabel(label2, text);
+            lb = getbuttonx(lb, id);
+            pn.Controls.Add(label2);
+            pn.Controls.Add(lb);
+            return pn;
+        }
     }
 }

@@ -43,10 +43,9 @@
             this.suckhoetext = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.idtext = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.tuoinumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // nametext
@@ -184,14 +183,6 @@
             this.idtext.Size = new System.Drawing.Size(81, 20);
             this.idtext.TabIndex = 15;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(101, 293);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(272, 64);
-            this.dataGridView1.TabIndex = 16;
-            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -202,13 +193,26 @@
             this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
             this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(101, 289);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.MaximumSize = new System.Drawing.Size(272, 150);
+            this.flowLayoutPanel1.MinimumSize = new System.Drawing.Size(272, 20);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(272, 20);
+            this.flowLayoutPanel1.TabIndex = 18;
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 410);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.idtext);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.suckhoetext);
@@ -230,7 +234,6 @@
             this.Text = "AddCustomerForm";
             this.Load += new System.EventHandler(this.AddCustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tuoinumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,7 +256,7 @@
         private System.Windows.Forms.TextBox suckhoetext;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox idtext;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

@@ -149,7 +149,7 @@ namespace SNI.Controllers
                 }
             }
         }
-        public static bool AddCustomer(string id,string name,string phone,int gender,int age,string address,List<int> listwithout)
+        public static bool AddCustomer(string id,string name,string phone,int gender,int age,string address,List<Health> listwithout)
         {
             using (var context = new ControllerModel())
             {
@@ -170,12 +170,12 @@ namespace SNI.Controllers
                     context.Customers.Add(customer);
                    
                     addedCustomer = customer;
-                    foreach(int healt in listwithout)
+                    foreach(Health healt in listwithout)
                     {
                         var health = new CustomerHealth
                         {
                             Customers = context.Customers.Where(cus => cus.localid == id).FirstOrDefault(),
-                            Health = context.Healths.Where(heal=>heal.healthid==healt).FirstOrDefault(),
+                            Health = healt,
                             dayadd = DateTime.Now,
                             dayupdate = DateTime.Now
                         };
