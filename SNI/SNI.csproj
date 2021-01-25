@@ -58,8 +58,10 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\MachineController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerHealth.cs" />
+    <Compile Include="Models\CustomerMachine.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\Health.cs" />
     <Compile Include="Models\Machines.cs" />

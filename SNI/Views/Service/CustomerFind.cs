@@ -11,7 +11,7 @@ namespace SNI.Views.Service
         {
             InitializeComponent();
         }
-
+        public int selected_machine;
         private void CustomerFind_Load(object sender, EventArgs e)
         {
             textBox1.Text = "";
@@ -116,7 +116,10 @@ namespace SNI.Views.Service
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            if(ServiceController.startTime(selected_customer.localid, selected_machine))
+            {
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)

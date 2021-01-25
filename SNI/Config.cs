@@ -8,7 +8,7 @@ namespace SNI
     class Config
     {
         public static string MaChiNhanh = "CN";
-
+        public static int workingtime = 30*60;
 
     }
 }
