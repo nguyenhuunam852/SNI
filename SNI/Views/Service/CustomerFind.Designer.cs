@@ -31,18 +31,18 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.namelabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.sdtlabel = new System.Windows.Forms.Label();
-            this.labelgt = new System.Windows.Forms.Label();
-            this.gioitinhlabel = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dclabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.tuoilabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dclabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.gioitinhlabel = new System.Windows.Forms.Label();
+            this.labelgt = new System.Windows.Forms.Label();
+            this.sdtlabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.namelabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -84,110 +84,20 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.namelabel);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 29);
+            this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(411, 223);
             this.panel1.TabIndex = 2;
             // 
-            // label1
+            // tuoilabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tên:";
-            // 
-            // namelabel
-            // 
-            this.namelabel.AutoSize = true;
-            this.namelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namelabel.Location = new System.Drawing.Point(125, 23);
-            this.namelabel.Name = "namelabel";
-            this.namelabel.Size = new System.Drawing.Size(16, 16);
-            this.namelabel.TabIndex = 1;
-            this.namelabel.Text = "a";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Sđt:";
-            // 
-            // sdtlabel
-            // 
-            this.sdtlabel.AutoSize = true;
-            this.sdtlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sdtlabel.Location = new System.Drawing.Point(125, 51);
-            this.sdtlabel.Name = "sdtlabel";
-            this.sdtlabel.Size = new System.Drawing.Size(16, 16);
-            this.sdtlabel.TabIndex = 3;
-            this.sdtlabel.Text = "b";
-            // 
-            // labelgt
-            // 
-            this.labelgt.AutoSize = true;
-            this.labelgt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelgt.Location = new System.Drawing.Point(12, 82);
-            this.labelgt.Name = "labelgt";
-            this.labelgt.Size = new System.Drawing.Size(56, 13);
-            this.labelgt.TabIndex = 4;
-            this.labelgt.Text = "Giới tính";
-            // 
-            // gioitinhlabel
-            // 
-            this.gioitinhlabel.AutoSize = true;
-            this.gioitinhlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gioitinhlabel.Location = new System.Drawing.Point(125, 82);
-            this.gioitinhlabel.Name = "gioitinhlabel";
-            this.gioitinhlabel.Size = new System.Drawing.Size(15, 16);
-            this.gioitinhlabel.TabIndex = 5;
-            this.gioitinhlabel.Text = "c";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 113);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Địa chỉ";
-            // 
-            // dclabel
-            // 
-            this.dclabel.AutoSize = true;
-            this.dclabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dclabel.Location = new System.Drawing.Point(125, 113);
-            this.dclabel.Name = "dclabel";
-            this.dclabel.Size = new System.Drawing.Size(16, 16);
-            this.dclabel.TabIndex = 7;
-            this.dclabel.Text = "d";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 189);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Xác nhận";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(102, 189);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Hủy";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.tuoilabel.AutoSize = true;
+            this.tuoilabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tuoilabel.Location = new System.Drawing.Point(125, 143);
+            this.tuoilabel.Name = "tuoilabel";
+            this.tuoilabel.Size = new System.Drawing.Size(16, 16);
+            this.tuoilabel.TabIndex = 10;
+            this.tuoilabel.Text = "e";
             // 
             // label3
             // 
@@ -199,15 +109,105 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Tuổi";
             // 
-            // tuoilabel
+            // button3
             // 
-            this.tuoilabel.AutoSize = true;
-            this.tuoilabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tuoilabel.Location = new System.Drawing.Point(125, 143);
-            this.tuoilabel.Name = "tuoilabel";
-            this.tuoilabel.Size = new System.Drawing.Size(16, 16);
-            this.tuoilabel.TabIndex = 10;
-            this.tuoilabel.Text = "e";
+            this.button3.Location = new System.Drawing.Point(102, 189);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Hủy";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 189);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Xác nhận";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // dclabel
+            // 
+            this.dclabel.AutoSize = true;
+            this.dclabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dclabel.Location = new System.Drawing.Point(125, 113);
+            this.dclabel.Name = "dclabel";
+            this.dclabel.Size = new System.Drawing.Size(16, 16);
+            this.dclabel.TabIndex = 7;
+            this.dclabel.Text = "d";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Địa chỉ";
+            // 
+            // gioitinhlabel
+            // 
+            this.gioitinhlabel.AutoSize = true;
+            this.gioitinhlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gioitinhlabel.Location = new System.Drawing.Point(125, 82);
+            this.gioitinhlabel.Name = "gioitinhlabel";
+            this.gioitinhlabel.Size = new System.Drawing.Size(15, 16);
+            this.gioitinhlabel.TabIndex = 5;
+            this.gioitinhlabel.Text = "c";
+            // 
+            // labelgt
+            // 
+            this.labelgt.AutoSize = true;
+            this.labelgt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelgt.Location = new System.Drawing.Point(12, 82);
+            this.labelgt.Name = "labelgt";
+            this.labelgt.Size = new System.Drawing.Size(56, 13);
+            this.labelgt.TabIndex = 4;
+            this.labelgt.Text = "Giới tính";
+            // 
+            // sdtlabel
+            // 
+            this.sdtlabel.AutoSize = true;
+            this.sdtlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sdtlabel.Location = new System.Drawing.Point(125, 51);
+            this.sdtlabel.Name = "sdtlabel";
+            this.sdtlabel.Size = new System.Drawing.Size(16, 16);
+            this.sdtlabel.TabIndex = 3;
+            this.sdtlabel.Text = "b";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Sđt:";
+            // 
+            // namelabel
+            // 
+            this.namelabel.AutoSize = true;
+            this.namelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.namelabel.Location = new System.Drawing.Point(125, 23);
+            this.namelabel.Name = "namelabel";
+            this.namelabel.Size = new System.Drawing.Size(16, 16);
+            this.namelabel.TabIndex = 1;
+            this.namelabel.Text = "a";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tên:";
             // 
             // button2
             // 
@@ -226,14 +226,13 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(411, 253);
+            this.ClientSize = new System.Drawing.Size(411, 250);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CustomerFind";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CustomerFind";
             this.Load += new System.EventHandler(this.CustomerFind_Load);

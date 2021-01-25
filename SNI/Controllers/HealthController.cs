@@ -10,6 +10,7 @@ namespace SNI.Controllers
 {
     class HealthController
     {
+        public static Health addedhealth;
         public static Health getinformation(int id)
         {
             using (var context = new ControllerModel())
@@ -70,6 +71,7 @@ namespace SNI.Controllers
                         };
                         context.Healths.Add(hl);
                         context.SaveChanges();
+                        addedhealth = hl;
                         return true;
                     }
                     else

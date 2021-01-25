@@ -14,8 +14,6 @@ namespace SNI.Views.Service
 
         private void CustomerFind_Load(object sender, EventArgs e)
         {
-           
-            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             textBox1.Text = "";
             textBox1.Visible = true;
             comboBox1.Visible = true;
@@ -33,9 +31,10 @@ namespace SNI.Views.Service
             panel1.Visible = false;
             panel1.Location = new Point(0, 0);
             panel1.Size = new Size(this.Size.Width, 225);
-            
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             this.AutoSize = true;
-            this.BackColor = Color.Azure;
+        
             this.Controls.SetChildIndex(textBox1, 0);
             textBox1.Focus();
         }

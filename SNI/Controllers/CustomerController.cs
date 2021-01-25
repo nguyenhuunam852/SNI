@@ -172,10 +172,11 @@ namespace SNI.Controllers
                     addedCustomer = customer;
                     foreach(Health healt in listwithout)
                     {
+                        var selecthealth = context.Healths.Where(o => o.healthid == healt.healthid).FirstOrDefault();
                         var health = new CustomerHealth
                         {
                             Customers = context.Customers.Where(cus => cus.localid == id).FirstOrDefault(),
-                            Health = healt,
+                            Health = selecthealth,
                             dayadd = DateTime.Now,
                             dayupdate = DateTime.Now
                         };
@@ -198,7 +199,7 @@ namespace SNI.Controllers
                return context.Customers.Where(cus => cus.localid == id).FirstOrDefault();
             }
         }
-        public static bool UpdateCustomer(string id, string name, string phone, int gender, int age, string address)
+        public static bool UpdateCustomer(string id, string name, string phone, int gender, int age, string address,List<Health> addlist,List<Health> removelist)
         {
             using (var context = new ControllerModel())
             {
@@ -214,6 +215,33 @@ namespace SNI.Controllers
                         customer.address = address;
                         customer.dayupdate = DateTime.Now;
                     };
+                    foreach(Health health in removelist)
+                    {
+                        var ch= context.CustomerHealths.Where(o => o.Customers.localid == id && o.Health.healthid == health.healthid);
+                        if(ch.Count()>0)
+                        {
+                            context.CustomerHealths.RemoveRange(ch);
+                        }
+                    }
+                    context.SaveChanges();
+                    foreach (Health health in addlist)
+                    {
+                        var ch = context.CustomerHealths.Where(o => o.Customers.localid == id && o.Health.healthid == health.healthid);
+                        var heal = context.Healths.Where(o => o.healthid==health.healthid).FirstOrDefault();
+
+                        if (ch.Count() == 0)
+                        {
+                            var ht = new CustomerHealth
+                            {
+                                Customers = customer,
+                                Health = heal,
+                                dayadd = DateTime.Now,
+                                dayupdate = DateTime.Now
+                            };
+                            context.CustomerHealths.Add(ht);
+                        }
+                    }
+
                     context.SaveChanges();
                     return true;
                 }
@@ -223,6 +251,12 @@ namespace SNI.Controllers
                 }
             }
         }
-
+        public static List<Health> listHealth(string id)
+        {
+            using (var context = new ControllerModel())
+            {
+                return context.CustomerHealths.Where(ch => ch.Customers.localid == id).Select(o => o.Health).ToList();
+            }
+        }
     }
 }

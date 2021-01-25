@@ -65,7 +65,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(453, 154);
+            this.button2.Location = new System.Drawing.Point(453, 156);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 28;
@@ -223,10 +223,11 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(372, 25);
+            this.comboBox1.Location = new System.Drawing.Point(372, 26);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(272, 21);
+            this.comboBox1.Size = new System.Drawing.Size(217, 21);
             this.comboBox1.TabIndex = 49;
+            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
             // 
             // label11
             // 
@@ -244,6 +245,8 @@
             this.suckhoetext.Name = "suckhoetext";
             this.suckhoetext.Size = new System.Drawing.Size(217, 20);
             this.suckhoetext.TabIndex = 47;
+            this.suckhoetext.TextChanged += new System.EventHandler(this.suckhoetext_TextChanged);
+            this.suckhoetext.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suckhoetext_KeyDown);
             // 
             // CustomerInformation
             // 

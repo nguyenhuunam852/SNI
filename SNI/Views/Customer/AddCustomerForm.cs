@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SNI.Controllers;
 using SNI.Models;
-
+using SNI.Views.Health;
 namespace SNI.Views.Customer
 {
     public partial class AddCustomerForm : Form
@@ -35,6 +35,7 @@ namespace SNI.Views.Customer
         }
         private void loadTag()
         {
+            suckhoetext.Text = "";
             flowLayoutPanel1.Controls.Clear();
             foreach(Models.Health tag in listWithout)
             {
@@ -89,18 +90,28 @@ namespace SNI.Views.Customer
         private void suckhoetext_TextChanged(object sender, EventArgs e)
         {
             TextBox txb = sender as TextBox;
-            if (txb.Text.Length % 3 == 0)
+            if (txb.Text.Length> 3)
             {
                 if (txb.Text != "")
                 {
                     comboBox1.Enabled = true;
-                    comboBox1.DataSource = HealthController.FindHealthWithoutselected(txb.Text,listWithout);
-                    comboBox1.DroppedDown = true;
-                    comboBox1.DisplayMember = "Bệnh";
-                    comboBox1.ValueMember = "Mã Số";
-                    Cursor.Current = Cursors.Default;
+                    DataTable dt = HealthController.FindHealthWithoutselected(txb.Text,listWithout);
+                    if (dt.Rows.Count > 0)
+                    {
+                        comboBox1.DataSource = dt;
+                        comboBox1.DroppedDown = true;
+                        comboBox1.DisplayMember = "Bệnh";
+                        comboBox1.ValueMember = "Mã Số";
+                        Cursor.Current = Cursors.Default;
+                    }
+                    else
+                    {
+                        comboBox1.DroppedDown = false;
+                        comboBox1.DataSource = null;
+                    }
                 }
-                else
+                
+                if (txb.Text == "")
                 {
                     comboBox1.Enabled = false;
                 }
@@ -126,7 +137,30 @@ namespace SNI.Views.Customer
             }
             if (e.KeyCode == Keys.Enter)
             {
-                acceptChoose();
+                if (comboBox1.Items.Count>0)
+                {
+                    acceptChoose();
+                }
+                else
+                {
+                    try
+                    {
+                        DialogResult dlt = MessageBox.Show("Bạn có muốn tạo mới không!", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dlt == DialogResult.Yes)
+                        {
+                            if (HealthController.addHealth(suckhoetext.Text))
+                            {
+                                listWithout.Add(HealthController.addedhealth);
+                                loadTag();
+                            }
+                        }
+                        comboBox1.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                       
+                    }
+                }
             }
         }
         private void acceptChoose()
@@ -146,9 +180,21 @@ namespace SNI.Views.Customer
         List<Models.Health> listWithout = new List<Models.Health>();
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (suckhoetext.Text != "")
+            if (suckhoetext.Text != "" && comboBox1.SelectedValue != null)
             {
                 acceptChoose();
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+
             }
         }
     }
