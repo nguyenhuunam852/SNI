@@ -43,7 +43,17 @@ namespace SNI
 
                         TimeSpan datesub = b-a  ;
                         lb.Text = datesub.Hours.ToString()+":" +datesub.Minutes.ToString()+":"+datesub.Seconds.ToString();
-                        wotkinglabel.Add(lb);
+                        if(datesub.Hours*3600+datesub.Minutes*60+datesub.Seconds>=Config.workingtime)
+                        {
+                            lb.Text = "Hết giờ";
+                            lb.BackColor = Color.Red;
+                        }
+
+                        if (!wotkinglabel.Contains(lb))
+                        {
+                            wotkinglabel.Add(lb);
+                        }
+                        
                     }
                 }
             }
@@ -116,27 +126,36 @@ namespace SNI
         private void countdown(Label lb)
         {
             string[] time = lb.Text.Split(':');
-            int hh = Convert.ToInt32(time[0]);
-            int mm = Convert.ToInt32(time[1]);
-            int ss = Convert.ToInt32(time[2]);
-            if (ss == 0 && mm == 0 && hh == 0) { }
-            else
+            if (lb.Text.Contains(":"))
             {
-                ss += 1;
-                if (ss > 59) { mm += 1; ss = 0; }
-                if (mm > 59) { hh += 1; mm = 0; }
+                int hh = Convert.ToInt32(time[0]);
+                int mm = Convert.ToInt32(time[1]);
+                int ss = Convert.ToInt32(time[2]);
 
-                string hour = hh.ToString();
-                if (hh < 10) { hour = "0" + hour; }
-                string minute = mm.ToString();
-                if (mm < 10) { minute = "0" + minute; }
-                string second = ss.ToString();
-                if (ss < 10)
+                if (hh * 3600 + mm * 60 + ss == Config.workingtime)
                 {
-                    second = "0" + second;
+                    lb.Text = "Hết giờ";
+                    lb.BackColor = Color.Red;
+                    wotkinglabel.Remove(lb);
                 }
+                else
+                {
+                    ss += 1;
+                    if (ss > 59) { mm += 1; ss = 0; }
+                    if (mm > 59) { hh += 1; mm = 0; }
 
-                lb.Text = hour + ":" + minute + ":" + second;
+                    string hour = hh.ToString();
+                    if (hh < 10) { hour = "0" + hour; }
+                    string minute = mm.ToString();
+                    if (mm < 10) { minute = "0" + minute; }
+                    string second = ss.ToString();
+                    if (ss < 10)
+                    {
+                        second = "0" + second;
+                    }
+
+                    lb.Text = hour + ":" + minute + ":" + second;
+                }
             }
 
         }
