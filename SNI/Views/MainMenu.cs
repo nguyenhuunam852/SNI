@@ -29,10 +29,24 @@ namespace SNI
 
         }
         List<Label> wotkinglabel = new List<Label>();
+        private string addZero(int num)
+        {
+            if (num < 10)
+            {
+                return "0" + num.ToString();
+            }
+            else
+            {
+                return num.ToString();
+            }
+        }
         private void loadState()
         {
-            foreach(Models.CustomerMachine cm in ServiceController.getlistworking())
+            wotkinglabel = new List<Label>();
+            
+            foreach (Models.CustomerMachine cm in ServiceController.getlistworking())
             {
+                
                 foreach(Label lb in panel1.Controls)
                 {
                     if(Convert.ToInt32(lb.Name)==cm.Machines.machineid)
@@ -42,7 +56,7 @@ namespace SNI
                         TimeSpan b = new TimeSpan(now.Hour, now.Minute, now.Second);
 
                         TimeSpan datesub = b-a  ;
-                        lb.Text = datesub.Hours.ToString()+":" +datesub.Minutes.ToString()+":"+datesub.Seconds.ToString();
+                        lb.Text = addZero(datesub.Hours)+":" +addZero(datesub.Minutes)+":"+addZero(datesub.Seconds);
                         if(datesub.Hours*3600+datesub.Minutes*60+datesub.Seconds>=Config.workingtime)
                         {
                             lb.Text = "Hết giờ";
@@ -51,6 +65,8 @@ namespace SNI
 
                         if (!wotkinglabel.Contains(lb))
                         {
+                            lb.BackColor = Color.LightGreen;
+                            
                             wotkinglabel.Add(lb);
                         }
                         
@@ -79,15 +95,29 @@ namespace SNI
         private void Lb_DoubleClick(object sender, EventArgs e)
         {
             Label lb = sender as Label;
-            CustomerFind cf = new CustomerFind();
-            cf.selected_machine = Convert.ToInt16(lb.Name);
-            if(cf.ShowDialog()==DialogResult.OK)
+            if (!wotkinglabel.Contains(lb))
             {
-                loadState();
+                CustomerFind cf = new CustomerFind();
+                cf.selected_machine = Convert.ToInt16(lb.Name);
+                if (cf.ShowDialog() == DialogResult.OK)
+                {
+                    loadState();
+                }
+            }
+            else
+            {
+                FinishForm ff = new FinishForm();
+                ff.idghe = lb.Name;
+                if(ff.ShowDialog()==DialogResult.OK)
+                {
+                    load();
+                    loadState();
+                }
             }
         }
         private void load()
         {
+            panel1.Controls.Clear();
             foreach (Models.Machines machine in MachineController.tempmachine)
             {
                 if (machine.status != 3)
@@ -110,8 +140,6 @@ namespace SNI
             {
                 Interval = 1000
             };
-
-
             time.Start();
             time.Tick += Time_Tick; ;
         }
@@ -170,6 +198,7 @@ namespace SNI
             if (scalew != 0 && scaleh != 0)
             {
                 load();
+                loadState();
             }
         }
         private void label1_Click(object sender, EventArgs e)

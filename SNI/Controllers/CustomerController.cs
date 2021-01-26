@@ -131,6 +131,24 @@ namespace SNI.Controllers
                 }               
             }
         }
+        public static DataTable FindByValueWithoutWorking(string find)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var working = context.CustomerMachines.Select(o => o.Customers.localid);
+
+                    var find_customer = context.Customers.Where(cus => (cus.localid.Contains(find) || cus.name.Contains(find) || cus.phone.Contains(find)) && working.Contains(cus.localid)==false && cus.available == true).Take(10).ToList();
+                    return loadCustomer(find_customer);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
         public static bool RemoveCustomer(string id)
         {
             using (var context = new ControllerModel())

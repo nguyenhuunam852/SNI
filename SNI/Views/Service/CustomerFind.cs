@@ -65,9 +65,8 @@ namespace SNI.Views.Service
                 if (txb.Text != "")
                 {
                     comboBox1.Enabled = true;
-                    comboBox1.DataSource = CustomerController.FindByValue(txb.Text);
+                    comboBox1.DataSource = CustomerController.FindByValueWithoutWorking(txb.Text);
                     comboBox1.DroppedDown = true;
-
                     Cursor.Current = Cursors.Default;
                 }
                 else
