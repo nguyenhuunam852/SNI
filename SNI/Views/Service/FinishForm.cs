@@ -14,6 +14,7 @@ namespace SNI.Views.Service
         Models.Machines mch;
         Models.Customers cus;
         Models.CustomerMachine cm;
+        public int time = 0;
         int saveactive = 0;
         private void button2_Click(object sender, EventArgs e)
         {
@@ -37,13 +38,15 @@ namespace SNI.Views.Service
             cm = ServiceController.getInformation(mch.machineid, cus.localid);
             DateTime now = DateTime.Now;
             DateTime start = cm.dayadd;
-            int active = now.Hour * 3600 + now.Minute * 60 + now.Second - (start.Hour * 3600 + start.Minute * 60 + start.Second);
+
+            int active =  time;
             int subactive = Config.workingtime - active;
             
             if (subactive<=0)
             {
                 active = Config.workingtime;
             }
+
             saveactive = active;
             int hour = active / 3600;
             active = active - hour * 3600;

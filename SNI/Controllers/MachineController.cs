@@ -2,6 +2,7 @@
 using SNI.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace SNI.Controllers
@@ -10,6 +11,74 @@ namespace SNI.Controllers
     {
         public static List<Machines> tempmachine ;
         public static List<Machines> removemachine ;
+        public static bool StopWorkingMachine(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var machine = context.CustomerMachines.Where(o => o.machineid == id).FirstOrDefault();
+                    var stop = new StopMachine
+                    {
+                        CustomerMachine = machine,
+                        dayadd = DateTime.Now,
+                        dayupdate = DateTime.Now
+                    };
+                    context.StopMachines.Add(stop);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        public static CustomerMachine getCustomerMachinebyStopMachineid(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                 
+                    return context.StopMachines.Where(o=>o.stopmachineid==id).Include("CustomerMachine").FirstOrDefault().CustomerMachine;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+        public static StopMachine getStopMachinebyMachineid(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    return context.StopMachines.Include("CustomerMachine").Where(o => o.CustomerMachine.machineid == id).FirstOrDefault();
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+        public static List<int> GetAllStopWorkingMachine()
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    return context.StopMachines.Include("CustomerMachine").Select(o=>o.CustomerMachine.machineid).ToList();
+                    
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+
         public static bool SaveAllMachine()
         {
             try
@@ -120,6 +189,26 @@ namespace SNI.Controllers
             return false;
 
         }
+
+        internal static bool ActiveWorkingMachine(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var machine = context.StopMachines.Include("CustomerMachine").Where(o => o.CustomerMachine.machineid == id).FirstOrDefault();
+                   
+                    context.StopMachines.Remove(machine);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
         public static bool loadMachine()
         {
             try

@@ -19,6 +19,7 @@ namespace SNI
         double scalew = 1;
         double scaleh = 1;
         private Size startSize;
+        
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -29,6 +30,7 @@ namespace SNI
 
         }
         List<Label> wotkinglabel = new List<Label>();
+        List<Label> stoplabel = new List<Label>();
         private string addZero(int num)
         {
             if (num < 10)
@@ -43,7 +45,7 @@ namespace SNI
         private void loadState()
         {
             wotkinglabel = new List<Label>();
-            
+            var getstoplist = MachineController.GetAllStopWorkingMachine();
             foreach (Models.CustomerMachine cm in ServiceController.getlistworking())
             {
                 
@@ -69,7 +71,26 @@ namespace SNI
                             
                             wotkinglabel.Add(lb);
                         }
-                        
+                    }
+                    
+                }
+            }
+            foreach (int id in getstoplist)
+            {
+                foreach (Label lb in wotkinglabel)
+                {
+                    if (Convert.ToInt16(lb.Name) == id)
+                    {
+                        var getstopmachine = MachineController.getStopMachinebyMachineid(id);
+                        var getcustomermachine = MachineController.getCustomerMachinebyStopMachineid(getstopmachine.stopmachineid);
+                        DateTime get = getstopmachine.dayadd;
+                        DateTime start = getcustomermachine.dayadd;
+                        TimeSpan a = new TimeSpan(get.Hour, get.Minute, get.Second);
+                        TimeSpan b = new TimeSpan(start.Hour, start.Minute, start.Second);
+                        TimeSpan datesub = a - b;
+                        lb.Text = addZero(datesub.Hours) + ":" + addZero(datesub.Minutes) + ":" + addZero(datesub.Seconds);
+                        lb.BackColor = Color.LightYellow;
+                        stoplabel.Add(lb);
                     }
                 }
             }
@@ -90,8 +111,60 @@ namespace SNI
             lb.Text = name;
             lb.Size = new Size(panel1.Size.Width / 10, panel1.Size.Height / 10);
             lb.DoubleClick += Lb_DoubleClick;
+            lb.MouseDown += Lb_MouseDown;
             return lb;
         }
+        private Label selected_label;
+        private void Lb_MouseDown(object sender, MouseEventArgs e)
+        {
+            Label lb = sender as Label;
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+               
+            }
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                selected_label = lb;
+                if (stoplabel.Contains(lb))
+                {
+                    ContextMenu cm = new ContextMenu();
+                    MenuItem item = cm.MenuItems.Add("Hoạt động");
+                    item.Click += Item_Click1;
+
+                    lb.ContextMenu = cm;
+
+                }
+                else if (wotkinglabel.Contains(lb))
+                {
+                    ContextMenu cm = new ContextMenu();
+                    MenuItem item = cm.MenuItems.Add("Tạm dừng");
+                    item.Click += Item_Click;
+
+                    lb.ContextMenu = cm;
+                    
+                }
+               
+            }
+        }
+
+        private void Item_Click1(object sender, EventArgs e)
+        {
+            if (MachineController.ActiveWorkingMachine(Convert.ToInt16(selected_label.Name)))
+            {
+                load();
+                loadState();
+            }
+        }
+
+        private void Item_Click(object sender, EventArgs e)
+        {
+            if(MachineController.StopWorkingMachine(Convert.ToInt16(selected_label.Name)))
+            {
+                load();
+                loadState();
+            }
+        }
+
         private void Lb_DoubleClick(object sender, EventArgs e)
         {
             Label lb = sender as Label;
@@ -108,7 +181,10 @@ namespace SNI
             {
                 FinishForm ff = new FinishForm();
                 ff.idghe = lb.Name;
-                if(ff.ShowDialog()==DialogResult.OK)
+                string[] text = lb.Text.Split(':');
+
+                ff.time = Convert.ToInt16(text[0]) * 3600 + Convert.ToInt16(text[1]) * 60 + Convert.ToInt16(text[2]);
+                if (ff.ShowDialog()==DialogResult.OK)
                 {
                     load();
                     loadState();
@@ -148,11 +224,15 @@ namespace SNI
         {
             foreach (Label lb in wotkinglabel)
             {
-                 countdown(lb);
+                if (!stoplabel.Contains(lb))
+                {
+                    countdown(lb);
+                }
             }
         }
         private void countdown(Label lb)
         {
+            
             string[] time = lb.Text.Split(':');
             if (lb.Text.Contains(":"))
             {

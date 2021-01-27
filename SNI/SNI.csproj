@@ -66,6 +66,7 @@
     <Compile Include="Models\Health.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\Machines.cs" />
+    <Compile Include="Models\StopMachine.cs" />
     <Compile Include="Views\Customer\AddCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
