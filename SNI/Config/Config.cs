@@ -15,6 +15,7 @@ namespace SNI
         public string servername;
         public string username;
         public string password;
+        public string success;
         public static string connect;
         private static string currentfile= Directory.GetCurrentDirectory();
         public static void LoadFile()

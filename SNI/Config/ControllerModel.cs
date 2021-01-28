@@ -8,7 +8,7 @@ namespace SNI
 {
     class ControllerModel : DbContext
     {
-        public ControllerModel() : base(Config.connect)
+        public ControllerModel() : base("connect")
         {
 
         }
@@ -19,6 +19,6 @@ namespace SNI
         public DbSet<CustomerMachine> CustomerMachines { get; set; }
         public DbSet<History> Histories { get; set; }
         public DbSet<StopMachine> StopMachines { get; set; }
-    
+        public DbSet<Users> Users { get; set; }
     }
 }
