@@ -42,10 +42,24 @@ namespace SNI
                 return num.ToString();
             }
         }
+        private TimeSpan convertInttoDateTime(int active)
+        {
+
+            int hour = active / 3600;
+            active = active - hour * 3600;
+            int minute = active / 60;
+            active = active - minute * 60;
+            int second = active;
+            return new TimeSpan(hour, minute, second);
+        }
+        private int convertDateTimetoInt(DateTime active)
+        {
+            return active.Hour * 3600 + active.Minute * 60 + active.Second;
+        }
         private void loadState()
         {
             wotkinglabel = new List<Label>();
-            var getstoplist = MachineController.GetAllStopWorkingMachine();
+            var getstoplist = ServiceController.GetAllStopWorkingMachine();
             foreach (Models.CustomerMachine cm in ServiceController.getlistworking())
             {
                 
@@ -54,10 +68,13 @@ namespace SNI
                     if(Convert.ToInt32(lb.Name)==cm.Machines.machineid)
                     {
                         DateTime now = DateTime.Now;
-                        TimeSpan a = new TimeSpan(cm.dayadd.Hour, cm.dayadd.Minute, cm.dayadd.Second);
-                        TimeSpan b = new TimeSpan(now.Hour, now.Minute, now.Second);
+                      
+                        int start = convertDateTimetoInt(cm.dayupdate);
+                        int space = convertDateTimetoInt(cm.dayadd);
+                        int cnow = convertDateTimetoInt(now);
 
-                        TimeSpan datesub = b-a  ;
+                        int intsub = (cnow - space)-cm.activedtime;
+                        TimeSpan datesub = convertInttoDateTime(intsub);
                         lb.Text = addZero(datesub.Hours)+":" +addZero(datesub.Minutes)+":"+addZero(datesub.Seconds);
                         if(datesub.Hours*3600+datesub.Minutes*60+datesub.Seconds>=Config.workingtime)
                         {
@@ -81,13 +98,17 @@ namespace SNI
                 {
                     if (Convert.ToInt16(lb.Name) == id)
                     {
-                        var getstopmachine = MachineController.getStopMachinebyMachineid(id);
-                        var getcustomermachine = MachineController.getCustomerMachinebyStopMachineid(getstopmachine.stopmachineid);
-                        DateTime get = getstopmachine.dayadd;
-                        DateTime start = getcustomermachine.dayadd;
-                        TimeSpan a = new TimeSpan(get.Hour, get.Minute, get.Second);
-                        TimeSpan b = new TimeSpan(start.Hour, start.Minute, start.Second);
-                        TimeSpan datesub = a - b;
+                        var getstopmachine = ServiceController.getStopMachinebyMachineid(id);
+                        var getcustomermachine = ServiceController.getCustomerMachinebyStopMachineid(getstopmachine.stopmachineid);
+
+                        DateTime smdate = getstopmachine.dayadd;
+                        DateTime cmdate = getcustomermachine.dayadd;
+
+                        int smint = convertDateTimetoInt(smdate);
+                        int cmint = convertDateTimetoInt(cmdate);
+
+                        int subint = (smint - cmint)-getcustomermachine.activedtime;
+                        TimeSpan datesub = convertInttoDateTime(subint);
                         lb.Text = addZero(datesub.Hours) + ":" + addZero(datesub.Minutes) + ":" + addZero(datesub.Seconds);
                         lb.BackColor = Color.LightYellow;
                         stoplabel.Add(lb);
@@ -95,7 +116,6 @@ namespace SNI
                 }
             }
         }
-
         private Label createLabel(String name,String id, int status, int locationx, int locationy)
         {
             Label lb = new Label();
@@ -130,7 +150,7 @@ namespace SNI
                     ContextMenu cm = new ContextMenu();
                     MenuItem item = cm.MenuItems.Add("Hoạt động");
                     item.Click += Item_Click1;
-
+                  
                     lb.ContextMenu = cm;
 
                 }
@@ -139,32 +159,41 @@ namespace SNI
                     ContextMenu cm = new ContextMenu();
                     MenuItem item = cm.MenuItems.Add("Tạm dừng");
                     item.Click += Item_Click;
-
+                    MenuItem item1 = cm.MenuItems.Add("Đổi Chỗ");
+                    item1.Click += Item1_Click;
                     lb.ContextMenu = cm;
                     
                 }
                
             }
         }
-
+        private void Item1_Click(object sender, EventArgs e)
+        {
+            ChangeMachineForm cmf = new ChangeMachineForm();
+            cmf.setPanelSize(panel1.Size.Width, panel1.Size.Height);
+            cmf.oldid = Convert.ToInt16(selected_label.Name);
+            if(cmf.ShowDialog()==DialogResult.OK)
+            {
+                load();
+                loadState();
+            }
+        }
         private void Item_Click1(object sender, EventArgs e)
         {
-            if (MachineController.ActiveWorkingMachine(Convert.ToInt16(selected_label.Name)))
+            if (ServiceController.ActiveWorkingMachine(Convert.ToInt16(selected_label.Name)))
             {
                 load();
                 loadState();
             }
         }
-
         private void Item_Click(object sender, EventArgs e)
         {
-            if(MachineController.StopWorkingMachine(Convert.ToInt16(selected_label.Name)))
+            if(ServiceController.StopWorkingMachine(Convert.ToInt16(selected_label.Name)))
             {
                 load();
                 loadState();
             }
         }
-
         private void Lb_DoubleClick(object sender, EventArgs e)
         {
             Label lb = sender as Label;
@@ -219,7 +248,6 @@ namespace SNI
             time.Start();
             time.Tick += Time_Tick; ;
         }
-
         private void Time_Tick(object sender, EventArgs e)
         {
             foreach (Label lb in wotkinglabel)
@@ -267,7 +295,6 @@ namespace SNI
             }
 
         }
-
         private void panel1_SizeChanged(object sender, EventArgs e)
         {
             Panel pn = sender as Panel;
@@ -289,7 +316,6 @@ namespace SNI
         {
           
         }
-
         private void quảnLíGhếToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MachineManage machine = new MachineManage();
@@ -305,7 +331,6 @@ namespace SNI
                 MainMenu_Load(sender, e);
             }
         }
-
         private void quảnLíKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomerMange cm = new CustomerMange();
@@ -314,7 +339,6 @@ namespace SNI
                 MainMenu_Load(sender, e);
             }
         }
-
         private void quảnLíSứcKhỏeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HealthManage hm = new HealthManage();

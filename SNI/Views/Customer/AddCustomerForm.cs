@@ -90,7 +90,7 @@ namespace SNI.Views.Customer
         private void suckhoetext_TextChanged(object sender, EventArgs e)
         {
             TextBox txb = sender as TextBox;
-            if (txb.Text.Length> 3)
+            if (txb.Text.Length>= 3)
             {
                 if (txb.Text != "")
                 {
@@ -109,11 +109,6 @@ namespace SNI.Views.Customer
                         comboBox1.DroppedDown = false;
                         comboBox1.DataSource = null;
                     }
-                }
-                
-                if (txb.Text == "")
-                {
-                    comboBox1.Enabled = false;
                 }
             }
 
@@ -139,19 +134,29 @@ namespace SNI.Views.Customer
             {
                 if (comboBox1.Items.Count>0)
                 {
-                    acceptChoose();
+                    if (suckhoetext.Text != "")
+                    {
+                        acceptChoose();
+                    }
                 }
                 else
                 {
                     try
                     {
-                        DialogResult dlt = MessageBox.Show("Bạn có muốn tạo mới không!", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dlt == DialogResult.Yes)
+                        if (suckhoetext.Text != "")
                         {
-                            if (HealthController.addHealth(suckhoetext.Text))
+                            DialogResult dlt = MessageBox.Show("Bạn có muốn tạo mới không!", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dlt == DialogResult.Yes)
                             {
-                                listWithout.Add(HealthController.addedhealth);
-                                loadTag();
+                                if (HealthController.addHealth(suckhoetext.Text))
+                                {
+                                    if (!listWithout.Contains(HealthController.addedhealth) && suckhoetext.Text != "")
+                                    {
+                                        listWithout.Add(HealthController.addedhealth);
+                                        loadTag();
+                                        suckhoetext.Text = "";
+                                    }
+                                }
                             }
                         }
                         comboBox1.Enabled = false;
@@ -188,14 +193,7 @@ namespace SNI.Views.Customer
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-
-            }
-            catch(Exception ex)
-            {
-
-            }
+            
         }
     }
 }

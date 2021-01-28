@@ -11,73 +11,7 @@ namespace SNI.Controllers
     {
         public static List<Machines> tempmachine ;
         public static List<Machines> removemachine ;
-        public static bool StopWorkingMachine(int id)
-        {
-            using (var context = new ControllerModel())
-            {
-                try
-                {
-                    var machine = context.CustomerMachines.Where(o => o.machineid == id).FirstOrDefault();
-                    var stop = new StopMachine
-                    {
-                        CustomerMachine = machine,
-                        dayadd = DateTime.Now,
-                        dayupdate = DateTime.Now
-                    };
-                    context.StopMachines.Add(stop);
-                    context.SaveChanges();
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-        }
-        public static CustomerMachine getCustomerMachinebyStopMachineid(int id)
-        {
-            using (var context = new ControllerModel())
-            {
-                try
-                {
-                 
-                    return context.StopMachines.Where(o=>o.stopmachineid==id).Include("CustomerMachine").FirstOrDefault().CustomerMachine;
-                }
-                catch
-                {
-                    return null;
-                }
-            }
-        }
-        public static StopMachine getStopMachinebyMachineid(int id)
-        {
-            using (var context = new ControllerModel())
-            {
-                try
-                {
-                    return context.StopMachines.Include("CustomerMachine").Where(o => o.CustomerMachine.machineid == id).FirstOrDefault();
-                }
-                catch
-                {
-                    return null;
-                }
-            }
-        }
-        public static List<int> GetAllStopWorkingMachine()
-        {
-            using (var context = new ControllerModel())
-            {
-                try
-                {
-                    return context.StopMachines.Include("CustomerMachine").Select(o=>o.CustomerMachine.machineid).ToList();
-                    
-                }
-                catch
-                {
-                    return null;
-                }
-            }
-        }
+       
 
         public static bool SaveAllMachine()
         {
@@ -189,26 +123,21 @@ namespace SNI.Controllers
             return false;
 
         }
-
-        internal static bool ActiveWorkingMachine(int id)
+        public static List<Machines> getAllDtbMachine()
         {
-            using (var context = new ControllerModel())
+            try
             {
-                try
+                using (var context = new ControllerModel())
                 {
-                    var machine = context.StopMachines.Include("CustomerMachine").Where(o => o.CustomerMachine.machineid == id).FirstOrDefault();
-                   
-                    context.StopMachines.Remove(machine);
-                    context.SaveChanges();
-                    return true;
-                }
-                catch
-                {
-                    return false;
+                    IQueryable<Machines> iqm = from temp in context.Machines select temp;
+                    return iqm.ToList();
                 }
             }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
-
         public static bool loadMachine()
         {
             try

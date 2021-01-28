@@ -20,6 +20,8 @@ namespace SNI.Models
         public int customerid { get; set; }
         public Customers Customers { get; set; }
 
+
+        public int activedtime { get; set; }
         public int workingtime { get; set; }
 
         public DateTime dayadd { get; set; }

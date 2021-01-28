@@ -28,6 +28,7 @@ namespace SNI.Controllers
                         Customers = customer,
                         Machines = machine,
                         workingtime = Config.workingtime,
+                        activedtime = 0,
                         dayadd = DateTime.Now,
                         dayupdate = DateTime.Now
                     };
@@ -85,6 +86,118 @@ namespace SNI.Controllers
                 }
             }
 
+        }
+        public static bool StopWorkingMachine(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var machine = context.CustomerMachines.Where(o => o.machineid == id).FirstOrDefault();
+
+                    machine.dayupdate = DateTime.Now;
+                    var stop = new StopMachine
+                    {
+                        CustomerMachine = machine,
+                        dayadd = DateTime.Now,
+                        dayupdate = DateTime.Now
+                    };
+                    context.StopMachines.Add(stop);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        public static CustomerMachine getCustomerMachinebyStopMachineid(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+
+                    return context.StopMachines.Where(o => o.stopmachineid == id).Include("CustomerMachine").FirstOrDefault().CustomerMachine;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+        public static StopMachine getStopMachinebyMachineid(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    return context.StopMachines.Include("CustomerMachine").Where(o => o.CustomerMachine.machineid == id).FirstOrDefault();
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+        public static List<int> GetAllStopWorkingMachine()
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    return context.StopMachines.Include("CustomerMachine").Select(o => o.CustomerMachine.machineid).ToList();
+
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+        public static bool ActiveWorkingMachine(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var machine = context.StopMachines.Include("CustomerMachine").Where(o => o.CustomerMachine.machineid == id).FirstOrDefault();
+                    var machine1 = context.CustomerMachines.Where(o => o.machineid == id).FirstOrDefault();
+
+                    int shour =  DateTime.Now.Hour- machine.dayadd.Hour;
+                    int sminute = DateTime.Now.Minute - machine.dayadd.Minute;
+                    int ssecond = DateTime.Now.Second - machine.dayadd.Second;
+
+                    machine1.activedtime = machine1.activedtime+shour * 3600 + sminute * 60 + ssecond;
+                    machine1.dayupdate = DateTime.Now;
+                    context.StopMachines.Remove(machine);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        public static bool ChangeMachine(int oldmachine,int newmachine)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var cm = context.CustomerMachines.Where(o => o.machineid == oldmachine).FirstOrDefault();
+                    var machine = context.Machines.Where(o => o.machineid == newmachine).FirstOrDefault();
+                    cm.Machines = machine;
+                    context.SaveChanges();
+                    return true;
+                }
+                catch(Exception ex)
+                {
+                    return false;
+                }
+            }
         }
 
     }

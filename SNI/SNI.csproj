@@ -154,6 +154,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Module.cs" />
+    <Compile Include="Views\Service\ChangeMachineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Service\ChangeMachineForm.Designer.cs">
+      <DependentUpon>ChangeMachineForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Service\CustomerFind.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +223,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Service\ChangeMachineForm.resx">
+      <DependentUpon>ChangeMachineForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Service\CustomerFind.resx">
       <DependentUpon>CustomerFind.cs</DependentUpon>
     </EmbeddedResource>

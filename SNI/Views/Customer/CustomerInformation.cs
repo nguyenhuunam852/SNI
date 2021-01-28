@@ -86,20 +86,23 @@ namespace SNI.Views.Customer
             TextBox txb = sender as TextBox;
             if (txb.Text.Length >= 3)
             {
-                comboBox1.Enabled = true;
-                DataTable dt = HealthController.FindHealthWithoutselected(txb.Text, listWithout);
-                if (dt.Rows.Count > 0)
+                if (txb.Text != "")
                 {
-                    comboBox1.DataSource = dt;
-                    comboBox1.DroppedDown = true;
-                    comboBox1.DisplayMember = "Bệnh";
-                    comboBox1.ValueMember = "Mã Số";
-                    Cursor.Current = Cursors.Default;
-                }
-                else
-                {
-                    comboBox1.DroppedDown = false;
-                    comboBox1.DataSource = null;
+                    comboBox1.Enabled = true;
+                    DataTable dt = HealthController.FindHealthWithoutselected(txb.Text, listWithout);
+                    if (dt.Rows.Count > 0)
+                    {
+                        comboBox1.DataSource = dt;
+                        comboBox1.DroppedDown = true;
+                        comboBox1.DisplayMember = "Bệnh";
+                        comboBox1.ValueMember = "Mã Số";
+                        Cursor.Current = Cursors.Default;
+                    }
+                    else
+                    {
+                        comboBox1.DroppedDown = false;
+                        comboBox1.DataSource = null;
+                    }
                 }
             }
         }
@@ -124,20 +127,29 @@ namespace SNI.Views.Customer
             {
                 if (comboBox1.Items.Count > 0)
                 {
-                    acceptChoose();
+                    if (suckhoetext.Text != "")
+                    {
+                        acceptChoose();
+                    }
                 }
                 else
                 {
                     try
                     {
-                        DialogResult dlt = MessageBox.Show("Bạn có muốn tạo mới không!", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                        if (dlt == DialogResult.Yes)
+                        if (suckhoetext.Text != "")
                         {
-                            if (HealthController.addHealth(suckhoetext.Text))
+                            DialogResult dlt = MessageBox.Show("Bạn có muốn tạo mới không!", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dlt == DialogResult.Yes)
                             {
-                                listWithout.Add(HealthController.addedhealth);
-                                loadTag();
-                                suckhoetext.Text = "";
+                                if (HealthController.addHealth(suckhoetext.Text))
+                                {
+                                    if (!listWithout.Contains(HealthController.addedhealth) && suckhoetext.Text != "")
+                                    {
+                                        listWithout.Add(HealthController.addedhealth);
+                                        loadTag();
+                                        suckhoetext.Text = "";
+                                    }
+                                }
                             }
                         }
                         comboBox1.Enabled = false;
@@ -161,10 +173,7 @@ namespace SNI.Views.Customer
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (suckhoetext.Text != "")
-            {
-                acceptChoose();
-            }
+            
         }
     }
 }

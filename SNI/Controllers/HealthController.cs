@@ -76,6 +76,10 @@ namespace SNI.Controllers
                     }
                     else
                     {
+                        var gethealth = context.Healths.Where(heal => heal.name.Trim() == health.Trim()).FirstOrDefault();
+                        gethealth.available = true;
+                        context.SaveChanges();
+                        addedhealth = gethealth;
                         return true;
                     }
                 }
