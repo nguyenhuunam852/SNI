@@ -8,7 +8,7 @@ namespace SNI
 {
     class ControllerModel : DbContext
     {
-        public ControllerModel() : base("connect")
+        public ControllerModel() : base(Config.connect)
         {
 
         }

@@ -12,6 +12,10 @@ namespace SNI
         public static Config config;
         public string MaChiNhanh;
         public int workingtime;
+        public string servername;
+        public string username;
+        public string password;
+        public static string connect;
         private static string currentfile= Directory.GetCurrentDirectory();
         public static void LoadFile()
         {
@@ -31,6 +35,8 @@ namespace SNI
                 string json = r.ReadToEnd();
                 Config items = JsonConvert.DeserializeObject<Config>(json);
                 config = items;
+                connect = @"Data Source = NAM-PC\SQLEXPRESS; Initial Catalog = SNI; Integrated Security = True";
+
             }
         }
     }

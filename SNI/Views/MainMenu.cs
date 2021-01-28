@@ -19,8 +19,6 @@ namespace SNI
         double scalew = 1;
         double scaleh = 1;
         private Size startSize;
-        
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
