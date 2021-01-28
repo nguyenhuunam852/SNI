@@ -53,8 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
-    <Compile Include="ControllerModel.cs" />
+    <Compile Include="Config\Config.cs" />
+    <Compile Include="Config\ControllerModel.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\MachineController.cs" />
