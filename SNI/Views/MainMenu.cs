@@ -76,16 +76,15 @@ namespace SNI
                         int intsub = (cnow - space)-cm.activedtime;
                         TimeSpan datesub = convertInttoDateTime(intsub);
                         lb.Text = addZero(datesub.Hours)+":" +addZero(datesub.Minutes)+":"+addZero(datesub.Seconds);
-                        if(datesub.Hours*3600+datesub.Minutes*60+datesub.Seconds>=Config.workingtime)
+                        lb.BackColor = Color.LightGreen;
+                        if (datesub.Hours*3600+datesub.Minutes*60+datesub.Seconds>=Config.config.workingtime)
                         {
                             lb.Text = "Hết giờ";
                             lb.BackColor = Color.Red;
                         }
 
                         if (!wotkinglabel.Contains(lb))
-                        {
-                            lb.BackColor = Color.LightGreen;
-                            
+                        {                            
                             wotkinglabel.Add(lb);
                         }
                     }
@@ -210,13 +209,24 @@ namespace SNI
             {
                 FinishForm ff = new FinishForm();
                 ff.idghe = lb.Name;
-                string[] text = lb.Text.Split(':');
-
-                ff.time = Convert.ToInt16(text[0]) * 3600 + Convert.ToInt16(text[1]) * 60 + Convert.ToInt16(text[2]);
-                if (ff.ShowDialog()==DialogResult.OK)
+                if (lb.Text.Contains(":"))
                 {
-                    load();
-                    loadState();
+                    string[] text = lb.Text.Split(':');
+                    ff.time = Convert.ToInt16(text[0]) * 3600 + Convert.ToInt16(text[1]) * 60 + Convert.ToInt16(text[2]);
+                    if (ff.ShowDialog() == DialogResult.OK)
+                    {
+                        load();
+                        loadState();
+                    }
+                }
+                else
+                {
+                    ff.time = Config.config.workingtime;
+                    if (ff.ShowDialog() == DialogResult.OK)
+                    {
+                        load();
+                        loadState();
+                    }
                 }
             }
         }
@@ -235,6 +245,7 @@ namespace SNI
         }
         private void MainMenu_Load(object sender, EventArgs e)
         {
+            Config.ReadFile();
             scalew = 1;
             scaleh = 1;
             startSize = panel1.Size;
@@ -259,20 +270,19 @@ namespace SNI
             }
         }
         private void countdown(Label lb)
-        {
-            
-            string[] time = lb.Text.Split(':');
+        { 
             if (lb.Text.Contains(":"))
             {
+                string[] time = lb.Text.Split(':');
                 int hh = Convert.ToInt32(time[0]);
                 int mm = Convert.ToInt32(time[1]);
                 int ss = Convert.ToInt32(time[2]);
 
-                if (hh * 3600 + mm * 60 + ss == Config.workingtime)
+                if (hh * 3600 + mm * 60 + ss == Config.config.workingtime)
                 {
                     lb.Text = "Hết giờ";
                     lb.BackColor = Color.Red;
-                    wotkinglabel.Remove(lb);
+                    
                 }
                 else
                 {

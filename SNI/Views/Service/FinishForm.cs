@@ -40,11 +40,11 @@ namespace SNI.Views.Service
             DateTime start = cm.dayadd;
 
             int active =  time;
-            int subactive = Config.workingtime - active;
+            int subactive = Config.config.workingtime - active;
             
             if (subactive<=0)
             {
-                active = Config.workingtime;
+                active = Config.config.workingtime;
             }
 
             saveactive = active;

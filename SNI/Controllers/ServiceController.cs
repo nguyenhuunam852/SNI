@@ -27,7 +27,7 @@ namespace SNI.Controllers
                     {
                         Customers = customer,
                         Machines = machine,
-                        workingtime = Config.workingtime,
+                        workingtime = Config.config.workingtime,
                         activedtime = 0,
                         dayadd = DateTime.Now,
                         dayupdate = DateTime.Now
