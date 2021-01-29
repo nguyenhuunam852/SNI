@@ -149,6 +149,31 @@ namespace SNI.Controllers
             }
         }
 
+        public static DataTable loadAddedCustomer()
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Mã Số");
+                    dt.Columns.Add("Họ Tên");
+                    dt.Columns.Add("Ngày Thêm");
+                    DataRow dtr = dt.NewRow();
+                    dtr["Mã Số"] =addedCustomer.localid;
+                    dtr["Họ Tên"] = addedCustomer.name;
+                    dtr["Ngày Thêm"] = addedCustomer.dayadd.Hour + ":" + addedCustomer.dayadd.Minute + "-" + addedCustomer.dayadd.Day + "/" + addedCustomer.dayadd.Month + "/" + addedCustomer.dayadd.Year;
+                    dt.Rows.Add(dtr);
+                    
+                    return dt;
+
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public static bool RemoveCustomer(string id)
         {
             using (var context = new ControllerModel())

@@ -46,6 +46,7 @@ namespace SNI.Views
             dtg.RowHeadersVisible = false;
             dtg.ReadOnly = true;
             dtg.AllowUserToResizeRows = false;
+            dtg.MultiSelect = false;
             dtg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             return dtg;
         }

@@ -12,31 +12,45 @@ namespace SNI.Views.Service
             InitializeComponent();
         }
         public int selected_machine;
+        public string customer = "";
         private void CustomerFind_Load(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox1.Visible = true;
-            comboBox1.Visible = true;
-            button2.Visible = true;
-            textBox1.Location = new Point(0, 0);
-            comboBox1.Location = new Point(0, 0);
-            
+            if (customer == "")
+            {
+                textBox1.Text = "";
+                textBox1.Visible = true;
+                comboBox1.Visible = true;
+                button2.Visible = true;
+                textBox1.Location = new Point(0, 0);
+                comboBox1.Location = new Point(0, 0);
 
-            textBox1.Size = new Size(this.Size.Width-30, textBox1.Size.Height);
-            comboBox1.Size = new Size(this.Size.Width-40, comboBox1.Size.Height);
-            button2.Size = new Size(this.Size.Width - textBox1.Size.Width, textBox1.Size.Height);
-            button2.Location = new Point(textBox1.Location.X + textBox1.Size.Width, 0);
-            comboBox1.DisplayMember = "Họ Tên";
-            comboBox1.ValueMember = "Mã Số";
-            panel1.Visible = false;
-            panel1.Location = new Point(0, 0);
-            panel1.Size = new Size(this.Size.Width, 225);
 
-            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            this.AutoSize = true;
-        
-            this.Controls.SetChildIndex(textBox1, 0);
-            textBox1.Focus();
+                textBox1.Size = new Size(this.Size.Width - 30, textBox1.Size.Height);
+                comboBox1.Size = new Size(this.Size.Width - 40, comboBox1.Size.Height);
+                button2.Size = new Size(this.Size.Width - textBox1.Size.Width, textBox1.Size.Height);
+                button2.Location = new Point(textBox1.Location.X + textBox1.Size.Width, 0);
+                comboBox1.DisplayMember = "Họ Tên";
+                comboBox1.ValueMember = "Mã Số";
+                panel1.Visible = false;
+                panel1.Location = new Point(0, 0);
+                panel1.Size = new Size(this.Size.Width, 225);
+                this.Controls.SetChildIndex(textBox1, 0);
+                textBox1.Focus();
+                this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                this.AutoSize = true;
+            }
+            else
+            {
+               
+                this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                this.AutoSize = true;
+                panel1.Location = new Point(0, 0);
+                panel1.Size = new Size(this.Size.Width, 225);
+                selected_customer = CustomerController.getinformation(customer);
+                showInfor();
+              
+            }
+            button1.Focus();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -105,12 +119,13 @@ namespace SNI.Views.Service
         }
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(textBox1.Text!="")
+            if(textBox1.Text!="" && customer!="")
             {
                 selected_customer = CustomerController.getinformation(comboBox1.SelectedValue.ToString());
                 showInfor();
             }
 
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -141,12 +156,20 @@ namespace SNI.Views.Service
             {
                 selected_customer = CustomerController.getinformation(comboBox1.SelectedValue.ToString());
                 showInfor();
+                
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CustomerFind_Load(sender, e);
+            if (customer == "")
+            {
+                CustomerFind_Load(sender, e);
+            }
+            else
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

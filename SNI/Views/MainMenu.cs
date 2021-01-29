@@ -7,6 +7,7 @@ using SNI.Views.Service;
 using SNI.Views.Customer;
 using SNI.Views.Health;
 using System.Collections.Generic;
+using System.Data;
 
 namespace SNI
 {
@@ -129,8 +130,37 @@ namespace SNI
             lb.Size = new Size(panel1.Size.Width / 10, panel1.Size.Height / 10);
             lb.DoubleClick += Lb_DoubleClick;
             lb.MouseDown += Lb_MouseDown;
+            lb.Click += Lb_Click;
             return lb;
         }
+
+        private void Lb_Click(object sender, EventArgs e)
+        {
+            Label lb = sender as Label;
+            selected_label = lb;
+            if (!wotkinglabel.Contains(lb) && !stoplabel.Contains(lb))
+            {
+                showname.Text = lb.Text;
+                hidden_machine_id.Text = lb.Name;
+                if (dtshowcustomer_find.DataSource != null)
+                {
+                    bt_accept.Enabled = true;
+                }
+                bt_finish.Enabled = false;
+            }
+            else
+            {
+                keycustomerText.Text = "";
+                showname.Text = "###";
+                var select_machine = MachineController.getinfor(Convert.ToInt16(lb.Name));
+                showname.Text = select_machine.name;
+                bt_finish.Enabled = true;
+                bt_accept.Enabled = false;
+                bt_finish.Focus();
+
+            }
+        }
+
         private Label selected_label;
         private void Lb_MouseDown(object sender, MouseEventArgs e)
         {
@@ -191,6 +221,30 @@ namespace SNI
                 loadState();
             }
         }
+        private void FinishWork(Label lb)
+        {
+            FinishForm ff = new FinishForm();
+            ff.idghe = lb.Name;
+            if (lb.Text.Contains(":"))
+            {
+                string[] text = lb.Text.Split(':');
+                ff.time = Convert.ToInt16(text[0]) * 3600 + Convert.ToInt16(text[1]) * 60 + Convert.ToInt16(text[2]);
+                if (ff.ShowDialog() == DialogResult.OK)
+                {
+                    load();
+                    loadState();
+                }
+            }
+            else
+            {
+                ff.time = Config.config.workingtime;
+                if (ff.ShowDialog() == DialogResult.OK)
+                {
+                    load();
+                    loadState();
+                }
+            }
+        }
         private void Lb_DoubleClick(object sender, EventArgs e)
         {
             Label lb = sender as Label;
@@ -205,31 +259,17 @@ namespace SNI
             }
             else
             {
-                FinishForm ff = new FinishForm();
-                ff.idghe = lb.Name;
-                if (lb.Text.Contains(":"))
-                {
-                    string[] text = lb.Text.Split(':');
-                    ff.time = Convert.ToInt16(text[0]) * 3600 + Convert.ToInt16(text[1]) * 60 + Convert.ToInt16(text[2]);
-                    if (ff.ShowDialog() == DialogResult.OK)
-                    {
-                        load();
-                        loadState();
-                    }
-                }
-                else
-                {
-                    ff.time = Config.config.workingtime;
-                    if (ff.ShowDialog() == DialogResult.OK)
-                    {
-                        load();
-                        loadState();
-                    }
-                }
+                FinishWork(lb);
             }
         }
         private void load()
         {
+
+            bt_finish.Enabled = false;
+            bt_accept.Enabled = false;
+            keycustomerText.Text = "";
+            showname.Text = "###";
+            dtshowcustomer_find.DataSource = null;
             panel1.Controls.Clear();
             foreach (Models.Machines machine in MachineController.tempmachine)
             {
@@ -239,11 +279,12 @@ namespace SNI
                     panel1.Controls.Add(lb);
                 }
             }
-
+            keycustomerText.Focus();
         }
         private void MainMenu_Load(object sender, EventArgs e)
         {
             Config.ReadFile();
+            dtshowcustomer_find = Module.MydataGridView(dtshowcustomer_find);
             scalew = 1;
             scaleh = 1;
             startSize = panel1.Size;
@@ -257,6 +298,18 @@ namespace SNI
             time.Start();
             time.Tick += Time_Tick; ;
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                if (bt_accept.Enabled == true)
+                {
+                    bt_accept.PerformClick();
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void Time_Tick(object sender, EventArgs e)
         {
             foreach (Label lb in wotkinglabel)
@@ -351,6 +404,115 @@ namespace SNI
         {
             HealthManage hm = new HealthManage();
             hm.ShowDialog();
+        }
+        private void keycustomerText_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if(tb.Text != "")
+            {
+                if (tb.Text.Length >= 3)
+                {
+                    DataTable data = CustomerController.FindByValueWithoutWorking(tb.Text);
+                    if (data.Rows.Count > 0)
+                    {
+                        dtshowcustomer_find.DataSource = CustomerController.FindByValueWithoutWorking(tb.Text);
+                        Cursor.Current = Cursors.Default;
+                        dtshowcustomer_find.Columns["Ngày Thêm"].Visible = false;
+
+                    }
+                    else
+                    {
+                        dtshowcustomer_find.DataSource = null;
+                    }
+                }
+                else
+                {
+                    dtshowcustomer_find.DataSource = null;
+                }
+            }
+            else
+            {
+                dtshowcustomer_find.DataSource = null;
+            }
+        }
+        private void keycustomerText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dtshowcustomer_find.DataSource!=null)
+            {
+                int current = dtshowcustomer_find.SelectedRows[0].Index;
+                if (e.KeyCode == Keys.Up)
+                {
+                    if (current > 0)
+                    {
+                        dtshowcustomer_find.ClearSelection();
+                        
+                        dtshowcustomer_find.Rows[current - 1].Selected = true;
+                    }
+                }
+                if (e.KeyCode == Keys.Down)
+                {
+                    if (current < dtshowcustomer_find.Rows.Count - 1)
+                    {
+                        dtshowcustomer_find.ClearSelection();
+                       
+                        dtshowcustomer_find.Rows[current + 1].Selected = true;
+                    }
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+
+                }
+                if(hidden_machine_id.Text!="")
+                {
+                    bt_accept.Enabled = true;
+                  
+                }
+            }
+        }
+
+        private void keycustomerText_Click(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            
+        }
+
+        private void bt_accept_Click(object sender, EventArgs e)
+        {
+            CustomerFind cf = new CustomerFind();
+            cf.selected_machine = Convert.ToInt16(hidden_machine_id.Text);
+            cf.customer = dtshowcustomer_find.Rows[dtshowcustomer_find.SelectedRows[0].Index].Cells["Mã Số"].Value.ToString();
+            if (cf.ShowDialog() == DialogResult.OK)
+            {
+                load();
+                loadState();
+            }
+        }
+
+        private void bt_finish_Click(object sender, EventArgs e)
+        {
+            FinishWork(selected_label);
+        }
+
+        private void bt_add_customer_Click(object sender, EventArgs e)
+        {
+            AddCustomerForm acf = new AddCustomerForm();
+            if (acf.ShowDialog() == DialogResult.OK)
+            {
+                dtshowcustomer_find.DataSource = CustomerController.loadAddedCustomer();
+                keycustomerText.Focus();
+            }
+        }
+
+        private void dtshowcustomer_find_SelectionChanged(object sender, EventArgs e)
+        {
+            if(dtshowcustomer_find.Rows.Count>0 && hidden_machine_id.Text!="")
+            {
+                bt_accept.Enabled = true;
+            }
+            else
+            {
+                bt_accept.Enabled = false;
+            }
         }
     }
 }
