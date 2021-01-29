@@ -199,6 +199,16 @@ namespace SNI.Controllers
                 }
             }
         }
+        public static int checkCustomerActive(string id)
+        {
+            using (var context = new ControllerModel())
+            {
+                return context.Histories.Include("Customers").Where(o => o.Customers.localid == id 
+                && o.dayadd.Year == DateTime.Now.Year
+                && o.dayadd.Day == DateTime.Now.Day
+                && o.dayadd.Month == DateTime.Now.Month).Count();
+            }
+        }
 
     }
 }

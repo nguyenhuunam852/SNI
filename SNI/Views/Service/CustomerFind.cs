@@ -25,6 +25,7 @@ namespace SNI.Views.Service
                 comboBox1.Location = new Point(0, 0);
 
 
+
                 textBox1.Size = new Size(this.Size.Width - 30, textBox1.Size.Height);
                 comboBox1.Size = new Size(this.Size.Width - 40, comboBox1.Size.Height);
                 button2.Size = new Size(this.Size.Width - textBox1.Size.Width, textBox1.Size.Height);
@@ -96,6 +97,8 @@ namespace SNI.Views.Service
             button2.Visible = false;
             textBox1.Visible = false;
             panel1.Visible = true;
+            code_customer.Text = selected_customer.localid;
+            machinename.Text = MachineController.getinfor(selected_machine).name;
             namelabel.Text = selected_customer.name;
             sdtlabel.Text = selected_customer.phone;
             string gt="";
@@ -130,10 +133,30 @@ namespace SNI.Views.Service
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if(ServiceController.startTime(selected_customer.localid, selected_machine))
+            int check = ServiceController.checkCustomerActive(selected_customer.localid);
+            if (check == 0)
             {
-                this.DialogResult = DialogResult.OK;
+                if (ServiceController.startTime(selected_customer.localid, selected_machine))
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
             }
+            else
+            {
+                DialogResult dlr = MessageBox.Show("Người này đã hoạt động " + check.ToString() + " lần trong ngày.Bạn vẫn cho dùng tiếp chứ", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dlr == DialogResult.Yes)
+                {
+                    if (ServiceController.startTime(selected_customer.localid, selected_machine))
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.Cancel;
+                }
+            }
+          
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)

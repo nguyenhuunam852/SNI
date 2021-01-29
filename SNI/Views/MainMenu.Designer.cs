@@ -33,19 +33,20 @@
             this.quảnLíGhếToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLíKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLíSứcKhỏeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.QL_Loai = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtshowcustomer_find = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.bt_chotca = new System.Windows.Forms.Button();
+            this.bt_finish = new System.Windows.Forms.Button();
+            this.hidden_machine_id = new System.Windows.Forms.TextBox();
             this.showname = new System.Windows.Forms.Label();
             this.bt_find_accept = new System.Windows.Forms.Button();
             this.bt_accept = new System.Windows.Forms.Button();
             this.bt_add_customer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.keycustomerText = new System.Windows.Forms.TextBox();
-            this.hidden_machine_id = new System.Windows.Forms.TextBox();
-            this.bt_finish = new System.Windows.Forms.Button();
-            this.bt_chotca = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -72,7 +73,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quảnLíGhếToolStripMenuItem,
             this.quảnLíKháchHàngToolStripMenuItem,
-            this.quảnLíSứcKhỏeToolStripMenuItem});
+            this.quảnLíSứcKhỏeToolStripMenuItem,
+            this.QL_Loai});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -100,6 +102,13 @@
             this.quảnLíSứcKhỏeToolStripMenuItem.Text = "Quản lí Sức Khỏe";
             this.quảnLíSứcKhỏeToolStripMenuItem.Click += new System.EventHandler(this.quảnLíSứcKhỏeToolStripMenuItem_Click);
             // 
+            // QL_Loai
+            // 
+            this.QL_Loai.Name = "QL_Loai";
+            this.QL_Loai.Size = new System.Drawing.Size(82, 20);
+            this.QL_Loai.Text = "Quản lí Loại";
+            this.QL_Loai.Click += new System.EventHandler(this.QL_Loai_Click);
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -113,8 +122,9 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel4.Controls.Add(this.dtshowcustomer_find);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 205);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(302, 176);
@@ -147,6 +157,36 @@
             this.panel3.Size = new System.Drawing.Size(302, 205);
             this.panel3.TabIndex = 0;
             // 
+            // bt_chotca
+            // 
+            this.bt_chotca.Enabled = false;
+            this.bt_chotca.Location = new System.Drawing.Point(161, 105);
+            this.bt_chotca.Name = "bt_chotca";
+            this.bt_chotca.Size = new System.Drawing.Size(115, 38);
+            this.bt_chotca.TabIndex = 13;
+            this.bt_chotca.Text = "Chốt Ca";
+            this.bt_chotca.UseVisualStyleBackColor = true;
+            // 
+            // bt_finish
+            // 
+            this.bt_finish.Enabled = false;
+            this.bt_finish.Location = new System.Drawing.Point(161, 62);
+            this.bt_finish.Name = "bt_finish";
+            this.bt_finish.Size = new System.Drawing.Size(115, 37);
+            this.bt_finish.TabIndex = 12;
+            this.bt_finish.Text = "Kết thúc";
+            this.bt_finish.UseVisualStyleBackColor = true;
+            this.bt_finish.Click += new System.EventHandler(this.bt_finish_Click);
+            // 
+            // hidden_machine_id
+            // 
+            this.hidden_machine_id.Location = new System.Drawing.Point(0, 27);
+            this.hidden_machine_id.Name = "hidden_machine_id";
+            this.hidden_machine_id.Size = new System.Drawing.Size(10, 20);
+            this.hidden_machine_id.TabIndex = 11;
+            this.hidden_machine_id.Visible = false;
+            this.hidden_machine_id.WordWrap = false;
+            // 
             // showname
             // 
             this.showname.AutoSize = true;
@@ -166,6 +206,7 @@
             this.bt_find_accept.TabIndex = 8;
             this.bt_find_accept.Text = "Tìm";
             this.bt_find_accept.UseVisualStyleBackColor = true;
+            this.bt_find_accept.Click += new System.EventHandler(this.bt_find_accept_Click);
             // 
             // bt_accept
             // 
@@ -206,36 +247,6 @@
             this.keycustomerText.Click += new System.EventHandler(this.keycustomerText_Click);
             this.keycustomerText.TextChanged += new System.EventHandler(this.keycustomerText_TextChanged);
             this.keycustomerText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keycustomerText_KeyDown);
-            // 
-            // hidden_machine_id
-            // 
-            this.hidden_machine_id.Location = new System.Drawing.Point(0, 27);
-            this.hidden_machine_id.Name = "hidden_machine_id";
-            this.hidden_machine_id.Size = new System.Drawing.Size(10, 20);
-            this.hidden_machine_id.TabIndex = 11;
-            this.hidden_machine_id.Visible = false;
-            this.hidden_machine_id.WordWrap = false;
-            // 
-            // bt_finish
-            // 
-            this.bt_finish.Enabled = false;
-            this.bt_finish.Location = new System.Drawing.Point(161, 62);
-            this.bt_finish.Name = "bt_finish";
-            this.bt_finish.Size = new System.Drawing.Size(115, 37);
-            this.bt_finish.TabIndex = 12;
-            this.bt_finish.Text = "Kết thúc";
-            this.bt_finish.UseVisualStyleBackColor = true;
-            this.bt_finish.Click += new System.EventHandler(this.bt_finish_Click);
-            // 
-            // bt_chotca
-            // 
-            this.bt_chotca.Enabled = false;
-            this.bt_chotca.Location = new System.Drawing.Point(161, 105);
-            this.bt_chotca.Name = "bt_chotca";
-            this.bt_chotca.Size = new System.Drawing.Size(115, 38);
-            this.bt_chotca.TabIndex = 13;
-            this.bt_chotca.Text = "Chốt Ca";
-            this.bt_chotca.UseVisualStyleBackColor = true;
             // 
             // MainMenu
             // 
@@ -283,6 +294,7 @@
         private System.Windows.Forms.TextBox hidden_machine_id;
         private System.Windows.Forms.Button bt_chotca;
         private System.Windows.Forms.Button bt_finish;
+        private System.Windows.Forms.ToolStripMenuItem QL_Loai;
     }
 }
 

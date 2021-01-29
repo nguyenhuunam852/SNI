@@ -133,7 +133,6 @@ namespace SNI
             lb.Click += Lb_Click;
             return lb;
         }
-
         private void Lb_Click(object sender, EventArgs e)
         {
             Label lb = sender as Label;
@@ -160,7 +159,6 @@ namespace SNI
 
             }
         }
-
         private Label selected_label;
         private void Lb_MouseDown(object sender, MouseEventArgs e)
         {
@@ -264,12 +262,13 @@ namespace SNI
         }
         private void load()
         {
-
+            dtshowcustomer_find.DataSource = null;
+            hidden_machine_id.Text = "";
             bt_finish.Enabled = false;
             bt_accept.Enabled = false;
             keycustomerText.Text = "";
             showname.Text = "###";
-            dtshowcustomer_find.DataSource = null;
+            
             panel1.Controls.Clear();
             foreach (Models.Machines machine in MachineController.tempmachine)
             {
@@ -309,7 +308,6 @@ namespace SNI
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
         private void Time_Tick(object sender, EventArgs e)
         {
             foreach (Label lb in wotkinglabel)
@@ -469,13 +467,11 @@ namespace SNI
                 }
             }
         }
-
         private void keycustomerText_Click(object sender, EventArgs e)
         {
             TextBox tb = sender as TextBox;
             
         }
-
         private void bt_accept_Click(object sender, EventArgs e)
         {
             CustomerFind cf = new CustomerFind();
@@ -487,12 +483,10 @@ namespace SNI
                 loadState();
             }
         }
-
         private void bt_finish_Click(object sender, EventArgs e)
         {
             FinishWork(selected_label);
         }
-
         private void bt_add_customer_Click(object sender, EventArgs e)
         {
             AddCustomerForm acf = new AddCustomerForm();
@@ -502,7 +496,6 @@ namespace SNI
                 keycustomerText.Focus();
             }
         }
-
         private void dtshowcustomer_find_SelectionChanged(object sender, EventArgs e)
         {
             if(dtshowcustomer_find.Rows.Count>0 && hidden_machine_id.Text!="")
@@ -513,6 +506,31 @@ namespace SNI
             {
                 bt_accept.Enabled = false;
             }
+        }
+
+        private void bt_find_accept_Click(object sender, EventArgs e)
+        {
+            
+            if (keycustomerText.Text != "")
+            {
+                DataTable data = CustomerController.FindByValueWithoutWorking(keycustomerText.Text);
+                if (data.Rows.Count > 0)
+                {
+                    dtshowcustomer_find.DataSource = CustomerController.FindByValueWithoutWorking(keycustomerText.Text);
+                    Cursor.Current = Cursors.Default;
+                    dtshowcustomer_find.Columns["Ngày Thêm"].Visible = false;
+
+                }
+                else
+                {
+                    dtshowcustomer_find.DataSource = null;
+                }
+            }
+        }
+
+        private void QL_Loai_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
