@@ -6,6 +6,7 @@ using System.Drawing;
 using SNI.Views.Service;
 using SNI.Views.Customer;
 using SNI.Views.Health;
+using SNI.Views.Type;
 using System.Collections.Generic;
 using System.Data;
 
@@ -530,7 +531,8 @@ namespace SNI
 
         private void QL_Loai_Click(object sender, EventArgs e)
         {
-
+            TypeManage typeManage = new TypeManage();
+            typeManage.ShowDialog();
         }
     }
 }

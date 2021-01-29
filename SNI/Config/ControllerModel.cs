@@ -20,5 +20,6 @@ namespace SNI
         public DbSet<History> Histories { get; set; }
         public DbSet<StopMachine> StopMachines { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Types> Types { get; set; }
     }
 }
