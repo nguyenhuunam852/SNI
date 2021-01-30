@@ -31,6 +31,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.machinename = new System.Windows.Forms.Label();
+            this.code_customer = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tuoilabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -44,10 +48,8 @@
             this.namelabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.code_customer = new System.Windows.Forms.Label();
-            this.machinename = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.loaiLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +78,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.loaiLabel);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.machinename);
             this.panel1.Controls.Add(this.code_customer);
             this.panel1.Controls.Add(this.label6);
@@ -96,6 +100,48 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(411, 223);
             this.panel1.TabIndex = 2;
+            // 
+            // machinename
+            // 
+            this.machinename.AutoSize = true;
+            this.machinename.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.machinename.ForeColor = System.Drawing.Color.Red;
+            this.machinename.Location = new System.Drawing.Point(302, 113);
+            this.machinename.Name = "machinename";
+            this.machinename.Size = new System.Drawing.Size(20, 23);
+            this.machinename.TabIndex = 14;
+            this.machinename.Text = "g";
+            // 
+            // code_customer
+            // 
+            this.code_customer.AutoSize = true;
+            this.code_customer.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.code_customer.ForeColor = System.Drawing.Color.Red;
+            this.code_customer.Location = new System.Drawing.Point(55, 148);
+            this.code_customer.Name = "code_customer";
+            this.code_customer.Size = new System.Drawing.Size(20, 23);
+            this.code_customer.TabIndex = 13;
+            this.code_customer.Text = "g";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(261, 123);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Ghế : ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(13, 158);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Mã : ";
             // 
             // tuoilabel
             // 
@@ -228,47 +274,25 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label5
+            // label7
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(13, 123);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Mã : ";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(13, 113);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Loại :";
             // 
-            // label6
+            // loaiLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(261, 123);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Ghế : ";
-            // 
-            // code_customer
-            // 
-            this.code_customer.AutoSize = true;
-            this.code_customer.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.code_customer.ForeColor = System.Drawing.Color.Red;
-            this.code_customer.Location = new System.Drawing.Point(56, 113);
-            this.code_customer.Name = "code_customer";
-            this.code_customer.Size = new System.Drawing.Size(20, 23);
-            this.code_customer.TabIndex = 13;
-            this.code_customer.Text = "g";
-            // 
-            // machinename
-            // 
-            this.machinename.AutoSize = true;
-            this.machinename.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.machinename.ForeColor = System.Drawing.Color.Red;
-            this.machinename.Location = new System.Drawing.Point(302, 113);
-            this.machinename.Name = "machinename";
-            this.machinename.Size = new System.Drawing.Size(20, 23);
-            this.machinename.TabIndex = 14;
-            this.machinename.Text = "g";
+            this.loaiLabel.AutoSize = true;
+            this.loaiLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loaiLabel.Location = new System.Drawing.Point(65, 110);
+            this.loaiLabel.Name = "loaiLabel";
+            this.loaiLabel.Size = new System.Drawing.Size(15, 16);
+            this.loaiLabel.TabIndex = 16;
+            this.loaiLabel.Text = "k";
             // 
             // CustomerFind
             // 
@@ -316,5 +340,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label code_customer;
         private System.Windows.Forms.Label machinename;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label loaiLabel;
     }
 }

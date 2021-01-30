@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using SNI.Models;
@@ -237,7 +238,7 @@ namespace SNI.Controllers
         {
             using (var context = new ControllerModel())
             {
-               return context.Customers.Where(cus => cus.localid == id).FirstOrDefault();
+               return context.Customers.Where(cus => cus.localid == id).Include("Types").FirstOrDefault();
             }
         }
         public static bool UpdateCustomer(string id, string name, string phone, int type, int gender, int age, string address,List<Health> addlist,List<Health> removelist)

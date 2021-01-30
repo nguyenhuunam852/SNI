@@ -508,7 +508,6 @@ namespace SNI
                 bt_accept.Enabled = false;
             }
         }
-
         private void bt_find_accept_Click(object sender, EventArgs e)
         {
             
@@ -528,7 +527,6 @@ namespace SNI
                 }
             }
         }
-
         private void QL_Loai_Click(object sender, EventArgs e)
         {
             TypeManage typeManage = new TypeManage();

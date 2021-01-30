@@ -101,6 +101,7 @@ namespace SNI.Views.Service
             machinename.Text = MachineController.getinfor(selected_machine).name;
             namelabel.Text = selected_customer.name;
             sdtlabel.Text = selected_customer.phone;
+            loaiLabel.Text = selected_customer.Types.name;
             string gt="";
             if (selected_customer.gender == 0)
             {
