@@ -61,12 +61,10 @@ namespace SNI.Views.Service
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -131,7 +129,6 @@ namespace SNI.Views.Service
 
             
         }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             int check = ServiceController.checkCustomerActive(selected_customer.localid);
@@ -159,7 +156,6 @@ namespace SNI.Views.Service
             }
           
         }
-
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode==Keys.Up)
@@ -183,7 +179,6 @@ namespace SNI.Views.Service
                 
             }
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             if (customer == "")
@@ -195,7 +190,6 @@ namespace SNI.Views.Service
                 this.DialogResult = DialogResult.Cancel;
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             AddCustomerForm acf = new AddCustomerForm();

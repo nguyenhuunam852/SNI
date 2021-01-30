@@ -60,10 +60,10 @@ namespace SNI.Views.Service
             
         }
 
-        public void setPanelSize(int pwidth, int pheight)
+        public void setPanelSize(int pwidth, int pheight,double scaleww,double scalewh)
         {
-            scalew = (double)pwidth / (double)panel1.Size.Width;
-            scaleh = (double)pheight / (double)panel1.Size.Height;
+            scalew = scaleww*(double)pwidth / (double)panel1.Size.Width;
+            scaleh = scalewh*(double)pheight / (double)panel1.Size.Height;
         }
         private List<Label> workinglist = new List<Label>();
         private void setupArea()

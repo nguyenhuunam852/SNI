@@ -76,10 +76,10 @@ namespace SNI.Views
                 MachineController.tempmachine.Add(machine);
             }
         }
-        public void setPanelSize(int pwidth,int pheight)
+        public void setPanelSize(int pwidth,int pheight,double pscalew,double pscaleh)
         {
-            scalew = (double)pwidth/(double)panel1.Size.Width;
-            scaleh = (double)pheight / (double)panel1.Size.Height;
+            scalew = pscalew*(double)pwidth/(double)panel1.Size.Width;
+            scaleh = pscaleh*(double)pheight / (double)panel1.Size.Height;
         }
         private void MachineManage_Load(object sender, EventArgs e)
         {

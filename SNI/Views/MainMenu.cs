@@ -18,8 +18,10 @@ namespace SNI
         {
             InitializeComponent();
         }
-        double scalew = 1;
         double scaleh = 1;
+        double scalew = 1;
+        double scalewh = 0;
+        double scaleww = 0;
         private Size startSize;
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -125,7 +127,7 @@ namespace SNI
                 lb.BackColor = Color.FromArgb(240, 128, 128);
             lb.Name = id;
             lb.Anchor = AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left;
-            lb.Location = new System.Drawing.Point(Convert.ToInt32((double)locationx / scalew), Convert.ToInt32((double)locationy / scaleh));
+            lb.Location = new System.Drawing.Point(Convert.ToInt32((double)locationx / (scalew)), Convert.ToInt32((double)locationy /(scaleh)));
             lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             lb.Text = name;
             lb.Size = new Size(panel1.Size.Width / 10, panel1.Size.Height / 10);
@@ -196,7 +198,7 @@ namespace SNI
         private void Item1_Click(object sender, EventArgs e)
         {
             ChangeMachineForm cmf = new ChangeMachineForm();
-            cmf.setPanelSize(panel1.Size.Width, panel1.Size.Height);
+            cmf.setPanelSize(startSize.Width, startSize.Height,scaleww,scalewh);
             cmf.oldid = Convert.ToInt16(selected_label.Name);
             if(cmf.ShowDialog()==DialogResult.OK)
             {
@@ -263,6 +265,7 @@ namespace SNI
         }
         private void load()
         {
+           
             dtshowcustomer_find.DataSource = null;
             hidden_machine_id.Text = "";
             bt_finish.Enabled = false;
@@ -285,8 +288,10 @@ namespace SNI
         {
             Config.ReadFile();
             dtshowcustomer_find = Module.MydataGridView(dtshowcustomer_find);
-            scalew = 1;
-            scaleh = 1;
+            scalewh =  (double)643/(double)panel1.Size.Height;
+            scaleww = (double)1039/(double)panel1.Size.Width;
+            scalew = 1*scaleww;
+            scaleh = 1*scalewh;
             startSize = panel1.Size;
             MachineController.loadMachine();
             load();
@@ -358,12 +363,16 @@ namespace SNI
         private void panel1_SizeChanged(object sender, EventArgs e)
         {
             Panel pn = sender as Panel;
-            scalew = (double)startSize.Width / (double)pn.Size.Width;
-            scaleh = (double)startSize.Height / (double)pn.Size.Height;
+
+            scalew = scaleww*(double)startSize.Width / (double)pn.Size.Width;
+            scaleh = scalewh*(double)startSize.Height / (double)pn.Size.Height;
+
             panel1.Controls.Clear();
+
 
             if (scalew != 0 && scaleh != 0)
             {
+
                 load();
                 loadState();
             }
@@ -379,16 +388,18 @@ namespace SNI
         private void quảnLíGhếToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MachineManage machine = new MachineManage();
-            machine.setPanelSize(panel1.Size.Width, panel1.Size.Height);
+            machine.setPanelSize(startSize.Width, startSize.Height,scaleww,scalewh);
             if (machine.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Lưu thành công!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 panel1.Controls.Clear();
-                MainMenu_Load(sender, e);
+                load();
+                loadState();
             }
             else
             {
-                MainMenu_Load(sender, e);
+                load();
+                loadState();
             }
         }
         private void quảnLíKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -396,7 +407,8 @@ namespace SNI
             CustomerMange cm = new CustomerMange();
             if (cm.ShowDialog() == DialogResult.OK)
             {
-                MainMenu_Load(sender, e);
+                load();
+                loadState();
             }
         }
         private void quảnLíSứcKhỏeToolStripMenuItem_Click(object sender, EventArgs e)

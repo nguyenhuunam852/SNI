@@ -16,6 +16,8 @@ namespace SNI.Views.Customer
         {
             InitializeComponent();
         }
+        List<Models.Health> listWithout = new List<Models.Health>();
+
         private void button1_Click(object sender, EventArgs e)
         {
             AddCustomerForm acf = new AddCustomerForm();
@@ -24,15 +26,44 @@ namespace SNI.Views.Customer
                 loadDataGridView();
             }
         }
+        private void information_panel_control(bool check)
+        {
+            foreach(Control ctr in information_panel.Controls)
+            {
+                if(ctr is TextBox || ctr is ComboBox || ctr is RichTextBox || ctr is NumericUpDown || ctr is Button)
+                {
+                    ctr.Enabled = check;
+                }
+            }
+        }
+        private void information_panel_clear()
+        {
+            foreach (Control ctr in information_panel.Controls)
+            {
+                if (ctr is TextBox || ctr is RichTextBox )
+                {
+                    ctr.Text = "";
+                }
+            }
+            tuoinumbertext.Value = 0;
+            gioitinhcombobox.SelectedValue = 0;
+            loaiCombobox.SelectedValue = 0;
+            flowLayoutPanel1.Controls.Clear();
+            
+        }
         private void CustomerMange_Load(object sender, EventArgs e)
         {
-            
             loadDataGridView();
             dataGridView1.CellClick += DataGridView1_CellClick;
-
         }
         private void loadDataGridView()
         {
+            information_panel_clear();
+            information_panel.Controls.SetChildIndex(suckhoetext, 0);
+            loaiCombobox = Module.LoadComboboxLoai(loaiCombobox);
+            gioitinhcombobox = Module.loadComboBox(gioitinhcombobox);
+            information_panel_control(false);
+
             dataGridView1.DataSource = null;
             dataGridView1.Columns.Clear();
             dataGridView1.Refresh();
@@ -56,12 +87,38 @@ namespace SNI.Views.Customer
 
             int columnIndex = dataGridView1.Columns.Count;
             dataGridView1.Columns.Insert(columnIndex, testButtonColumn);
-         
-        }
 
+            if (dataGridView1.Rows.Count > 0)
+            {
+                selected_customer = dataGridView1.Rows[0].Cells["Mã Số"].Value.ToString();
+                var customer = CustomerController.getinformation(selected_customer);
+                showinfor(customer);
+            }
+        }
+        string selected_customer = "";
+        private void showinfor(Models.Customers customer)
+        {
+            listWithout.Clear();
+            information_panel_clear();
+            nametext.Text = customer.name;
+            idtext.Text = customer.localid;
+            sdttext.Text = customer.phone;
+            tuoinumbertext.Value = customer.age;
+            gioitinhcombobox.SelectedValue = customer.gender;
+            loaiCombobox.SelectedValue = customer.typeid;
+            diachirichtext.Text = customer.address;
+            adddate_label.Text = customer.dayadd.ToString();
+            updatedate_label.Text = customer.dayupdate.ToString();
+            
+            var listhealth = CustomerController.listHealth(selected_customer);
+            foreach (Models.Health health in listhealth)
+            {
+                listWithout.Add(health);   
+            }
+            loadTag();
+        }
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             if (e.ColumnIndex == dataGridView1.Columns["delete"].Index)
             {
                 DialogResult dlr = MessageBox.Show("Bạn có muốn xóa không", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -79,27 +136,36 @@ namespace SNI.Views.Customer
                     }
                 }
             }
+            else
+            {
+                selected_customer = dataGridView1.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
+                var customer = CustomerController.getinformation(selected_customer);
+                showinfor(customer);
+            }
         }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void loadTag()
         {
+            flowLayoutPanel1.Controls.Clear();
+            foreach (Models.Health tag in listWithout)
+            {
+                Label lb = new Label();
+               
+                Panel pn = Module.createMytab(tag.name, tag.healthid.ToString(), lb);
+                flowLayoutPanel1.Controls.Add(pn);
+            }
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             TextBox txb = sender as TextBox;
             loadDataGridView();
         }
-
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             CustomerInformation ci = new CustomerInformation();
@@ -110,7 +176,6 @@ namespace SNI.Views.Customer
             }
 
         }
-
         private void button2_Click_1(object sender, EventArgs e)
         {
             RecoveryCustomer rc = new RecoveryCustomer();
