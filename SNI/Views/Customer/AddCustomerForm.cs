@@ -25,6 +25,7 @@ namespace SNI.Views.Customer
             this.Controls.SetChildIndex(suckhoetext, 0);
             idlabel.Text = Config.config.MaChiNhanh + RandomString(4);
             gioitinhcbbox = Module.loadComboBox(gioitinhcbbox);
+            loaiCombobox = Module.LoadComboboxLoai(loaiCombobox);
             //LoadDataGridView();
 
         }
@@ -70,7 +71,7 @@ namespace SNI.Views.Customer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool check =  CustomerController.AddCustomer(idlabel.Text, nametext.Text, sdttext.Text, int.Parse(gioitinhcbbox.SelectedValue.ToString()),Convert.ToInt32(tuoinumber.Value), diachirichtext.Text,listWithout);
+            bool check =  CustomerController.AddCustomer(idlabel.Text, nametext.Text, sdttext.Text,int.Parse(loaiCombobox.SelectedValue.ToString()), int.Parse(gioitinhcbbox.SelectedValue.ToString()),Convert.ToInt32(tuoinumber.Value), diachirichtext.Text,listWithout);
             if(check==true)
             {
                 this.DialogResult = DialogResult.OK;

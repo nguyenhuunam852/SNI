@@ -50,6 +50,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.suckhoetext = new System.Windows.Forms.TextBox();
+            this.loaiCombobox = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tuoinumbertext)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,7 +137,7 @@
             this.gioitinhcombobox.FormattingEnabled = true;
             this.gioitinhcombobox.Location = new System.Drawing.Point(124, 87);
             this.gioitinhcombobox.Name = "gioitinhcombobox";
-            this.gioitinhcombobox.Size = new System.Drawing.Size(92, 21);
+            this.gioitinhcombobox.Size = new System.Drawing.Size(61, 21);
             this.gioitinhcombobox.TabIndex = 38;
             // 
             // label5
@@ -248,11 +250,31 @@
             this.suckhoetext.TextChanged += new System.EventHandler(this.suckhoetext_TextChanged);
             this.suckhoetext.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suckhoetext_KeyDown);
             // 
+            // loaiCombobox
+            // 
+            this.loaiCombobox.FormattingEnabled = true;
+            this.loaiCombobox.Location = new System.Drawing.Point(241, 87);
+            this.loaiCombobox.Name = "loaiCombobox";
+            this.loaiCombobox.Size = new System.Drawing.Size(58, 21);
+            this.loaiCombobox.TabIndex = 52;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(208, 95);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(27, 13);
+            this.label12.TabIndex = 51;
+            this.label12.Text = "Loại";
+            // 
             // CustomerInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 325);
+            this.Controls.Add(this.loaiCombobox);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label11);
@@ -310,5 +332,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox suckhoetext;
+        private System.Windows.Forms.ComboBox loaiCombobox;
+        private System.Windows.Forms.Label label12;
     }
 }

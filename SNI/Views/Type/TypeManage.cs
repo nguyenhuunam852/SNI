@@ -27,7 +27,8 @@ namespace SNI.Views.Type
                 DataTable dt = TypeController.getListType();
                 if (dt.Rows.Count > 0)
                 {
-                    dataGridView1.DataSource = TypeController.getListType();           
+                    dataGridView1.DataSource = TypeController.getListType();
+                    dataGridView1.Columns[0].Visible = false;
                 }
             }
             else
@@ -35,7 +36,7 @@ namespace SNI.Views.Type
                 dataGridView1 = Module.MydataGridView(dataGridView1);
                 dataGridView1.DataSource = TypeController.FindType(textBox1.Text);
             }
-            dataGridView1.Columns[0].Visible = false;
+            
 
             DataGridViewButtonColumn testButtonColumn = new DataGridViewButtonColumn();
             testButtonColumn.Name = "delete";

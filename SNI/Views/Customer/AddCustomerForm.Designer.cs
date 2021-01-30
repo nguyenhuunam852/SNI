@@ -46,6 +46,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.idlabel = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.loaiCombobox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tuoinumber)).BeginInit();
             this.SuspendLayout();
             // 
@@ -221,11 +223,31 @@
             this.idlabel.TabIndex = 20;
             this.idlabel.Text = "label8";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(190, 104);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Loại";
+            // 
+            // loaiCombobox
+            // 
+            this.loaiCombobox.FormattingEnabled = true;
+            this.loaiCombobox.Location = new System.Drawing.Point(227, 96);
+            this.loaiCombobox.Name = "loaiCombobox";
+            this.loaiCombobox.Size = new System.Drawing.Size(79, 21);
+            this.loaiCombobox.TabIndex = 22;
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 410);
+            this.Controls.Add(this.loaiCombobox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.idlabel);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -275,5 +297,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label idlabel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox loaiCombobox;
     }
 }

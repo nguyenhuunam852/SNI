@@ -90,7 +90,6 @@ namespace SNI.Controllers
                 }
             }
         }
-
         public static DataTable getRemovedType()
         {
             using (var context = new ControllerModel())

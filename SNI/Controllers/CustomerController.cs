@@ -42,7 +42,6 @@ namespace SNI.Controllers
                 }
             }
         }
-
         public static DataTable loadCustomer(List<Customers> listcustomer)
         {
             using (var context = new ControllerModel())
@@ -96,7 +95,6 @@ namespace SNI.Controllers
                 }
             }
         }
-
         public static bool Recovery(string id)
         {
             using (var context = new ControllerModel())
@@ -148,7 +146,6 @@ namespace SNI.Controllers
                 }
             }
         }
-
         public static DataTable loadAddedCustomer()
         {
             using (var context = new ControllerModel())
@@ -164,7 +161,6 @@ namespace SNI.Controllers
                     dtr["Họ Tên"] = addedCustomer.name;
                     dtr["Ngày Thêm"] = addedCustomer.dayadd.Hour + ":" + addedCustomer.dayadd.Minute + "-" + addedCustomer.dayadd.Day + "/" + addedCustomer.dayadd.Month + "/" + addedCustomer.dayadd.Year;
                     dt.Rows.Add(dtr);
-                    
                     return dt;
 
                 }
@@ -192,17 +188,19 @@ namespace SNI.Controllers
                 }
             }
         }
-        public static bool AddCustomer(string id,string name,string phone,int gender,int age,string address,List<Health> listwithout)
+        public static bool AddCustomer(string id,string name,string phone,int type,int gender,int age,string address,List<Health> listwithout)
         {
             using (var context = new ControllerModel())
             {
                 try
                 {
+                    var select_type = context.Types.Where(o => o.typeid == type).FirstOrDefault();
                     var customer = new Customers
                     {
                         localid = id,
                         name = name,
                         phone = phone,
+                        Types = select_type,
                         gender = gender,
                         age = age,
                         address = address,
@@ -242,18 +240,20 @@ namespace SNI.Controllers
                return context.Customers.Where(cus => cus.localid == id).FirstOrDefault();
             }
         }
-        public static bool UpdateCustomer(string id, string name, string phone, int gender, int age, string address,List<Health> addlist,List<Health> removelist)
+        public static bool UpdateCustomer(string id, string name, string phone, int type, int gender, int age, string address,List<Health> addlist,List<Health> removelist)
         {
             using (var context = new ControllerModel())
             {
                 try
                 {
                     var customer = context.Customers.Where(cus => cus.localid == id).FirstOrDefault();
+                    var select_type = context.Types.Where(o => o.typeid == type).FirstOrDefault();
                     if (customer != null)
                     {
                         customer.name = name;
                         customer.phone = phone;
                         customer.gender = gender;
+                        customer.Types = select_type;
                         customer.age = age;
                         customer.address = address;
                         customer.dayupdate = DateTime.Now;

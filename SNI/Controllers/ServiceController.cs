@@ -209,6 +209,5 @@ namespace SNI.Controllers
                 && o.dayadd.Month == DateTime.Now.Month).Count();
             }
         }
-
     }
 }

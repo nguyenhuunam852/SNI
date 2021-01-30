@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SNI.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -50,9 +51,7 @@ namespace SNI.Views
             dtg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             return dtg;
         }
-
         public static Panel pn;
-        
         public static Label getbuttonx(Label label1,string id)
         {
             label1.Name = id;
@@ -87,6 +86,19 @@ namespace SNI.Views
             pn.Controls.Add(label2);
             pn.Controls.Add(lb);
             return pn;
+        }
+        public static ComboBox LoadComboboxLoai(ComboBox comboBox)
+        {
+            DataTable dt = new DataTable();
+            dt = TypeController.getListType();
+
+
+            comboBox.DataSource = dt;
+            comboBox.DisplayMember = "Loại";
+            comboBox.ValueMember = "Mã Số";
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            return comboBox;
         }
     }
 }

@@ -11,8 +11,6 @@ namespace SNI.Controllers
     {
         public static List<Machines> tempmachine ;
         public static List<Machines> removemachine ;
-       
-
         public static bool SaveAllMachine()
         {
             try
@@ -236,6 +234,5 @@ namespace SNI.Controllers
             mc.status = 1;
             return true;
         }
-
     }
 }

@@ -27,6 +27,8 @@ namespace SNI.Views.Customer
             tuoinumbertext.Value = customer.age;
             gioitinhcombobox = Module.loadComboBox(gioitinhcombobox);
             gioitinhcombobox.SelectedValue = customer.gender;
+            loaiCombobox = Module.LoadComboboxLoai(loaiCombobox);
+            loaiCombobox.SelectedValue = customer.typeid;
             diachirichtext.Text = customer.address;
             label8.Text = customer.dayadd.ToString();
             label9.Text = customer.dayupdate.ToString();
@@ -65,7 +67,7 @@ namespace SNI.Views.Customer
         {
             int gender = Convert.ToInt16(gioitinhcombobox.SelectedIndex);
             int age = Convert.ToInt16(tuoinumbertext.Value);
-            if(CustomerController.UpdateCustomer(idtext.Text, nametext.Text, sdttext.Text, gender, age, diachirichtext.Text,listWithout,removelist)==true)
+            if(CustomerController.UpdateCustomer(idtext.Text, nametext.Text, sdttext.Text,Convert.ToInt16(loaiCombobox.SelectedValue.ToString()), gender, age, diachirichtext.Text,listWithout,removelist)==true)
             {
                 MessageBox.Show("Cật nhập thành công!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
