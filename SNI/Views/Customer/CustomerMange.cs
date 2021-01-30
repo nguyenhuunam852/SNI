@@ -35,6 +35,8 @@ namespace SNI.Views.Customer
                     ctr.Enabled = check;
                 }
             }
+            close_bt.Enabled = check;
+            update_bt.Enabled = !check;
         }
         private void information_panel_clear()
         {

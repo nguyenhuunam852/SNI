@@ -26,6 +26,13 @@ namespace SNI.Controllers
             
             } 
         }
+        public static bool checkExist(string name)
+        {
+            using (var context = new ControllerModel())
+            {
+                return context.Healths.Where(o => o.name.Trim() == name.Trim()).Count() > 0;
+            }
+        }
         public static DataTable FindHealthWithoutselected(string find,List<Health> listWithout)
         {
             using (var context = new ControllerModel())
