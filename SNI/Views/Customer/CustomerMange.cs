@@ -406,7 +406,22 @@ namespace SNI.Views.Customer
 
         private void bt_history_Click(object sender, EventArgs e)
         {
+            CustomerHistory ch = new CustomerHistory();
+            ch.idcustomer = selected_customer;
+            ch.ShowDialog();
+        }
 
+        private void bt_excel_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if(fbd.ShowDialog()==DialogResult.OK)
+            {
+                if (CustomerController.ExportbyExcel(fbd.SelectedPath))
+                {
+                    MessageBox.Show("Thành công!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadDataGridView();
+                }
+            }
         }
     }
 }

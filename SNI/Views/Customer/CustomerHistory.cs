@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SNI.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,13 @@ namespace SNI.Views.Customer
         public CustomerHistory()
         {
             InitializeComponent();
+        }
+        public string idcustomer;
+        private void CustomerHistory_Load(object sender, EventArgs e)
+        {
+            dt_history = Module.MydataGridView(dt_history);
+            dt_history.DataSource = HistoryController.getHistorybyCustomerId(idcustomer);
+
         }
     }
 }

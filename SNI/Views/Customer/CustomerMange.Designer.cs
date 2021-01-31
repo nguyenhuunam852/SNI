@@ -32,6 +32,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.information_panel = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.close_bt = new System.Windows.Forms.Button();
+            this.bt_history = new System.Windows.Forms.Button();
             this.idtext = new System.Windows.Forms.Label();
             this.nametext = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -55,17 +58,14 @@
             this.adddate_label = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.bt_excel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
             this.bt_recovery = new System.Windows.Forms.Button();
             this.update_bt = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bt_find = new System.Windows.Forms.Button();
             this.txt_find = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bt_find = new System.Windows.Forms.Button();
-            this.bt_history = new System.Windows.Forms.Button();
-            this.close_bt = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.bt_excel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -139,6 +139,36 @@
             this.information_panel.Size = new System.Drawing.Size(344, 411);
             this.information_panel.TabIndex = 2;
             this.information_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.information_panel_Paint);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(181, 380);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(116, 23);
+            this.button5.TabIndex = 80;
+            this.button5.Text = "Lưu";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // close_bt
+            // 
+            this.close_bt.Location = new System.Drawing.Point(59, 380);
+            this.close_bt.Name = "close_bt";
+            this.close_bt.Size = new System.Drawing.Size(116, 23);
+            this.close_bt.TabIndex = 79;
+            this.close_bt.Text = "Hủy";
+            this.close_bt.UseVisualStyleBackColor = true;
+            this.close_bt.Click += new System.EventHandler(this.close_bt_Click);
+            // 
+            // bt_history
+            // 
+            this.bt_history.Location = new System.Drawing.Point(223, 19);
+            this.bt_history.Name = "bt_history";
+            this.bt_history.Size = new System.Drawing.Size(87, 22);
+            this.bt_history.TabIndex = 78;
+            this.bt_history.Text = "Xem lịch sử";
+            this.bt_history.UseVisualStyleBackColor = true;
+            this.bt_history.Click += new System.EventHandler(this.bt_history_Click);
             // 
             // idtext
             // 
@@ -343,6 +373,16 @@
             this.panel5.Size = new System.Drawing.Size(344, 49);
             this.panel5.TabIndex = 72;
             // 
+            // bt_excel
+            // 
+            this.bt_excel.Location = new System.Drawing.Point(244, 17);
+            this.bt_excel.Name = "bt_excel";
+            this.bt_excel.Size = new System.Drawing.Size(71, 23);
+            this.bt_excel.TabIndex = 71;
+            this.bt_excel.Text = "Xuất Excel";
+            this.bt_excel.UseVisualStyleBackColor = true;
+            this.bt_excel.Click += new System.EventHandler(this.bt_excel_Click);
+            // 
             // btn_add
             // 
             this.btn_add.Location = new System.Drawing.Point(26, 17);
@@ -384,6 +424,15 @@
             this.panel2.Size = new System.Drawing.Size(344, 56);
             this.panel2.TabIndex = 6;
             // 
+            // bt_find
+            // 
+            this.bt_find.Location = new System.Drawing.Point(157, 22);
+            this.bt_find.Name = "bt_find";
+            this.bt_find.Size = new System.Drawing.Size(55, 23);
+            this.bt_find.TabIndex = 72;
+            this.bt_find.Text = "Tìm";
+            this.bt_find.UseVisualStyleBackColor = true;
+            // 
             // txt_find
             // 
             this.txt_find.Location = new System.Drawing.Point(26, 25);
@@ -400,54 +449,6 @@
             this.label1.Size = new System.Drawing.Size(118, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Nhập thông tin tìm kiếm";
-            // 
-            // bt_find
-            // 
-            this.bt_find.Location = new System.Drawing.Point(157, 22);
-            this.bt_find.Name = "bt_find";
-            this.bt_find.Size = new System.Drawing.Size(55, 23);
-            this.bt_find.TabIndex = 72;
-            this.bt_find.Text = "Tìm";
-            this.bt_find.UseVisualStyleBackColor = true;
-            // 
-            // bt_history
-            // 
-            this.bt_history.Location = new System.Drawing.Point(223, 19);
-            this.bt_history.Name = "bt_history";
-            this.bt_history.Size = new System.Drawing.Size(87, 22);
-            this.bt_history.TabIndex = 78;
-            this.bt_history.Text = "Xem lịch sử";
-            this.bt_history.UseVisualStyleBackColor = true;
-            this.bt_history.Click += new System.EventHandler(this.bt_history_Click);
-            // 
-            // close_bt
-            // 
-            this.close_bt.Location = new System.Drawing.Point(59, 380);
-            this.close_bt.Name = "close_bt";
-            this.close_bt.Size = new System.Drawing.Size(116, 23);
-            this.close_bt.TabIndex = 79;
-            this.close_bt.Text = "Hủy";
-            this.close_bt.UseVisualStyleBackColor = true;
-            this.close_bt.Click += new System.EventHandler(this.close_bt_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(181, 380);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 23);
-            this.button5.TabIndex = 80;
-            this.button5.Text = "Lưu";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // bt_excel
-            // 
-            this.bt_excel.Location = new System.Drawing.Point(244, 17);
-            this.bt_excel.Name = "bt_excel";
-            this.bt_excel.Size = new System.Drawing.Size(71, 23);
-            this.bt_excel.TabIndex = 71;
-            this.bt_excel.Text = "Xuất Excel";
-            this.bt_excel.UseVisualStyleBackColor = true;
             // 
             // CustomerMange
             // 
