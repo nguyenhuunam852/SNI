@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using SNI.Controllers;
 using SNI.Models;
 using SNI.Views.Health;
+using SNI.Views.Type;
+
 namespace SNI.Views.Customer
 {
     public partial class AddCustomerForm : Form
@@ -226,6 +228,15 @@ namespace SNI.Views.Customer
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AddTypeForm atf = new AddTypeForm();
+            if(atf.ShowDialog()==DialogResult.OK)
+            {
+                loaiCombobox = Module.LoadComboboxLoai(loaiCombobox);
+            }
         }
     }
 }

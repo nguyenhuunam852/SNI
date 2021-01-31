@@ -62,6 +62,7 @@
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\MachineController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -71,8 +72,10 @@
     <Compile Include="Models\Health.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\Machines.cs" />
+    <Compile Include="Models\Reports.cs" />
     <Compile Include="Models\StopMachine.cs" />
     <Compile Include="Models\Types.cs" />
+    <Compile Include="Models\TypesReports.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Views\Customer\AddCustomerForm.cs">
       <SubType>Form</SubType>

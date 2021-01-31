@@ -84,6 +84,8 @@ namespace SNI.Views
         private void MachineManage_Load(object sender, EventArgs e)
         {
             MachineController.removemachine = new List<Models.Machines>();
+            MachineController.tempmachine = new List<Models.Machines>();
+            MachineController.loadMachine();
             setupArea();
         }
         private void button4_Click(object sender, EventArgs e)
@@ -264,10 +266,10 @@ namespace SNI.Views
                     }
                     for(int i=0;i<aom.numofmachines;i++)
                     {
+                        id = id - 1;
                         string name = "ghe " + (i+1).ToString();
-
-                        Label lb = createLabel(id+1,name, 1, nextmachinex, nextmachiney);
-                        MachineController.AddnewMachineTemp(name,Convert.ToInt32((double)nextmachinex*(double)scalew),Convert.ToInt32((double)nextmachiney*(double)scaleh),1);
+                        Label lb = createLabel(id,name, 1, nextmachinex, nextmachiney);
+                        MachineController.AddnewMachineTemp(id,name,Convert.ToInt32((double)nextmachinex*(double)scalew),Convert.ToInt32((double)nextmachiney*(double)scaleh),1);
                         nextmachinex = nextmachinex + lb.Size.Width + 20;
                         if (nextmachinex > panel1.Size.Width)
                         {

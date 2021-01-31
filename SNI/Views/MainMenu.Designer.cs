@@ -166,6 +166,7 @@
             this.bt_chotca.TabIndex = 13;
             this.bt_chotca.Text = "Chốt Ca";
             this.bt_chotca.UseVisualStyleBackColor = true;
+            this.bt_chotca.Click += new System.EventHandler(this.bt_chotca_Click);
             // 
             // bt_finish
             // 

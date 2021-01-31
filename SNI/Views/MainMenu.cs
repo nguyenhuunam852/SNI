@@ -293,6 +293,7 @@ namespace SNI
             scalew = 1*scaleww;
             scaleh = 1*scalewh;
             startSize = panel1.Size;
+            bt_chotca.Enabled = true;
             MachineController.loadMachine();
             load();
             loadState();
@@ -543,6 +544,11 @@ namespace SNI
         {
             TypeManage typeManage = new TypeManage();
             typeManage.ShowDialog();
+        }
+
+        private void bt_chotca_Click(object sender, EventArgs e)
+        {
+            ReportController.AddnewReport(DateTime.Now);
         }
     }
 }

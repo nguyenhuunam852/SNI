@@ -21,5 +21,7 @@ namespace SNI
         public DbSet<StopMachine> StopMachines { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<Types> Types { get; set; }
+        public DbSet<Reports> Reports { get; set; }
+        public DbSet<TypesReports> TypesReports { get; set; }
     }
 }

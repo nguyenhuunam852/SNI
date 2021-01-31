@@ -96,8 +96,8 @@ namespace SNI.Controllers
             {
                 try
                 {
-                    var listhealth = context.Types.Where(o => o.available == false).OrderByDescending(health => health.dayadd).Take(10).ToList();
-                    return loadTypeWithUpdate(listhealth);
+                    var listtypes = context.Types.Where(o => o.available == false).OrderByDescending(types => types.dayadd).Take(10).ToList();
+                    return loadTypeWithUpdate(listtypes);
                 }
                 catch (Exception e)
                 {
@@ -155,7 +155,7 @@ namespace SNI.Controllers
             {
                 try
                 {
-                    var listtypes = context.Types.Where(health => health.available == true).OrderByDescending(health => health.dayadd).Take(10).ToList();
+                    var listtypes = context.Types.Where(types => types.available == true).OrderByDescending(types => types.dayadd).Take(10).ToList();
                     return loadtypes(listtypes);
                 }
                 catch (Exception e)
@@ -164,6 +164,19 @@ namespace SNI.Controllers
                 }
             }
         }
-
+        public static List<Types> getList()
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    return context.Types.Where(types => types.available == true).OrderByDescending(types => types.dayadd).ToList();
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

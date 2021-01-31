@@ -100,13 +100,14 @@ namespace SNI.Controllers
             }
             
         }
-        public static bool AddnewMachineTemp(string name, int locationx, int locationy, int status)
+        public static bool AddnewMachineTemp(int id,string name, int locationx, int locationy, int status)
         {
             var machine1 = tempmachine.Find(mch => mch.name == name);
             if (machine1 == null)
             {
                 var machine = new Machines
                 {
+                    machineid = id,
                     name = name,
                     locationx = locationx,
                     locationy = locationy,
