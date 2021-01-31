@@ -15,7 +15,7 @@ namespace SNI.Views.Customer
         public string idcustomer;
         List<Models.Health> listWithout = new List<Models.Health>();
         List<Models.Health> removelist = new List<Models.Health>();
-
+        Models.Health selected_health;
         private void CustomerInformation_Load(object sender, EventArgs e)
         {
             this.Controls.SetChildIndex(suckhoetext, 0);
@@ -62,7 +62,6 @@ namespace SNI.Views.Customer
             }
             loadTag();
         }
-       
         private void button1_Click(object sender, EventArgs e)
         {
             int gender = Convert.ToInt16(gioitinhcombobox.SelectedIndex);
@@ -77,12 +76,10 @@ namespace SNI.Views.Customer
                 MessageBox.Show("Lỗi xảy ra !!! ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
-
         private void suckhoetext_TextChanged(object sender, EventArgs e)
         {
             TextBox txb = sender as TextBox;
@@ -108,12 +105,11 @@ namespace SNI.Views.Customer
                 }
             }
         }
-
         private void suckhoetext_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up)
             {
-                if (comboBox1.SelectedIndex > 0)
+                if (comboBox1.SelectedIndex >= 0)
                 {
                     comboBox1.SelectedIndex -= 1;
                 }
@@ -127,7 +123,7 @@ namespace SNI.Views.Customer
             }
             if (e.KeyCode == Keys.Enter)
             {
-                if (comboBox1.Items.Count > 0)
+                if (comboBox1.Items.Count > 0 && comboBox1.DroppedDown == true)
                 {
                     if (suckhoetext.Text != "")
                     {
@@ -138,44 +134,91 @@ namespace SNI.Views.Customer
                 {
                     try
                     {
-                        if (suckhoetext.Text != "")
+                        if (comboBox1.Items.Count > 0 && comboBox1.DroppedDown == true)
                         {
-                            DialogResult dlt = MessageBox.Show("Bạn có muốn tạo mới không!", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                            if (dlt == DialogResult.Yes)
+                            if (suckhoetext.Text != "")
                             {
-                                if (HealthController.addHealth(suckhoetext.Text))
-                                {
-                                    if (!listWithout.Contains(HealthController.addedhealth) && suckhoetext.Text != "")
-                                    {
-                                        listWithout.Add(HealthController.addedhealth);
-                                        loadTag();
-                                        suckhoetext.Text = "";
-                                    }
-                                }
+                                acceptChoose();
                             }
                         }
-                        comboBox1.Enabled = false;
+                        else
+                        {
+                            try
+                            {
+                                if (suckhoetext.Text != "")
+                                {
+                                    createNotExistTag();
+                                }
+                                comboBox1.Enabled = false;
+                            }
+                            catch (Exception ex)
+                            {
+                                return;
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
-
+                        return;
                     }
                 }
             }
         }
-        
-        private void acceptChoose()
+        private void createNotExistTag()
         {
-            comboBox1.DroppedDown = false;
-            Models.Health selected_health = HealthController.getinformation(Convert.ToInt16(comboBox1.SelectedValue.ToString()));
+            var listname = listWithout.Select(o => o.name);
+            if (!listname.Contains(suckhoetext.Text))
+            {
+                DialogResult dlt = MessageBox.Show("Bạn có muốn tạo mới không!", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dlt == DialogResult.Yes)
+                {
+                    if (HealthController.addHealth(suckhoetext.Text))
+                    {
+                        if (!listWithout.Contains(HealthController.addedhealth) && suckhoetext.Text != "")
+                        {
+                            listWithout.Add(HealthController.addedhealth);
+                            loadTag();
+                            suckhoetext.Text = "";
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bệnh này đã được thêm !", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void createTag()
+        {
+            selected_health = HealthController.getinformation(Convert.ToInt16(comboBox1.SelectedValue.ToString()));
             listWithout.Add(selected_health);
             loadTag();
-            suckhoetext.Text = "";
         }
 
+        private void acceptChoose()
+        {
+            if (comboBox1.SelectedIndex != -1)
+            {
+                createTag();
+            }
+            else
+            {
+                bool check = HealthController.checkExist(suckhoetext.Text);
+                if (check == true)
+                {
+                    createTag();
+                }
+                else
+                {
+                    createNotExistTag();
+                }
+            }
+            comboBox1.DroppedDown = false;
+            suckhoetext.Text = "";
+        }
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            
+         
         }
     }
 }

@@ -79,6 +79,12 @@
     <Compile Include="Views\Customer\AddCustomerForm.Designer.cs">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Customer\CustomerHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerHistory.Designer.cs">
+      <DependentUpon>CustomerHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Customer\CustomerInformation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </Compile>
     <EmbeddedResource Include="Views\Customer\AddCustomerForm.resx">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customer\CustomerHistory.resx">
+      <DependentUpon>CustomerHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Customer\CustomerInformation.resx">
       <DependentUpon>CustomerInformation.cs</DependentUpon>

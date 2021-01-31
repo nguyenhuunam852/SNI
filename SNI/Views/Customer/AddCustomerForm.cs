@@ -17,8 +17,6 @@ namespace SNI.Views.Customer
         {
             InitializeComponent();
         }
-      
-
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
 
@@ -29,7 +27,6 @@ namespace SNI.Views.Customer
             //LoadDataGridView();
 
         }
-
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -47,7 +44,6 @@ namespace SNI.Views.Customer
                
             }
         }
-
         private void Lb_Click1(object sender, EventArgs e)
         {
             Label lb = sender as Label;
@@ -55,7 +51,6 @@ namespace SNI.Views.Customer
             listWithout.Remove(select_health);
             loadTag();
         }
-
         private static Random random = new Random();
         public string RandomString(int length)
         {
@@ -63,12 +58,10 @@ namespace SNI.Views.Customer
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             bool check =  CustomerController.AddCustomer(idlabel.Text, nametext.Text, sdttext.Text,int.Parse(loaiCombobox.SelectedValue.ToString()), int.Parse(gioitinhcbbox.SelectedValue.ToString()),Convert.ToInt32(tuoinumber.Value), diachirichtext.Text,listWithout);
@@ -77,17 +70,14 @@ namespace SNI.Views.Customer
                 this.DialogResult = DialogResult.OK;
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
-
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
           
         }
-
         private void suckhoetext_TextChanged(object sender, EventArgs e)
         {
             TextBox txb = sender as TextBox;
@@ -187,9 +177,18 @@ namespace SNI.Views.Customer
         }
         private void createTag()
         {
-            selected_health = HealthController.getinformation(Convert.ToInt16(comboBox1.SelectedValue.ToString()));
-            listWithout.Add(selected_health);
-            loadTag();
+            if (comboBox1.SelectedValue != null)
+            {
+                selected_health = HealthController.getinformation(Convert.ToInt16(comboBox1.SelectedValue.ToString()));
+                listWithout.Add(selected_health);
+                loadTag();
+            }
+            else
+            {
+                selected_health = HealthController.getinformationbyName(suckhoetext.Text);
+                listWithout.Add(selected_health);
+                loadTag();
+            }
         }
         private void acceptChoose()
         {
@@ -212,21 +211,18 @@ namespace SNI.Views.Customer
             comboBox1.DroppedDown = false;
             suckhoetext.Text = "";
         }
-
         private void Lb_Click(object sender, EventArgs e)
         {
             
         }
-
         List<Models.Health> listWithout = new List<Models.Health>();
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (suckhoetext.Text != "" && comboBox1.SelectedIndex != -1 && show==0)
+            if (suckhoetext.Text != "" && comboBox1.SelectedIndex != -1 && show == 0)
             {
                 acceptChoose();
             }
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             

@@ -38,7 +38,7 @@ namespace SNI.Controllers
             using (var context = new ControllerModel())
             {
                 List<int> properties = listWithout.Select(o => o.healthid).ToList();
-                var listhealth = context.Healths.Where(heal => heal.available == true && heal.name.Contains(find) && properties.Contains(heal.healthid)==false).Take(10).ToList();
+                var listhealth = context.Healths.Where(heal => heal.available == true && heal.name.Contains(find) && properties.Contains(heal.healthid)==false).OrderByDescending(health => health.dayadd).Take(10).ToList();
                 return loadHealth(listhealth);
             }
         }
@@ -149,7 +149,7 @@ namespace SNI.Controllers
         {
             using (var context = new ControllerModel())
             {
-                var listhealth = context.Healths.Where(heal => heal.available == true && heal.name.Contains(find)).Take(10).ToList();
+                var listhealth = context.Healths.Where(heal => heal.available == true && heal.name.Contains(find)).OrderByDescending(health => health.dayadd).Take(10).ToList();
                 return loadHealth(listhealth);
             }
         }
@@ -237,5 +237,15 @@ namespace SNI.Controllers
             }
        
         }
+        public static Health getinformationbyName(string name)
+        {
+            using (var context = new ControllerModel())
+            {
+                return context.Healths.Where(o => o.name == name).FirstOrDefault();
+            }
+        }
+
+
+
     }
 }
