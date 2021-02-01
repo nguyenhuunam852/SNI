@@ -200,6 +200,12 @@
     <Compile Include="Views\Service\FinishForm.Designer.cs">
       <DependentUpon>FinishForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Service\FinishReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Service\FinishReport.Designer.cs">
+      <DependentUpon>FinishReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Type\AddTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Service\FinishForm.resx">
       <DependentUpon>FinishForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Service\FinishReport.resx">
+      <DependentUpon>FinishReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Type\AddTypeForm.resx">
       <DependentUpon>AddTypeForm.cs</DependentUpon>

@@ -131,6 +131,8 @@ namespace SNI
             lb.Location = new System.Drawing.Point(Convert.ToInt32((double)locationx / (scalew)), Convert.ToInt32((double)locationy /(scaleh)));
             lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             lb.Text = name;
+            lb.BorderStyle = BorderStyle.FixedSingle;
+
             lb.Size = new Size(panel1.Size.Width / 10, panel1.Size.Height / 10);
             lb.DoubleClick += Lb_DoubleClick;
             lb.MouseDown += Lb_MouseDown;
@@ -290,6 +292,20 @@ namespace SNI
             Config.ReadFile();
             if (!Config.config.connectsuccess)
             {
+                DateTime current = DateTime.Now;
+                //for(int i=1;i<=30;i++)
+                //{
+                //    FinishReport fr = new FinishReport();
+                //    fr.dt = current.AddDays(-i);
+                //    if(fr.ShowDialog()==DialogResult.OK)
+                //    {
+                //        MessageBox.Show("Reports thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    }
+                //    else
+                //    {
+                //        this.Close();
+                //    }
+                //}
                 dtshowcustomer_find = Module.MydataGridView(dtshowcustomer_find);
                 scalewh = (double)643 / (double)panel1.Size.Height;
                 scaleww = (double)1039 / (double)panel1.Size.Width;
@@ -572,7 +588,10 @@ namespace SNI
 
         private void bt_chotca_Click(object sender, EventArgs e)
         {
-            ReportController.AddnewReport(DateTime.Now);
+            FinishReport fr = new FinishReport();
+            fr.dt = DateTime.Now;
+            fr.ShowDialog();
+            
         }
     }
 }

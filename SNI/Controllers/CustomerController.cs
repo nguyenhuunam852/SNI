@@ -81,7 +81,7 @@ namespace SNI.Controllers
                         dtr["Mã Số"] = cus.localid;
                         dtr["Họ Tên"] = cus.name;
                         dtr["Số điện Thoại"] = cus.phone;
-                        dtr["Năm sinh"] = cus.age;
+                        dtr["Năm sinh"] =(DateTime.Now.Year-cus.age).ToString();
                         dtr["Địa chỉ"] = cus.address;
                         dtr["Loại khách hàng"] = cus.Types.name;
                         if(cus.gender==0)
