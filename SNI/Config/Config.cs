@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,6 +37,8 @@ namespace SNI
                 string json = r.ReadToEnd();
                 Config items = JsonConvert.DeserializeObject<Config>(json);
                 config = items;
+                connect = getconnect();
+                r.Close();
             }
         }
         public static bool SaveTime(string[] list,DateTime a,DateTime b)
@@ -58,7 +62,8 @@ namespace SNI
             {
                 try
                 {
-                    context.Database.CreateIfNotExists();
+                    context.Database.CreateIfNotExists();   
+                    
                     return true;
                 }
                 catch(Exception ex)
@@ -78,7 +83,11 @@ namespace SNI
            
             connect = String.Format(@"Data Source={0};Initial Catalog={1};User ID= {2};Password= {3}", servername,database,username,password);
         }
-        
+        public static string getconnect()
+        {
+            return String.Format(@"Data Source={0};Initial Catalog={1};User ID= {2};Password= {3}", config.servername, config.database, config.username, config.password);
+
+        }
         public static bool testConnect()
         {
             try

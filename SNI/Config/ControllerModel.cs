@@ -8,9 +8,9 @@ namespace SNI
 {
     class ControllerModel : DbContext
     {
-        public ControllerModel() : base(Config.connect)
+        public ControllerModel() : base("connect")
         {
-
+            //Database.SetInitializer<ControllerModel>(null);
         }
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Machines> Machines { get; set; }

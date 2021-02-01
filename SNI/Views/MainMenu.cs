@@ -288,7 +288,7 @@ namespace SNI
         private void MainMenu_Load(object sender, EventArgs e)
         {
             Config.ReadFile();
-            if (Config.config.connectsuccess)
+            if (!Config.config.connectsuccess)
             {
                 dtshowcustomer_find = Module.MydataGridView(dtshowcustomer_find);
                 scalewh = (double)643 / (double)panel1.Size.Height;
