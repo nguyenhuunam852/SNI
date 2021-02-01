@@ -9,7 +9,7 @@ namespace SNI.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(SNI.ControllerModel context)

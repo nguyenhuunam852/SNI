@@ -9,6 +9,7 @@ using SNI.Views.Health;
 using SNI.Views.Type;
 using System.Collections.Generic;
 using System.Data;
+using SNI.Views.FirstConfig;
 
 namespace SNI
 {
@@ -287,22 +288,45 @@ namespace SNI
         private void MainMenu_Load(object sender, EventArgs e)
         {
             Config.ReadFile();
-            dtshowcustomer_find = Module.MydataGridView(dtshowcustomer_find);
-            scalewh =  (double)643/(double)panel1.Size.Height;
-            scaleww = (double)1039/(double)panel1.Size.Width;
-            scalew = 1*scaleww;
-            scaleh = 1*scalewh;
-            startSize = panel1.Size;
-            bt_chotca.Enabled = true;
-            MachineController.loadMachine();
-            load();
-            loadState();
-            Timer time = new Timer()
+            if (Config.config.connectsuccess)
             {
-                Interval = 1000
-            };
-            time.Start();
-            time.Tick += Time_Tick; ;
+                dtshowcustomer_find = Module.MydataGridView(dtshowcustomer_find);
+                scalewh = (double)643 / (double)panel1.Size.Height;
+                scaleww = (double)1039 / (double)panel1.Size.Width;
+                scalew = 1 * scaleww;
+                scaleh = 1 * scalewh;
+                startSize = panel1.Size;
+                bt_chotca.Enabled = true;
+                MachineController.loadMachine();
+                load();
+                loadState();
+                Timer time = new Timer()
+                {
+                    Interval = 1000
+                };
+                time.Start();
+                time.Tick += Time_Tick;
+            }
+            else
+            {
+                ConfigForm cf = new ConfigForm();
+                if(cf.ShowDialog()==DialogResult.Cancel)
+                {
+                    this.Close();
+                }
+                else
+                {
+                    ActiveVariables av = new ActiveVariables();
+                    if(av.ShowDialog() == DialogResult.Cancel)
+                    {
+                        this.Close();
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

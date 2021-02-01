@@ -107,6 +107,18 @@
     <Compile Include="Views\Customer\RecoveryCustomer.Designer.cs">
       <DependentUpon>RecoveryCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FirstConfig\ActiveVariables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FirstConfig\ActiveVariables.Designer.cs">
+      <DependentUpon>ActiveVariables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FirstConfig\ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FirstConfig\ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Health\AddHealthbyExcelForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +232,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Customer\RecoveryCustomer.resx">
       <DependentUpon>RecoveryCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FirstConfig\ActiveVariables.resx">
+      <DependentUpon>ActiveVariables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FirstConfig\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Health\AddHealthbyExcelForm.resx">
       <DependentUpon>AddHealthbyExcelForm.cs</DependentUpon>
