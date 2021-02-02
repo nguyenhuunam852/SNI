@@ -32,12 +32,14 @@ namespace SNI.Views.User
             dataGridView1.Columns.Clear();
             dataGridView1.Refresh();
             dataGridView1 = Module.MydataGridView(dataGridView1);
+            
             DataTable dt = UserController.getListUSer();
 
             if (dt.Rows.Count > 0)
             {
-                dataGridView1.DataSource = TypeController.getListType();
-                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.DataSource = dt;
+                showinfor(Convert.ToInt16(dataGridView1.Rows[0].Cells["id"].Value.ToString()));
+                dataGridView1.Columns["id"].Visible = false;
             }
 
             DataGridViewButtonColumn testButtonColumn = new DataGridViewButtonColumn();
@@ -70,6 +72,8 @@ namespace SNI.Views.User
             username_txt.Text = user.username;
             password_txt.Text = user.password;
             name_txt.Text = user.name;
+            email_txt.Text = user.email;
+            sdt_txt.Text = user.phone;
         }
 
         private void email_txt_TextChanged(object sender, EventArgs e)
@@ -103,7 +107,7 @@ namespace SNI.Views.User
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            showinfor(Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString()));
         }
     }
 }

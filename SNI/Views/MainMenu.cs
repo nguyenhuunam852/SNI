@@ -10,7 +10,7 @@ using SNI.Views.Type;
 using System.Collections.Generic;
 using System.Data;
 using SNI.Views.FirstConfig;
-
+using SNI.Views.User;
 namespace SNI
 {
     public partial class MainMenu : Form
@@ -596,7 +596,8 @@ namespace SNI
 
         private void quảnLíUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            UserManage um = new UserManage();
+            um.ShowDialog();
         }
     }
 }
