@@ -38,11 +38,102 @@ namespace SNI.Controllers
             }
 
         }
+        public static bool UpdateUser(int id,string username, string password, string name, string email, string phone,string role)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var user = context.Users.Where(o => o.userid == id).FirstOrDefault();
+                    user.username = username;
+                    user.password = password;
+                    user.name = name;
+                    user.email = email;
+                    user.phone = phone;
+                    user.Roles = context.Roles.Where(o => o.name == role).FirstOrDefault();
+                    context.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+        }
+        public static bool RemoveUser(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var user = context.Users.Where(o => o.userid == id).FirstOrDefault();
+                    user.available = false;
+                    context.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+        }
+        public static bool RecoveryUser(int id)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var user = context.Users.Where(o => o.userid == id).FirstOrDefault();
+                    user.available = true;
+                    context.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+        }
+
+        public static DataTable GetRemovedUser()
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var list = context.Users.Where(o => o.available == false);
+                    DataTable dtb = new DataTable();
+                    dtb.Columns.Add("id");
+                    dtb.Columns.Add("Name");
+                    dtb.Columns.Add("Ngày thêm");
+
+                    foreach (Users us in list)
+                    {
+                        DataRow dtr = dtb.NewRow();
+                        dtr["id"] = us.userid;
+                        dtr["Name"] = us.name;
+                        dtr["Ngày thêm"] = us.dayadd.ToString();
+                        dtb.Rows.Add(dtr);
+                    }
+                    return dtb;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+
+        }
+
+
         public static DataTable getListUSer()
         {
             using (var context = new ControllerModel())
             {
-                var lsit = context.Users.Include("Roles").Where(o => o.Roles.name == "Staff");
+                var lsit = context.Users.Include("Roles").Where(o => o.Roles.name == "Staff" && o.available == true);
                 DataTable dtb = new DataTable();
                 dtb.Columns.Add("id");
                 dtb.Columns.Add("Name");

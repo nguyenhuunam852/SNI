@@ -36,16 +36,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.username_txt = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.save_bt = new System.Windows.Forms.Button();
+            this.close_bt = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.sdt_txt = new System.Windows.Forms.TextBox();
             this.email_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.name_txt = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.update_bt = new System.Windows.Forms.Button();
-            this.close_bt = new System.Windows.Forms.Button();
-            this.save_bt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -69,6 +69,7 @@
             this.recovery_bt.TabIndex = 9;
             this.recovery_bt.Text = "Khôi phục";
             this.recovery_bt.UseVisualStyleBackColor = true;
+            this.recovery_bt.Click += new System.EventHandler(this.recovery_bt_Click);
             // 
             // add_bt
             // 
@@ -133,16 +134,25 @@
             this.panel1.Size = new System.Drawing.Size(284, 249);
             this.panel1.TabIndex = 24;
             // 
-            // panel2
+            // save_bt
             // 
-            this.panel2.Controls.Add(this.update_bt);
-            this.panel2.Controls.Add(this.add_bt);
-            this.panel2.Controls.Add(this.recovery_bt);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(298, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(284, 100);
-            this.panel2.TabIndex = 25;
+            this.save_bt.Location = new System.Drawing.Point(145, 17);
+            this.save_bt.Name = "save_bt";
+            this.save_bt.Size = new System.Drawing.Size(116, 23);
+            this.save_bt.TabIndex = 30;
+            this.save_bt.Text = "Lưu";
+            this.save_bt.UseVisualStyleBackColor = true;
+            this.save_bt.Click += new System.EventHandler(this.save_bt_Click);
+            // 
+            // close_bt
+            // 
+            this.close_bt.Location = new System.Drawing.Point(20, 17);
+            this.close_bt.Name = "close_bt";
+            this.close_bt.Size = new System.Drawing.Size(116, 23);
+            this.close_bt.TabIndex = 11;
+            this.close_bt.Text = "Hủy";
+            this.close_bt.UseVisualStyleBackColor = true;
+            this.close_bt.Click += new System.EventHandler(this.close_bt_Click);
             // 
             // label6
             // 
@@ -193,6 +203,17 @@
             this.name_txt.Size = new System.Drawing.Size(191, 20);
             this.name_txt.TabIndex = 24;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.update_bt);
+            this.panel2.Controls.Add(this.add_bt);
+            this.panel2.Controls.Add(this.recovery_bt);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(298, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(284, 100);
+            this.panel2.TabIndex = 25;
+            // 
             // update_bt
             // 
             this.update_bt.Location = new System.Drawing.Point(145, 12);
@@ -202,26 +223,6 @@
             this.update_bt.Text = "Sửa";
             this.update_bt.UseVisualStyleBackColor = true;
             this.update_bt.Click += new System.EventHandler(this.update_bt_Click);
-            // 
-            // close_bt
-            // 
-            this.close_bt.Location = new System.Drawing.Point(20, 17);
-            this.close_bt.Name = "close_bt";
-            this.close_bt.Size = new System.Drawing.Size(116, 23);
-            this.close_bt.TabIndex = 11;
-            this.close_bt.Text = "Hủy";
-            this.close_bt.UseVisualStyleBackColor = true;
-            this.close_bt.Click += new System.EventHandler(this.close_bt_Click);
-            // 
-            // save_bt
-            // 
-            this.save_bt.Location = new System.Drawing.Point(145, 17);
-            this.save_bt.Name = "save_bt";
-            this.save_bt.Size = new System.Drawing.Size(116, 23);
-            this.save_bt.TabIndex = 30;
-            this.save_bt.Text = "Lưu";
-            this.save_bt.UseVisualStyleBackColor = true;
-            this.save_bt.Click += new System.EventHandler(this.save_bt_Click);
             // 
             // UserManage
             // 

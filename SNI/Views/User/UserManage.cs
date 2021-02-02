@@ -38,7 +38,8 @@ namespace SNI.Views.User
             if (dt.Rows.Count > 0)
             {
                 dataGridView1.DataSource = dt;
-                showinfor(Convert.ToInt16(dataGridView1.Rows[0].Cells["id"].Value.ToString()));
+                selected = Convert.ToInt16(dataGridView1.Rows[0].Cells["id"].Value.ToString());
+                showinfor(selected);
                 dataGridView1.Columns["id"].Visible = false;
             }
 
@@ -99,15 +100,49 @@ namespace SNI.Views.User
             loadDataGridView();
 
         }
+        int selected = 0;
 
         private void save_bt_Click(object sender, EventArgs e)
         {
-
+            if (UserController.UpdateUser(selected, username_txt.Text, password_txt.Text, name_txt.Text, email_txt.Text, sdt_txt.Text, "Staff"))
+            {
+                panel_control(false);
+                loadDataGridView();
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            showinfor(Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString()));
+            selected = Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString());
+            if (e.ColumnIndex == dataGridView1.Columns["delete"].Index)
+            {
+                DialogResult dlr = MessageBox.Show("Bạn có muốn xóa không", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dlr == DialogResult.Yes)
+                {
+                    if (UserController.RemoveUser(selected) == true)
+                    {
+                        loadDataGridView();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                showinfor(selected);
+            }
+        }
+
+        private void recovery_bt_Click(object sender, EventArgs e)
+        {
+            RecoveryForm rf = new RecoveryForm();
+            if(rf.ShowDialog()==DialogResult.OK)
+            {
+                panel_control(false);
+                loadDataGridView();
+            }
         }
     }
 }

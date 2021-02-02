@@ -28,5 +28,10 @@ namespace SNI.Views.User
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void UserAddForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

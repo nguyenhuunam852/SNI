@@ -162,7 +162,9 @@
             this.Controls.Add(this.name_txt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "UserAddForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UserAddForm";
+            this.Load += new System.EventHandler(this.UserAddForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
