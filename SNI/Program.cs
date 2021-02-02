@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-
+using SNI.Views.Login;
+using SNI.Views.FirstConfig;
 namespace SNI
 {
     static class Program
@@ -15,7 +16,15 @@ namespace SNI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());
+            Config.ReadFile();
+            if (Config.config.connectsuccess)
+            {
+                Application.Run(new LoginForm());
+            }
+            else
+            {
+                Application.Run(new CommonForm());
+            }
         }
     }
 }

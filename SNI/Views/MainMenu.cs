@@ -289,9 +289,8 @@ namespace SNI
         }
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            Config.ReadFile();
-            if (!Config.config.connectsuccess)
-            {
+           
+            
                 DateTime current = DateTime.Now;
                 var listnotcheck = HistoryController.CheckListNotCheck();
                 if (listnotcheck.Count > 0)
@@ -321,27 +320,8 @@ namespace SNI
                 };
                 time.Start();
                 time.Tick += Time_Tick;
-            }
-            else
-            {
-                ConfigForm cf = new ConfigForm();
-                if(cf.ShowDialog()==DialogResult.Cancel)
-                {
-                    this.Close();
-                }
-                else
-                {
-                    ActiveVariables av = new ActiveVariables();
-                    if(av.ShowDialog() == DialogResult.Cancel)
-                    {
-                        this.Close();
-                    }
-                    else
-                    {
-
-                    }
-                }
-            }
+            
+           
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

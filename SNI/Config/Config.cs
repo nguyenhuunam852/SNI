@@ -19,6 +19,12 @@ namespace SNI
         public string username;
         public string database;
         public string password;
+        public string apptoken;
+        public string usertoken;
+        public string reportapi;
+        public string updateapi;
+
+
         public DateTime reportstart;
         public DateTime reportfinish;
 
@@ -48,6 +54,36 @@ namespace SNI
                 Config.config.workingtime = int.Parse(list[0]) * 60 + int.Parse(list[1]);
                 Config.config.reportstart = a;
                 Config.config.reportfinish = b;
+                Config.WriteFile();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public static bool SaveBranch(string branchid,string apptoken,string usetoken)
+        {
+            try
+            {
+                Config.config.MaChiNhanh = branchid;
+                Config.config.apptoken = apptoken;
+                Config.config.usertoken = usetoken;
+                Config.WriteFile();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public static bool SaveApi(string reportapi, string updateapi)
+        {
+            try
+            {
+                Config.config.reportapi = reportapi;
+                Config.config.updateapi = updateapi;
+              
                 Config.WriteFile();
                 return true;
             }
@@ -94,6 +130,9 @@ namespace SNI
             {
                 using (var context = new ControllerModel())
                 {
+                    context.Database.Connection.Open();
+                    context.Database.Connection.Close();
+
                     return true;
                 }
             }
