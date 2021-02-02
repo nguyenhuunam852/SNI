@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SNI.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
@@ -98,8 +99,13 @@ namespace SNI
             {
                 try
                 {
-                    context.Database.CreateIfNotExists();   
-                    
+
+                    context.Database.CreateIfNotExists();
+                    if(!RoleController.checkRole())
+                    {
+                        RoleController.AddRoles();
+                    }
+                   
                     return true;
                 }
                 catch(Exception ex)

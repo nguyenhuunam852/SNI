@@ -63,8 +63,10 @@
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\MachineController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerHealth.cs" />
     <Compile Include="Models\CustomerMachine.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\Machines.cs" />
     <Compile Include="Models\Reports.cs" />
+    <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\StopMachine.cs" />
     <Compile Include="Models\Types.cs" />
     <Compile Include="Models\TypesReports.cs" />
@@ -112,6 +115,12 @@
     </Compile>
     <Compile Include="Views\FirstConfig\ActiveVariablesUC.Designer.cs">
       <DependentUpon>ActiveVariablesUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FirstConfig\AdminUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FirstConfig\AdminUser.Designer.cs">
+      <DependentUpon>AdminUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FirstConfig\ApiSettings.cs">
       <SubType>UserControl</SubType>
@@ -265,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FirstConfig\ActiveVariablesUC.resx">
       <DependentUpon>ActiveVariablesUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FirstConfig\AdminUser.resx">
+      <DependentUpon>AdminUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FirstConfig\ApiSettings.resx">
       <DependentUpon>ApiSettings.cs</DependentUpon>

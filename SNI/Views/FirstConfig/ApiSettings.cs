@@ -22,7 +22,10 @@ namespace SNI.Views.FirstConfig
             if(Config.SaveApi(report_api_txt.Text,update_api_txt.Text))
             {
                 MessageBox.Show("Lưu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                parent.Close();
+                AdminUser au = new AdminUser();
+                au.parent = parent;
+                Panel.Controls.Clear();
+                Panel.Controls.Add(au);
             }
             else
             {

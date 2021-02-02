@@ -23,5 +23,7 @@ namespace SNI
         public DbSet<Types> Types { get; set; }
         public DbSet<Reports> Reports { get; set; }
         public DbSet<TypesReports> TypesReports { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+
     }
 }
