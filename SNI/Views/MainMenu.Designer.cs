@@ -34,6 +34,8 @@
             this.quảnLíKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLíSứcKhỏeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.QL_Loai = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quảnLíUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtshowcustomer_find = new System.Windows.Forms.DataGridView();
@@ -74,7 +76,9 @@
             this.quảnLíGhếToolStripMenuItem,
             this.quảnLíKháchHàngToolStripMenuItem,
             this.quảnLíSứcKhỏeToolStripMenuItem,
-            this.QL_Loai});
+            this.QL_Loai,
+            this.settingsToolStripMenuItem,
+            this.quảnLíUsersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -108,6 +112,19 @@
             this.QL_Loai.Size = new System.Drawing.Size(82, 20);
             this.QL_Loai.Text = "Quản lí Loại";
             this.QL_Loai.Click += new System.EventHandler(this.QL_Loai_Click);
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // quảnLíUsersToolStripMenuItem
+            // 
+            this.quảnLíUsersToolStripMenuItem.Name = "quảnLíUsersToolStripMenuItem";
+            this.quảnLíUsersToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.quảnLíUsersToolStripMenuItem.Text = "Quản Lí Users";
+            this.quảnLíUsersToolStripMenuItem.Click += new System.EventHandler(this.quảnLíUsersToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -263,6 +280,7 @@
             this.Text = "SNI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainMenu_Load);
+            this.Leave += new System.EventHandler(this.MainMenu_Leave);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -296,6 +314,8 @@
         private System.Windows.Forms.Button bt_chotca;
         private System.Windows.Forms.Button bt_finish;
         private System.Windows.Forms.ToolStripMenuItem QL_Loai;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quảnLíUsersToolStripMenuItem;
     }
 }
 

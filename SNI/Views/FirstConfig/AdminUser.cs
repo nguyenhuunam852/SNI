@@ -18,7 +18,7 @@ namespace SNI.Views.FirstConfig
         public Form parent;
         private void accept_button_Click(object sender, EventArgs e)
         {
-            if(UserController.AddAdminUser(username_txt.Text, password_txt.Text, name_txt.Text, email_txt.Text, sdt_txt.Text))
+            if(UserController.AddUser(username_txt.Text, password_txt.Text, name_txt.Text, email_txt.Text, sdt_txt.Text,"Admin"))
             {
                 MessageBox.Show("Thành công!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 parent.Close();

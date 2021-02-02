@@ -257,6 +257,18 @@
     <Compile Include="Views\Type\TypeManage.Designer.cs">
       <DependentUpon>TypeManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\UserAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\User\UserAddForm.Designer.cs">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\UserManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\User\UserManage.Designer.cs">
+      <DependentUpon>UserManage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\Customer\AddCustomerForm.resx">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,6 +364,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Type\TypeManage.resx">
       <DependentUpon>TypeManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\User\UserAddForm.resx">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\User\UserManage.resx">
+      <DependentUpon>UserManage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />

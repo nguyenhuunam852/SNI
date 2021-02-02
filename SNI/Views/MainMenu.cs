@@ -287,10 +287,20 @@ namespace SNI
             }
             keycustomerText.Focus();
         }
+        public Form parent;
         private void MainMenu_Load(object sender, EventArgs e)
         {
-           
-            
+            this.FormClosed += MainMenu_FormClosed;
+            if(UserController.current.Roles.name=="Admin")
+            {
+                settingsToolStripMenuItem.Visible = true;
+                quảnLíUsersToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                settingsToolStripMenuItem.Visible = false;
+                quảnLíUsersToolStripMenuItem.Visible = false;
+            }
                 DateTime current = DateTime.Now;
                 var listnotcheck = HistoryController.CheckListNotCheck();
                 if (listnotcheck.Count > 0)
@@ -323,6 +333,12 @@ namespace SNI
             
            
         }
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            parent.Close();
+        }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)
@@ -571,6 +587,16 @@ namespace SNI
             fr.dt = DateTime.Now;
             fr.ShowDialog();
             
+        }
+
+        private void MainMenu_Leave(object sender, EventArgs e)
+        {
+            parent.Close();
+        }
+
+        private void quảnLíUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
