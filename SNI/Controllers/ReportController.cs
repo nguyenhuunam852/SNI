@@ -131,7 +131,7 @@ namespace SNI.Controllers
                                 count = test.Count();
                                 var tr = new SNI.Models.TypesReports
                                 {
-                                    Types = ty,
+                                    Types = context.Types.Where(o => o.typeid == ty.typeid).FirstOrDefault(),
                                     Reports = report,
                                     amounts = count,
                                     dayadd = DateTime.Now,
