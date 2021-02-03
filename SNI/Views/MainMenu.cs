@@ -268,7 +268,7 @@ namespace SNI
         }
         private void load()
         {
-           
+            MachineController.loadMachine();
             dtshowcustomer_find.DataSource = null;
             hidden_machine_id.Text = "";
             bt_finish.Enabled = false;
@@ -293,19 +293,18 @@ namespace SNI
             if (!Config.config.connectsuccess)
             {
                 DateTime current = DateTime.Now;
-                //for(int i=1;i<=30;i++)
-                //{
-                //    FinishReport fr = new FinishReport();
-                //    fr.dt = current.AddDays(-i);
-                //    if(fr.ShowDialog()==DialogResult.OK)
-                //    {
-                //        MessageBox.Show("Reports thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                //    else
-                //    {
-                //        this.Close();
-                //    }
-                //}
+                var listnotcheck = HistoryController.CheckListNotCheck();
+                if (listnotcheck.Count > 0)
+                {
+                    foreach(int[] list in listnotcheck)
+                    {
+                        DateTime a = new DateTime(list[2],list[1],list[0]);
+                        FinishReport finishForm = new FinishReport();
+                        finishForm.dt = a;
+                        finishForm.ShowDialog();
+                    }
+                }
+               
                 dtshowcustomer_find = Module.MydataGridView(dtshowcustomer_find);
                 scalewh = (double)643 / (double)panel1.Size.Height;
                 scaleww = (double)1039 / (double)panel1.Size.Width;
@@ -313,7 +312,7 @@ namespace SNI
                 scaleh = 1 * scalewh;
                 startSize = panel1.Size;
                 bt_chotca.Enabled = true;
-                MachineController.loadMachine();
+
                 load();
                 loadState();
                 Timer time = new Timer()

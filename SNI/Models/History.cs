@@ -21,6 +21,7 @@ namespace SNI.Models
         public Customers Customers { get; set; }
 
         public int activetime { get; set; }
+        public bool ischeck { get; set; }
         public DateTime daystart { get; set; }
 
 

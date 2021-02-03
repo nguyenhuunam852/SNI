@@ -8,6 +8,25 @@ namespace SNI.Controllers
 {
     class HistoryController
     {
+        public static List<int[]> CheckListNotCheck()
+        {
+            using (var context = new ControllerModel())
+            {
+                var getlist = context.Histories.Where(o => o.ischeck == false 
+                && (o.dayadd.Day!=DateTime.Now.Day
+                || o.dayadd.Month!=DateTime.Now.Month
+                || o.dayadd.Year!=DateTime.Now.Year)
+                ).Select(o => new { o.dayadd.Day, o.dayadd.Month, o.dayadd.Year }).Distinct().ToList();
+
+                List<int[]> htr = new List<int[]>();
+                foreach(var i in getlist)
+                {
+                    int[] array = new int[] { i.Day, i.Month, i.Year };
+                    htr.Add(array);
+                }
+                return htr;
+            }
+        }
         public static DataTable getHistorybyCustomerId(string id)
         {
             using (var context = new ControllerModel())

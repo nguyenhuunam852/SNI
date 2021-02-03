@@ -35,7 +35,7 @@ namespace SNI.Views.Service
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (ReportController.AddnewReport(DateTime.Now))
+            if (ReportController.AddnewReport(dt))
             {
                 this.DialogResult = DialogResult.OK;
             }
