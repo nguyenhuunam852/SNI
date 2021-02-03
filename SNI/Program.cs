@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using SNI.Views.Login;
 using SNI.Views.FirstConfig;
+using SNI.Controllers;
 namespace SNI
 {
     static class Program
@@ -17,13 +18,21 @@ namespace SNI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Config.ReadFile();
+            if(!UserController.countUser())
+            {
+                CommonForm cf = new CommonForm();
+                cf.signal = 1;
+                Application.Run(cf);
+            }
             if (Config.config.connectsuccess)
             {
                 Application.Run(new LoginForm());
             }
-            else
+            if (!Config.config.connectsuccess)
             {
-                Application.Run(new CommonForm());
+                CommonForm cf = new CommonForm();
+                cf.signal = 0;
+                Application.Run(cf);
             }
         }
     }

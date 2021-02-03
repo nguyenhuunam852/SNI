@@ -19,7 +19,7 @@ namespace SNI.Views.FirstConfig
         
         private void button1_Click(object sender, EventArgs e)
         {
-            Config.CreateConnect(servername_txt.Text, username_txt.Text, password_txt.Text, database_txt.Text);
+            Config.CreateConnect(servername_txt.Text, username_txt.Text, password_txt.Text, database_txt.Text,1);
             if (Config.testConnect())
             {
                 MessageBox.Show("Connect thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -35,6 +35,7 @@ namespace SNI.Views.FirstConfig
                 else
                 {
                     MessageBox.Show("Tạo Database Thất Bại", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
                 }
             }
             else

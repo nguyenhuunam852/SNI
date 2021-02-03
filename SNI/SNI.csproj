@@ -239,6 +239,12 @@
     <Compile Include="Views\Service\FinishReport.Designer.cs">
       <DependentUpon>FinishReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Setting\SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Setting\SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Type\AddTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -362,6 +368,9 @@
     <EmbeddedResource Include="Views\Service\FinishReport.resx">
       <DependentUpon>FinishReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Setting\SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Type\AddTypeForm.resx">
       <DependentUpon>AddTypeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -421,8 +430,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Setting\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

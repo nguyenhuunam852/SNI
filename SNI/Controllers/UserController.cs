@@ -97,7 +97,13 @@ namespace SNI.Controllers
             }
 
         }
-
+        public static bool countUser()
+        {
+            using (var context = new ControllerModel())
+            {
+                return context.Users.Include("Roles").Where(o => o.Roles.name == "Admin").Count() > 0;
+            }
+        }
         public static DataTable GetRemovedUser()
         {
             using (var context = new ControllerModel())

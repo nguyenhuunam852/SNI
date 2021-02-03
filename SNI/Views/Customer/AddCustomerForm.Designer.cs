@@ -86,6 +86,11 @@
             // tuoinumber
             // 
             this.tuoinumber.Location = new System.Drawing.Point(78, 123);
+            this.tuoinumber.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.tuoinumber.Name = "tuoinumber";
             this.tuoinumber.Size = new System.Drawing.Size(79, 20);
             this.tuoinumber.TabIndex = 3;

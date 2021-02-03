@@ -599,5 +599,12 @@ namespace SNI
             UserManage um = new UserManage();
             um.ShowDialog();
         }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Setting.SettingForm sf = new Views.Setting.SettingForm();
+            sf.parent = this;
+            sf.ShowDialog();
+        }
     }
 }

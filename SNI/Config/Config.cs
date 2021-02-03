@@ -115,13 +115,14 @@ namespace SNI
             }
         }
 
-        public static void CreateConnect(string servername, string username, string password,string database)
+        public static void CreateConnect(string servername, string username, string password,string database,int save)
         {
             Config.config.servername = servername;
             Config.config.username = username;
             Config.config.password = password;
             Config.config.database = database;
-            WriteFile();
+            if(save==1)
+             WriteFile();
            
             connect = String.Format(@"Data Source={0};Initial Catalog={1};User ID= {2};Password= {3}", servername,database,username,password);
         }

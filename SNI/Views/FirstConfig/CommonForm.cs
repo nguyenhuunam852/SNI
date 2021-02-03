@@ -15,12 +15,21 @@ namespace SNI.Views.FirstConfig
         {
             InitializeComponent();
         }
-
+        public int signal = 0;
         private void CommonForm_Load(object sender, EventArgs e)
         {
-            DatabaseConfig dtc = new DatabaseConfig();
-            dtc.parent = this;
-            panel1.Controls.Add(dtc);
+            if (signal == 0)
+            {
+                DatabaseConfig dtc = new DatabaseConfig();
+                dtc.parent = this;
+                panel1.Controls.Add(dtc);
+            }
+            else
+            {
+                AdminUser au = new AdminUser();
+                au.parent = this;
+                panel1.Controls.Add(au);
+            }
 
         }
     }
