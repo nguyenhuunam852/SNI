@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Config\Config.cs" />
     <Compile Include="Config\ControllerModel.cs" />
+    <Compile Include="Controllers\BackupController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
@@ -239,6 +240,12 @@
     <Compile Include="Views\Service\FinishReport.Designer.cs">
       <DependentUpon>FinishReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Setting\BackupFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Setting\BackupFile.Designer.cs">
+      <DependentUpon>BackupFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Setting\SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -367,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Service\FinishReport.resx">
       <DependentUpon>FinishReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Setting\BackupFile.resx">
+      <DependentUpon>BackupFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Setting\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>

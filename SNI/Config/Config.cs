@@ -24,6 +24,7 @@ namespace SNI
         public string usertoken;
         public string reportapi;
         public string updateapi;
+        public string defaultFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SNI");
 
 
         public DateTime reportstart;
@@ -45,6 +46,10 @@ namespace SNI
                 Config items = JsonConvert.DeserializeObject<Config>(json);
                 config = items;
                 connect = getconnect();
+                if(!Directory.Exists(config.defaultFolder))
+                {
+                    Directory.CreateDirectory(config.defaultFolder);
+                }
                 r.Close();
             }
         }

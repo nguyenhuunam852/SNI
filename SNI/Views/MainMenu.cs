@@ -606,5 +606,11 @@ namespace SNI
             sf.parent = this;
             sf.ShowDialog();
         }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.Setting.BackupFile bf = new Views.Setting.BackupFile();
+            bf.ShowDialog();
+        }
     }
 }
