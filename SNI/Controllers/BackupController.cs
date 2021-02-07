@@ -15,11 +15,12 @@ namespace SNI.Controllers
             if (a < 10) return "0" + a.ToString();
             return a.ToString();
         }
+        public static string defaultconnect;
         internal static string getbase(string v)
         {
             try
             {
-                SqlConnection con = new SqlConnection(Config.connect);
+                SqlConnection con = new SqlConnection(Config.masterconnect());
                 con.Open();
                 string path = Path.GetDirectoryName(v);
                 if (Directory.Exists(path) == true)
@@ -36,13 +37,41 @@ namespace SNI.Controllers
                 return null;
             }
         }
-        public static DataTable getDTB(string txtFileName, string txtFolder)
+        public static int RestoreDatabase(string text, string text1, string text2)
+        {
+            using (SqlConnection cn = new SqlConnection(Config.masterconnect()))
+            {
+                cn.Open();
+                string path = text2 + "\\" + text1;
+                string sql1 = "ALTER DATABASE " + text + " set offline with rollback immediate";
+                SqlCommand cmd1 = new SqlCommand(sql1, cn);
+                cmd1.ExecuteNonQuery();
+                string sql = "Restore database " + text + " from disk= N'" + path + "' WITH REPLACE";
+                SqlCommand cmd = new SqlCommand(sql, cn);
+                cmd.ExecuteNonQuery();
+                string sql2 = "ALTER DATABASE " + text + " set online";
+                SqlCommand cmd2 = new SqlCommand(sql2, cn);
+                return cmd2.ExecuteNonQuery();
+            }
+        }
+        public static int RestoreDatabase1(string text, string text1, string text2)
+        {
+            using (SqlConnection cn = new SqlConnection(Config.masterconnect()))
+            {
+                cn.Open();
+                string path = text2 + "\\" + text1;
+                string sql = "Restore database " + text + " from disk= N'" + path + "'";
+                SqlCommand cmd = new SqlCommand(sql, cn);
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        public  static DataTable getDTB(string txtFileName, string txtFolder)
         {
             try
             {
                 DataTable ds = new DataTable();
                 string path = txtFolder + "\\" + txtFileName;
-                SqlConnection con = new SqlConnection(Config.connect);
+                SqlConnection con = new SqlConnection(Config.masterconnect());
                 con.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = "restore filelistonly from disk= N'" + path + "'";

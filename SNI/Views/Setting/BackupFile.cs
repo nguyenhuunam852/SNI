@@ -17,7 +17,7 @@ namespace SNI.Views.Setting
         {
             InitializeComponent();
         }
-
+       
         private void button3_Click(object sender, EventArgs e)
         {
             textBox1.Text = Config.config.defaultFolder;
@@ -93,10 +93,13 @@ namespace SNI.Views.Setting
             dataGridView1 = Module.MydataGridView(dataGridView1);
             dataGridView1.DataSource = loadFile();
         }
+
         int s = 0;
+        string selected_file = "";
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string path = textBox1.Text;
+            selected_file = dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString();
             DataTable dtb = BackupController.getDTB(dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString(), path);
             string database = BackupController.getbase(dtb.Rows[0][1].ToString());
             if (database != null)
@@ -106,7 +109,30 @@ namespace SNI.Views.Setting
             }
             else
             {
+                txtDatabaseName.Text = "Database không tồn tại";
                 s = 2;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int ncheck = 0;
+            if (s == 1)
+            {
+                ncheck = BackupController.RestoreDatabase(Config.config.database,selected_file, textBox1.Text);
+            }
+            else
+            {
+                ncheck = BackupController.RestoreDatabase1("test",selected_file, textBox1.Text);
+            }
+            if (ncheck >= -1)
+            {
+                MessageBox.Show("Restore thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Restore thất bại", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

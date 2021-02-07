@@ -19,7 +19,7 @@ namespace SNI.Views.FirstConfig
         Panel Panel;
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Config.SaveBranch(branchid_txt.Text, apptoken.Text, usetoken.Text))
+            if (Config.SaveBranch(branchid_txt.Text))
             {
                 MessageBox.Show("Lưu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ApiSettings apis = new ApiSettings();

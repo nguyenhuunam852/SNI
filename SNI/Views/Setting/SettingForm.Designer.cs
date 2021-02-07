@@ -55,12 +55,12 @@
             this.branch_close = new System.Windows.Forms.Button();
             this.branch_save = new System.Windows.Forms.Button();
             this.branch_update = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.branchid_txt = new System.Windows.Forms.TextBox();
             this.apptoken = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.usetoken = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.branchid_txt = new System.Windows.Forms.TextBox();
             this.api_gb = new System.Windows.Forms.GroupBox();
             this.api_close = new System.Windows.Forms.Button();
             this.api_save = new System.Windows.Forms.Button();
@@ -69,6 +69,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.report_api_txt = new System.Windows.Forms.TextBox();
+            this.codeGroup_txt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.DataBase_gb.SuspendLayout();
             this.activetime_gb.SuspendLayout();
             this.branch_gb.SuspendLayout();
@@ -315,22 +317,18 @@
             this.branch_gb.Controls.Add(this.branch_close);
             this.branch_gb.Controls.Add(this.branch_save);
             this.branch_gb.Controls.Add(this.branch_update);
-            this.branch_gb.Controls.Add(this.apptoken);
-            this.branch_gb.Controls.Add(this.label8);
-            this.branch_gb.Controls.Add(this.usetoken);
-            this.branch_gb.Controls.Add(this.label9);
             this.branch_gb.Controls.Add(this.label10);
             this.branch_gb.Controls.Add(this.branchid_txt);
             this.branch_gb.Location = new System.Drawing.Point(305, 13);
             this.branch_gb.Name = "branch_gb";
-            this.branch_gb.Size = new System.Drawing.Size(314, 196);
+            this.branch_gb.Size = new System.Drawing.Size(314, 112);
             this.branch_gb.TabIndex = 2;
             this.branch_gb.TabStop = false;
             this.branch_gb.Text = "Branch Setting";
             // 
             // branch_close
             // 
-            this.branch_close.Location = new System.Drawing.Point(172, 159);
+            this.branch_close.Location = new System.Drawing.Point(161, 64);
             this.branch_close.Name = "branch_close";
             this.branch_close.Size = new System.Drawing.Size(75, 23);
             this.branch_close.TabIndex = 47;
@@ -340,7 +338,7 @@
             // 
             // branch_save
             // 
-            this.branch_save.Location = new System.Drawing.Point(91, 159);
+            this.branch_save.Location = new System.Drawing.Point(80, 64);
             this.branch_save.Name = "branch_save";
             this.branch_save.Size = new System.Drawing.Size(75, 23);
             this.branch_save.TabIndex = 46;
@@ -358,42 +356,10 @@
             this.branch_update.UseVisualStyleBackColor = true;
             this.branch_update.Click += new System.EventHandler(this.branch_update_Click);
             // 
-            // apptoken
-            // 
-            this.apptoken.Location = new System.Drawing.Point(93, 125);
-            this.apptoken.Name = "apptoken";
-            this.apptoken.Size = new System.Drawing.Size(211, 20);
-            this.apptoken.TabIndex = 41;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 132);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 13);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "AppToken";
-            // 
-            // usetoken
-            // 
-            this.usetoken.Location = new System.Drawing.Point(93, 88);
-            this.usetoken.Name = "usetoken";
-            this.usetoken.Size = new System.Drawing.Size(211, 20);
-            this.usetoken.TabIndex = 39;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 95);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 38;
-            this.label9.Text = "UseToken";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 54);
+            this.label10.Location = new System.Drawing.Point(10, 45);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 13);
             this.label10.TabIndex = 37;
@@ -401,30 +367,68 @@
             // 
             // branchid_txt
             // 
-            this.branchid_txt.Location = new System.Drawing.Point(93, 47);
+            this.branchid_txt.Location = new System.Drawing.Point(97, 38);
             this.branchid_txt.Name = "branchid_txt";
             this.branchid_txt.Size = new System.Drawing.Size(211, 20);
             this.branchid_txt.TabIndex = 36;
             // 
+            // apptoken
+            // 
+            this.apptoken.Location = new System.Drawing.Point(97, 171);
+            this.apptoken.Name = "apptoken";
+            this.apptoken.Size = new System.Drawing.Size(200, 20);
+            this.apptoken.TabIndex = 41;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 178);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 13);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "AppToken";
+            // 
+            // usetoken
+            // 
+            this.usetoken.Location = new System.Drawing.Point(97, 134);
+            this.usetoken.Name = "usetoken";
+            this.usetoken.Size = new System.Drawing.Size(200, 20);
+            this.usetoken.TabIndex = 39;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 141);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 13);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "UseToken";
+            // 
             // api_gb
             // 
+            this.api_gb.Controls.Add(this.codeGroup_txt);
+            this.api_gb.Controls.Add(this.label13);
             this.api_gb.Controls.Add(this.api_close);
             this.api_gb.Controls.Add(this.api_save);
             this.api_gb.Controls.Add(this.api_update);
+            this.api_gb.Controls.Add(this.apptoken);
             this.api_gb.Controls.Add(this.update_api_txt);
+            this.api_gb.Controls.Add(this.label8);
             this.api_gb.Controls.Add(this.label11);
+            this.api_gb.Controls.Add(this.usetoken);
+            this.api_gb.Controls.Add(this.label9);
             this.api_gb.Controls.Add(this.label12);
             this.api_gb.Controls.Add(this.report_api_txt);
-            this.api_gb.Location = new System.Drawing.Point(305, 215);
+            this.api_gb.Location = new System.Drawing.Point(305, 136);
             this.api_gb.Name = "api_gb";
-            this.api_gb.Size = new System.Drawing.Size(314, 167);
+            this.api_gb.Size = new System.Drawing.Size(314, 300);
             this.api_gb.TabIndex = 42;
             this.api_gb.TabStop = false;
             this.api_gb.Text = "Api Setting";
             // 
             // api_close
             // 
-            this.api_close.Location = new System.Drawing.Point(161, 128);
+            this.api_close.Location = new System.Drawing.Point(151, 251);
             this.api_close.Name = "api_close";
             this.api_close.Size = new System.Drawing.Size(75, 23);
             this.api_close.TabIndex = 55;
@@ -434,7 +438,7 @@
             // 
             // api_save
             // 
-            this.api_save.Location = new System.Drawing.Point(80, 128);
+            this.api_save.Location = new System.Drawing.Point(70, 251);
             this.api_save.Name = "api_save";
             this.api_save.Size = new System.Drawing.Size(75, 23);
             this.api_save.TabIndex = 54;
@@ -454,7 +458,7 @@
             // 
             // update_api_txt
             // 
-            this.update_api_txt.Location = new System.Drawing.Point(104, 89);
+            this.update_api_txt.Location = new System.Drawing.Point(97, 89);
             this.update_api_txt.Name = "update_api_txt";
             this.update_api_txt.Size = new System.Drawing.Size(200, 20);
             this.update_api_txt.TabIndex = 45;
@@ -479,10 +483,26 @@
             // 
             // report_api_txt
             // 
-            this.report_api_txt.Location = new System.Drawing.Point(104, 48);
+            this.report_api_txt.Location = new System.Drawing.Point(97, 49);
             this.report_api_txt.Name = "report_api_txt";
             this.report_api_txt.Size = new System.Drawing.Size(200, 20);
             this.report_api_txt.TabIndex = 42;
+            // 
+            // codeGroup_txt
+            // 
+            this.codeGroup_txt.Location = new System.Drawing.Point(97, 204);
+            this.codeGroup_txt.Name = "codeGroup_txt";
+            this.codeGroup_txt.Size = new System.Drawing.Size(200, 20);
+            this.codeGroup_txt.TabIndex = 57;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(14, 211);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 13);
+            this.label13.TabIndex = 56;
+            this.label13.Text = "Code Group";
             // 
             // SettingForm
             // 
@@ -553,5 +573,7 @@
         private System.Windows.Forms.Button api_close;
         private System.Windows.Forms.Button api_save;
         private System.Windows.Forms.Button api_update;
+        private System.Windows.Forms.TextBox codeGroup_txt;
+        private System.Windows.Forms.Label label13;
     }
 }

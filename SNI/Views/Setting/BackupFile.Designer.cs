@@ -33,7 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtDatabaseName = new System.Windows.Forms.TextBox();
+            this.txtDatabaseName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Khôi phục";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -86,9 +87,11 @@
             // 
             // txtDatabaseName
             // 
-            this.txtDatabaseName.Location = new System.Drawing.Point(13, 50);
+            this.txtDatabaseName.AutoSize = true;
+            this.txtDatabaseName.ForeColor = System.Drawing.Color.Red;
+            this.txtDatabaseName.Location = new System.Drawing.Point(12, 53);
             this.txtDatabaseName.Name = "txtDatabaseName";
-            this.txtDatabaseName.Size = new System.Drawing.Size(100, 20);
+            this.txtDatabaseName.Size = new System.Drawing.Size(0, 13);
             this.txtDatabaseName.TabIndex = 5;
             // 
             // BackupFile
@@ -118,6 +121,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox txtDatabaseName;
+        private System.Windows.Forms.Label txtDatabaseName;
     }
 }

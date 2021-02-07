@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using SNI.Views.Login;
 using SNI.Views.FirstConfig;
 using SNI.Controllers;
+using SNI.Views.Setting;
 namespace SNI
 {
     static class Program
@@ -18,21 +19,34 @@ namespace SNI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Config.ReadFile();
-            if(!UserController.countUser())
+            try
             {
-                CommonForm cf = new CommonForm();
-                cf.signal = 1;
-                Application.Run(cf);
+                using (var context = new ControllerModel())
+                {
+                    context.Database.Exists();
+                }
+                    if (!UserController.countUser())
+                    {
+                        CommonForm cf = new CommonForm();
+                        cf.signal = 1;
+                        Application.Run(cf);
+                    }
+                if (Config.config.connectsuccess)
+                {
+                    Application.Run(new LoginForm());
+                }
+                if (!Config.config.connectsuccess)
+                {
+                    CommonForm cf = new CommonForm();
+                    cf.signal = 0;
+                    Application.Run(cf);
+                }
             }
-            if (Config.config.connectsuccess)
+            catch(Exception ex)
             {
-                Application.Run(new LoginForm());
-            }
-            if (!Config.config.connectsuccess)
-            {
-                CommonForm cf = new CommonForm();
-                cf.signal = 0;
-                Application.Run(cf);
+                BackupFile buf = new BackupFile();
+                
+                buf.ShowDialog();
             }
         }
     }

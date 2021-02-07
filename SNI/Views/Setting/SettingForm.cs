@@ -48,8 +48,7 @@ namespace SNI.Views.Setting
             branch_save.Enabled = signal;
             branch_close.Enabled = signal;
             branchid_txt.Text = Config.config.MaChiNhanh;
-            usetoken.Text = Config.config.usertoken;
-            apptoken.Text = Config.config.apptoken;
+            
         }
         private void api_control(bool signal)
         {
@@ -66,6 +65,9 @@ namespace SNI.Views.Setting
 
             report_api_txt.Text = Config.config.reportapi;
             update_api_txt.Text = Config.config.updateapi;
+            usetoken.Text = Config.config.usertoken;
+            apptoken.Text = Config.config.apptoken;
+            codeGroup_txt.Text = Config.config.codeGroup;
         }
         private void active_time_control(bool signal)
         {
@@ -175,7 +177,7 @@ namespace SNI.Views.Setting
 
         private void branch_save_Click(object sender, EventArgs e)
         {
-            if (Config.SaveBranch(branchid_txt.Text, apptoken.Text, usetoken.Text))
+            if (Config.SaveBranch(branchid_txt.Text))
             {
                 MessageBox.Show("Lưu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -199,7 +201,7 @@ namespace SNI.Views.Setting
 
         private void api_save_Click(object sender, EventArgs e)
         {
-            if (Config.SaveApi(report_api_txt.Text, update_api_txt.Text))
+            if (Config.SaveApi(report_api_txt.Text, update_api_txt.Text, apptoken.Text, usetoken.Text, codeGroup_txt.Text))
             {
                 MessageBox.Show("Lưu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

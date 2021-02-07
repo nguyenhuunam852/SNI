@@ -19,7 +19,7 @@ namespace SNI.Views.FirstConfig
         Panel Panel;
         private void button1_Click(object sender, EventArgs e)
         {
-            if(Config.SaveApi(report_api_txt.Text,update_api_txt.Text))
+            if(Config.SaveApi(report_api_txt.Text,update_api_txt.Text, apptoken.Text, usetoken.Text,codeGroup_txt.Text))
             {
                 MessageBox.Show("Lưu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 AdminUser au = new AdminUser();

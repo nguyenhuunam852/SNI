@@ -24,6 +24,7 @@ namespace SNI
         public string usertoken;
         public string reportapi;
         public string updateapi;
+        public string codeGroup;
         public string defaultFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SNI");
 
 
@@ -68,13 +69,12 @@ namespace SNI
                 return false;
             }
         }
-        public static bool SaveBranch(string branchid,string apptoken,string usetoken)
+        public static bool SaveBranch(string branchid)
         {
             try
             {
                 Config.config.MaChiNhanh = branchid;
-                Config.config.apptoken = apptoken;
-                Config.config.usertoken = usetoken;
+             
                 Config.WriteFile();
                 return true;
             }
@@ -83,13 +83,17 @@ namespace SNI
                 return false;
             }
         }
-        public static bool SaveApi(string reportapi, string updateapi)
+        public static bool SaveApi(string reportapi, string updateapi, string apptoken, string usetoken,string codegroup)
         {
             try
             {
+                
                 Config.config.reportapi = reportapi;
                 Config.config.updateapi = updateapi;
-              
+                Config.config.apptoken = apptoken;
+                Config.config.usertoken = usetoken;
+                Config.config.codeGroup = codegroup;
+
                 Config.WriteFile();
                 return true;
             }
@@ -134,7 +138,10 @@ namespace SNI
         public static string getconnect()
         {
             return String.Format(@"Data Source={0};Initial Catalog={1};User ID= {2};Password= {3}", config.servername, config.database, config.username, config.password);
-
+        }
+        public static string masterconnect()
+        {
+            return String.Format(@"Data Source={0};Initial Catalog={1};User ID= {2};Password= {3}", config.servername,"master", config.username, config.password);
         }
         public static bool testConnect()
         {
