@@ -108,7 +108,6 @@ namespace SNI
             {
                 try
                 {
-
                     context.Database.CreateIfNotExists();
                     if(!RoleController.checkRole())
                     {

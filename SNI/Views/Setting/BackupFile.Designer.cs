@@ -52,7 +52,7 @@
             this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(12, 13);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(288, 20);
+            this.textBox1.Size = new System.Drawing.Size(226, 20);
             this.textBox1.TabIndex = 1;
             // 
             // button2
@@ -67,7 +67,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(307, 13);
+            this.button3.Location = new System.Drawing.Point(253, 10);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 3;
@@ -105,7 +105,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "BackupFile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BackupFile";
             this.Load += new System.EventHandler(this.BackupFile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

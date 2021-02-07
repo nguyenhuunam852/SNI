@@ -23,29 +23,38 @@ namespace SNI
             {
                 using (var context = new ControllerModel())
                 {
-                    context.Database.Exists();
-                }
-                    if (!UserController.countUser())
+
+                    if(context.Database.Exists())
                     {
-                        CommonForm cf = new CommonForm();
-                        cf.signal = 1;
-                        Application.Run(cf);
+                        if (Config.config.connectsuccess)
+                        {
+                            Application.Run(new LoginForm());
+                        }
+                        if (!Config.config.connectsuccess)
+                        {
+                            CommonForm cf = new CommonForm();
+                            cf.signal = 0;
+                            Application.Run(cf);
+                        }
+                        if (!UserController.countUser())
+                        {
+                            CommonForm cf = new CommonForm();
+                            cf.signal = 1;
+                            Application.Run(cf);
+                        }
+
                     }
-                if (Config.config.connectsuccess)
-                {
-                    Application.Run(new LoginForm());
+                    else
+                    {
+                        BackupFile buf = new BackupFile();
+                        buf.ShowDialog();
+                    }
                 }
-                if (!Config.config.connectsuccess)
-                {
-                    CommonForm cf = new CommonForm();
-                    cf.signal = 0;
-                    Application.Run(cf);
-                }
+              
             }
             catch(Exception ex)
             {
                 BackupFile buf = new BackupFile();
-                
                 buf.ShowDialog();
             }
         }

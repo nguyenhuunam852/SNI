@@ -117,17 +117,21 @@ namespace SNI.Views.Setting
         private void button2_Click(object sender, EventArgs e)
         {
             int ncheck = 0;
+            string database = "";
             if (s == 1)
             {
-                ncheck = BackupController.RestoreDatabase(Config.config.database,selected_file, textBox1.Text);
+                database = Config.config.database;
+                ncheck = BackupController.RestoreDatabase(database,selected_file, textBox1.Text);
             }
             else
             {
-                ncheck = BackupController.RestoreDatabase1("test",selected_file, textBox1.Text);
+                database = "test";
+                ncheck = BackupController.RestoreDatabase1(database, selected_file, textBox1.Text);
             }
             if (ncheck >= -1)
             {
                 MessageBox.Show("Restore thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Config.config.database = database;
                 this.Close();
             }
             else

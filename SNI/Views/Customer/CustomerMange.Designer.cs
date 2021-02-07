@@ -321,6 +321,11 @@
             // tuoinumbertext
             // 
             this.tuoinumbertext.Location = new System.Drawing.Point(93, 147);
+            this.tuoinumbertext.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.tuoinumbertext.Name = "tuoinumbertext";
             this.tuoinumbertext.Size = new System.Drawing.Size(61, 20);
             this.tuoinumbertext.TabIndex = 63;
