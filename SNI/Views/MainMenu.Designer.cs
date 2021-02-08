@@ -37,6 +37,7 @@
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLíUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thốngKêVàLịchSửToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtshowcustomer_find = new System.Windows.Forms.DataGridView();
@@ -80,7 +81,8 @@
             this.QL_Loai,
             this.settingsToolStripMenuItem,
             this.quảnLíUsersToolStripMenuItem,
-            this.backupToolStripMenuItem});
+            this.backupToolStripMenuItem,
+            this.thốngKêVàLịchSửToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -135,6 +137,13 @@
             this.backupToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.backupToolStripMenuItem.Text = "Backup";
             this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
+            // 
+            // thốngKêVàLịchSửToolStripMenuItem
+            // 
+            this.thốngKêVàLịchSửToolStripMenuItem.Name = "thốngKêVàLịchSửToolStripMenuItem";
+            this.thốngKêVàLịchSửToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
+            this.thốngKêVàLịchSửToolStripMenuItem.Text = "Thống Kê và Lịch Sử";
+            this.thốngKêVàLịchSửToolStripMenuItem.Click += new System.EventHandler(this.thốngKêVàLịchSửToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -327,6 +336,7 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLíUsersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thốngKêVàLịchSửToolStripMenuItem;
     }
 }
 

@@ -8,6 +8,24 @@ namespace SNI.Controllers
 {
     class HistoryController
     {
+        public static DataTable GetListHistoryinDay(DateTime dt)
+        {
+            using (var context = new ControllerModel())
+            {
+                DataTable dtb = new DataTable();
+                List<History> lh = context.Histories.Include("Customers").Include("Machines").Where(o => o.daystart == dt).ToList();
+                foreach(History h in lh)
+                {
+                    DataRow dtr = dtb.NewRow();
+                    dtr["Tên Khách Hàng"] = h.Customers.name;
+                    dtr["Tên Máy"] = h.Machines.name;
+                    int minute = h.activetime / 60;
+                    int secone = h.activetime - minute * 60;
+                    dtr["Thời gian hoạt động"] = minute.ToString() + ":" + secone.ToString();
+                }
+                return dtb;
+            }
+        }
         public static List<int[]> CheckListNotCheck()
         {
             using (var context = new ControllerModel())

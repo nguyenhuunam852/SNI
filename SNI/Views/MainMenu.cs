@@ -612,5 +612,10 @@ namespace SNI
             Views.Setting.BackupFile bf = new Views.Setting.BackupFile();
             bf.ShowDialog();
         }
+
+        private void thốngKêVàLịchSửToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
