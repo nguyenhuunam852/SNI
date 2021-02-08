@@ -37,11 +37,15 @@ namespace SNI
         public static void WriteFile()
         {
             string json = JsonConvert.SerializeObject(config);
-            System.IO.File.WriteAllText("config.json", json);
+            System.IO.File.WriteAllText(config.defaultFolder+@"\config.json", json);
         }
         public static void ReadFile()
         {
-            if (File.Exists("config.json") && new FileInfo("config.json").Length > 0)
+            if (!Directory.Exists(config.defaultFolder))
+            {
+                Directory.CreateDirectory(config.defaultFolder);
+            }
+            if (File.Exists(config.defaultFolder+@"\config.json") && new FileInfo(config.defaultFolder+@"\config.json").Length > 0)
             {
                 using (StreamReader r = new StreamReader("config.json"))
                 {
@@ -49,16 +53,12 @@ namespace SNI
                     Config items = JsonConvert.DeserializeObject<Config>(json);
                     config = items;
                     connect = getconnect();
-                    if (!Directory.Exists(config.defaultFolder))
-                    {
-                        Directory.CreateDirectory(config.defaultFolder);
-                    }
                     r.Close();
                 }
             }
             else
             {
-                File.Create("config.json").Close();
+                File.Create(config.defaultFolder + @"\config.json").Close();
                 config = new Config();
                 config.MaChiNhanh = "";
                 config.password = "";

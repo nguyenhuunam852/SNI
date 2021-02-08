@@ -15,14 +15,8 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_08E335E2BC85472A9D72125A9EBC7100"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2F7304EAE91CED0856A4792F0DC40547"
-        "OwnerKey" = "8:_859B55961BD441D5B08D04A4E1A42A43"
+        "OwnerKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -34,19 +28,19 @@
         "Entry"
         {
         "MsmKey" = "8:_304CF0FF079E739337177FFB34125FD5"
-        "OwnerKey" = "8:_859B55961BD441D5B08D04A4E1A42A43"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_859B55961BD441D5B08D04A4E1A42A43"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AD764EE867C08A771790EB16212849A1"
-        "OwnerKey" = "8:_859B55961BD441D5B08D04A4E1A42A43"
+        "OwnerKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,7 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_859B55961BD441D5B08D04A4E1A42A43"
+        "OwnerKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -91,6 +85,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -107,6 +117,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -136,26 +162,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_08E335E2BC85472A9D72125A9EBC7100"
-            {
-            "SourcePath" = "8:..\\SNI\\bin\\Debug\\config.json"
-            "TargetName" = "8:config.json"
-            "Tag" = "8:"
-            "Folder" = "8:_E1B42083E30A4BC2952BC46F32E1080B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2F7304EAE91CED0856A4792F0DC40547"
             {
             "AssemblyRegister" = "3:1"
@@ -306,7 +312,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SNI_setup"
         "ProductCode" = "8:{B3726B13-804E-4F9C-ADAF-B8D45BA1A907}"
-        "PackageCode" = "8:{CE4E2962-D89A-4F61-87D6-3A92AFBCB292}"
+        "PackageCode" = "8:{D2C4AD60-F763-45E9-BB89-12E4A8B73571}"
         "UpgradeCode" = "8:{4ABB7BC3-B9CE-43C0-8AE4-6B1076A0E309}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -314,12 +320,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:SNI"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:SNI_setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:SNI"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -426,20 +432,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C302F6D8455049748116F726D0E76DC9"
-            {
-            "Name" = "8:SNI"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_859B55961BD441D5B08D04A4E1A42A43"
-            "Folder" = "8:_2CFBBE91E2AB4DC2A675F023BF821B7F"
-            "WorkingFolder" = "8:_E1B42083E30A4BC2952BC46F32E1080B"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -839,7 +831,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_859B55961BD441D5B08D04A4E1A42A43"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C371D6FD1D134072987F0ECC72C600FA"
             {
             "SourcePath" = "8:..\\SNI\\obj\\Release\\SNI.exe"
             "TargetName" = "8:"
