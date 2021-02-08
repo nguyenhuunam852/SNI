@@ -621,6 +621,7 @@ namespace SNI
         private void lịchSửToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Views.History.HistoryForm hf = new Views.History.HistoryForm();
+            hf.dt = DateTime.Now;
             hf.ShowDialog();
         }
 

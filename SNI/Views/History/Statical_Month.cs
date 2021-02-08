@@ -20,7 +20,10 @@ namespace SNI.Views.History
         private void ChangeChart(int month,int year)
         {
             dtb = SNI.Controllers.ReportController.getStaticalinMonth(month, year);
-           
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
             foreach (DataRow dtr in dtb.Rows)
             {
                 chart1.Series["KH hoạt động"].Points.AddXY(dtr["Ngày"].ToString(),int.Parse(dtr["Khách hàng trong ngày"].ToString()));
@@ -43,9 +46,6 @@ namespace SNI.Views.History
             comboBox2.SelectedValue = DateTime.Now.Year.ToString();
             comboBox1.SelectedValue = DateTime.Now.Month.ToString();
 
-            ChangeChart(DateTime.Now.Month,DateTime.Now.Year);
-          
-          
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -71,6 +71,38 @@ namespace SNI.Views.History
                     {
                         MessageBox.Show("Test", "");
                     }
+                }
+            }
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Items.Count > 0 && comboBox2.Items.Count > 0)
+            {
+                try
+                {
+                    int year = int.Parse(comboBox2.SelectedValue.ToString());
+                    int month = int.Parse(comboBox1.SelectedValue.ToString());
+                    ChangeChart(month, year);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Items.Count > 0 && comboBox2.Items.Count > 0 )
+            {
+                try
+                {
+                    int year = int.Parse(comboBox2.SelectedValue.ToString());
+                    int month = int.Parse(comboBox1.SelectedValue.ToString());
+                    ChangeChart(month, year);
+                }
+                catch(Exception ex)
+                { 
                 }
             }
         }

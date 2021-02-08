@@ -15,7 +15,7 @@ namespace SNI.Views.History
         {
             InitializeComponent();
         }
-
+        public DateTime dt;
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
 
@@ -32,7 +32,8 @@ namespace SNI.Views.History
         private void HistoryForm_Load(object sender, EventArgs e)
         {
             dataGridView1 = Module.MydataGridView(dataGridView1);
-            label1.Text = Module.addzero(monthCalendar1.SelectionStart.Day) + "/" + Module.addzero(monthCalendar1.SelectionStart.Month)+"/" + monthCalendar1.SelectionStart.Year.ToString();
+            monthCalendar1.SelectionStart = dt;
+            label1.Text = Module.addzero(dt.Day) + "/" + Module.addzero(dt.Month)+"/" + dt.Year.ToString();
             dataGridView1.DataSource = SNI.Controllers.HistoryController.GetListHistoryinDay(monthCalendar1.SelectionStart);
         }
     }
