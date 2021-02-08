@@ -61,28 +61,18 @@ namespace SNI.Views.History
 
         private void chart1_MouseClick(object sender, MouseEventArgs e)
         {
-            var pos = e.Location;
-            var results = chart1.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint);
-            foreach (var result in results)
-            {
-                if (result.ChartElementType == ChartElementType.DataPoint)
-                {
-                    if (result.Series.Points[result.PointIndex].AxisLabel == "1")
-                    {
-                        MessageBox.Show("Test", "");
-                    }
-                }
-            }
+           
         }
-
+        int year;
+        int month;
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             if (comboBox1.Items.Count > 0 && comboBox2.Items.Count > 0)
             {
                 try
                 {
-                    int year = int.Parse(comboBox2.SelectedValue.ToString());
-                    int month = int.Parse(comboBox1.SelectedValue.ToString());
+                    year = int.Parse(comboBox2.SelectedValue.ToString());
+                    month = int.Parse(comboBox1.SelectedValue.ToString());
                     ChangeChart(month, year);
                 }
                 catch (Exception ex)
@@ -97,12 +87,29 @@ namespace SNI.Views.History
             {
                 try
                 {
-                    int year = int.Parse(comboBox2.SelectedValue.ToString());
-                    int month = int.Parse(comboBox1.SelectedValue.ToString());
+                    year = int.Parse(comboBox2.SelectedValue.ToString());
+                    month = int.Parse(comboBox1.SelectedValue.ToString());
                     ChangeChart(month, year);
                 }
                 catch(Exception ex)
                 { 
+                }
+            }
+        }
+
+        private void chart1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var pos = e.Location;
+            var results = chart1.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint);
+            foreach (var result in results)
+            {
+                if (result.ChartElementType == ChartElementType.DataPoint)
+                {
+                    int day = int.Parse(result.Series.Points[result.PointIndex].AxisLabel);
+                    DateTime date = new DateTime(year, month, day);
+                    HistoryForm hf = new HistoryForm();
+                    hf.dt = date;
+                    hf.ShowDialog();
                 }
             }
         }

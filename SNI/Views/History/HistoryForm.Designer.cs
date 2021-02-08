@@ -32,6 +32,10 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.amount_lb = new System.Windows.Forms.Label();
+            this.new_lb = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -75,16 +79,62 @@
             this.dataGridView2.Size = new System.Drawing.Size(183, 289);
             this.dataGridView2.TabIndex = 3;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(321, 218);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 22);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "KH trong ngày:";
+            // 
+            // amount_lb
+            // 
+            this.amount_lb.AutoSize = true;
+            this.amount_lb.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amount_lb.Location = new System.Drawing.Point(463, 218);
+            this.amount_lb.Name = "amount_lb";
+            this.amount_lb.Size = new System.Drawing.Size(40, 22);
+            this.amount_lb.TabIndex = 5;
+            this.amount_lb.Text = "###";
+            // 
+            // new_lb
+            // 
+            this.new_lb.AutoSize = true;
+            this.new_lb.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.new_lb.Location = new System.Drawing.Point(463, 252);
+            this.new_lb.Name = "new_lb";
+            this.new_lb.Size = new System.Drawing.Size(40, 22);
+            this.new_lb.TabIndex = 7;
+            this.new_lb.Text = "###";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(321, 252);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 22);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "KH mới:";
+            // 
             // HistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 451);
+            this.Controls.Add(this.new_lb);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.amount_lb);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.monthCalendar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "HistoryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HistoryForm";
             this.Load += new System.EventHandler(this.HistoryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -100,5 +150,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label amount_lb;
+        private System.Windows.Forms.Label new_lb;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -217,5 +217,36 @@ namespace SNI.Controllers
             }
             return dtb;
         }
+        public static DataTable getTypeamountbyDay(DateTime dt)
+        {
+           
+            DataTable dtb = new DataTable();
+            dtb.Columns.Add("Loại");
+            dtb.Columns.Add("Số lượng");
+            using (var context = new ControllerModel())
+            {
+                var listtype = context.TypesReports.Include("Reports").Include("Types").Where(o => o.Reports.datereport.Day == dt.Day
+                && o.Reports.datereport.Month == dt.Month
+                && o.Reports.datereport.Year == dt.Year).ToList();
+                foreach(TypesReports tr in listtype)
+                {
+                    DataRow dtr = dtb.NewRow();
+                    dtr["Loại"] = tr.Types.name;
+                    dtr["Số lượng"] = tr.amounts.ToString();
+                    dtb.Rows.Add(dtr);
+                }
+            }
+            return dtb;
+        }
+        public static Reports getReportbyDay(DateTime dt)
+        {
+            using (var context = new ControllerModel())
+            {
+                return context.Reports.Where(o => o.datereport.Day == dt.Day
+                && o.datereport.Month == dt.Month
+                && o.datereport.Year == dt.Year).FirstOrDefault();
+            }
+        }
+
     }
 }

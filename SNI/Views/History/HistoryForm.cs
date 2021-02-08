@@ -27,14 +27,28 @@ namespace SNI.Views.History
             label1.Text = Module.addzero(a.Day) + "/" + Module.addzero(a.Month) + "/" + a.Year.ToString();
             DataTable dtb = SNI.Controllers.HistoryController.GetListHistoryinDay(a);
             dataGridView1.DataSource = dtb;
+            dataGridView2.DataSource = SNI.Controllers.ReportController.getTypeamountbyDay(a);
+
+            Models.Reports rp = Controllers.ReportController.getReportbyDay(a);
+            amount_lb.Text = rp.amountofactivecustomer.ToString();
+            new_lb.Text = rp.amountofnewcustomer.ToString();
         }
 
         private void HistoryForm_Load(object sender, EventArgs e)
         {
+            dataGridView2 = Module.MydataGridView(dataGridView2);
             dataGridView1 = Module.MydataGridView(dataGridView1);
+
             monthCalendar1.SelectionStart = dt;
             label1.Text = Module.addzero(dt.Day) + "/" + Module.addzero(dt.Month)+"/" + dt.Year.ToString();
+            Models.Reports rp = Controllers.ReportController.getReportbyDay(dt);
+            amount_lb.Text = rp.amountofactivecustomer.ToString();
+            new_lb.Text = rp.amountofnewcustomer.ToString();
+
+
             dataGridView1.DataSource = SNI.Controllers.HistoryController.GetListHistoryinDay(monthCalendar1.SelectionStart);
+            dataGridView2.DataSource = SNI.Controllers.ReportController.getTypeamountbyDay(dt);
+
         }
     }
 }
