@@ -10,6 +10,11 @@ namespace SNI.Views
 {
     class Module
     {
+        public static string addzero(int a)
+        {
+            if (a < 10) return "0" + a.ToString();
+            return a.ToString();
+        }
         public static ComboBox loadComboBox(ComboBox gioitinhcbbox)
         {
             DataTable dt = new DataTable();

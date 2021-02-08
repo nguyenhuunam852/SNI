@@ -20,17 +20,20 @@ namespace SNI.Views.History
         {
 
         }
-
+      
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
             DateTime a = e.Start;
-            dataGridView1.DataSource = SNI.Controllers.HistoryController.GetListHistoryinDay(a);
+            label1.Text = Module.addzero(a.Day) + "/" + Module.addzero(a.Month) + "/" + a.Year.ToString();
+            DataTable dtb = SNI.Controllers.HistoryController.GetListHistoryinDay(a);
+            dataGridView1.DataSource = dtb;
         }
 
         private void HistoryForm_Load(object sender, EventArgs e)
         {
             dataGridView1 = Module.MydataGridView(dataGridView1);
-
+            label1.Text = Module.addzero(monthCalendar1.SelectionStart.Day) + "/" + Module.addzero(monthCalendar1.SelectionStart.Month)+"/" + monthCalendar1.SelectionStart.Year.ToString();
+            dataGridView1.DataSource = SNI.Controllers.HistoryController.GetListHistoryinDay(monthCalendar1.SelectionStart);
         }
     }
 }

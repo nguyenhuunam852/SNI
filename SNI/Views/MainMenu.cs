@@ -615,7 +615,8 @@ namespace SNI
 
         private void thốngKêVàLịchSửToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Views.History.HistoryForm hf = new Views.History.HistoryForm();
+            hf.ShowDialog();
         }
     }
 }
