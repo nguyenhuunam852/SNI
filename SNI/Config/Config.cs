@@ -41,17 +41,42 @@ namespace SNI
         }
         public static void ReadFile()
         {
-            using (StreamReader r = new StreamReader("config.json"))
+            if (File.Exists("config.json") && new FileInfo("config.json").Length > 0)
             {
-                string json = r.ReadToEnd();
-                Config items = JsonConvert.DeserializeObject<Config>(json);
-                config = items;
-                connect = getconnect();
-                if(!Directory.Exists(config.defaultFolder))
+                using (StreamReader r = new StreamReader("config.json"))
                 {
-                    Directory.CreateDirectory(config.defaultFolder);
+                    string json = r.ReadToEnd();
+                    Config items = JsonConvert.DeserializeObject<Config>(json);
+                    config = items;
+                    connect = getconnect();
+                    if (!Directory.Exists(config.defaultFolder))
+                    {
+                        Directory.CreateDirectory(config.defaultFolder);
+                    }
+                    r.Close();
                 }
-                r.Close();
+            }
+            else
+            {
+                File.Create("config.json").Close();
+                config = new Config();
+                config.MaChiNhanh = "";
+                config.password = "";
+                config.reportapi = "";
+                config.reportfinish = DateTime.Now;
+                config.reportstart = DateTime.Now;
+                config.servername = "";
+                config.updateapi = "";
+                config.username = "";
+                config.usertoken = "";
+                config.workingtime = 0;
+                config.defaultFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SNI"); ;
+                config.database = "";
+                config.connectsuccess = false;
+                config.codeGroup = "";
+                config.apptoken = "";
+                WriteFile();
+                ReadFile();
             }
         }
         public static bool SaveTime(string[] list,DateTime a,DateTime b)

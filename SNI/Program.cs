@@ -21,39 +21,39 @@ namespace SNI
             Config.ReadFile();
             try
             {
-                using (var context = new ControllerModel())
+                if (!Config.config.connectsuccess)
                 {
-
-                    if(context.Database.Exists())
-                    {
-                        if (Config.config.connectsuccess)
-                        {
-                            Application.Run(new LoginForm());
-                        }
-                        if (!Config.config.connectsuccess)
-                        {
-                            CommonForm cf = new CommonForm();
-                            cf.signal = 0;
-                            Application.Run(cf);
-                        }
-                        if (!UserController.countUser())
-                        {
-                            CommonForm cf = new CommonForm();
-                            cf.signal = 1;
-                            Application.Run(cf);
-                        }
-
-                    }
-                    else
-                    {
-                        BackupFile buf = new BackupFile();
-                        buf.ShowDialog();
-                    }
+                    CommonForm cf = new CommonForm();
+                    cf.signal = 0;
+                    Application.Run(cf);
                 }
-              
+                else if (Config.config.connectsuccess)
+                {
+                    using (var context = new ControllerModel())
+                    {
+                        if (context.Database.Exists())
+                        {
+                            if (!UserController.countUser())
+                            {
+                                CommonForm cf = new CommonForm();
+                                cf.signal = 1;
+                                Application.Run(cf);
+                            }
+
+                        }
+                        else
+                        {
+                            BackupFile buf = new BackupFile();
+                            buf.ShowDialog();
+                        }
+                    }
+
+                    Application.Run(new LoginForm());
+                }
             }
             catch(Exception ex)
             {
+                Console.Write(ex);
                 BackupFile buf = new BackupFile();
                 buf.ShowDialog();
             }
