@@ -31,6 +31,9 @@ namespace SNI.Views.Setting
         private void UpdaterForm_Load(object sender, EventArgs e)
         {
             downloadfile(Updater.ready[0]);
+            dtb.Columns.Add("File cật nhật");
+            dtb.Columns.Add("File lưu tạm thời");
+            dataGridView1 = Module.MydataGridView(dataGridView1);
         }
 
         private void downloadfile(XMLreader xMLreader)

@@ -16,7 +16,7 @@ namespace SNI.Config
         {
             try
             {
-                Uri uri = new Uri(api + "/update.xml");
+                Uri uri = new Uri(FileConfig.config.updateapi + "/update.xml");
                 List<XMLreader> xmlreader = XMLreader.Parse(uri);
                 List<LocalSystemCheck> local = LocalSystemCheck.getListFile();
 

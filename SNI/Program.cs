@@ -24,19 +24,26 @@ namespace SNI
             FileConfig.ReadFile();
             try
             {
-                if (FileConfig.config.updateapi != "test")
+                try
                 {
-                    Updater.checkversion();
-                    if (Updater.api.Count() > 0)
+                    if (FileConfig.config.updateapi != "")
                     {
-                        DialogResult dlr = MessageBox.Show("Sẵn sàng cho cật nhập", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                        if (dlr == DialogResult.OK)
+                        Updater.checkversion();
+                        if (Updater.ready.Count() > 0)
                         {
-                            UpdaterForm upd = new UpdaterForm();
-                            upd.ShowDialog();
-                            return;
+                            DialogResult dlr = MessageBox.Show("Sẵn sàng cho cật nhập", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                            if (dlr == DialogResult.OK)
+                            {
+                                UpdaterForm upd = new UpdaterForm();
+                                upd.ShowDialog();
+                                return;
+                            }
                         }
                     }
+                }
+                catch(Exception ex)
+                {
+
                 }
                 
                 if (!FileConfig.config.connectsuccess)
