@@ -16,7 +16,7 @@
         "Entry"
         {
         "MsmKey" = "8:_2F7304EAE91CED0856A4792F0DC40547"
-        "OwnerKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
+        "OwnerKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -28,19 +28,19 @@
         "Entry"
         {
         "MsmKey" = "8:_304CF0FF079E739337177FFB34125FD5"
-        "OwnerKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
+        "OwnerKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AD764EE867C08A771790EB16212849A1"
-        "OwnerKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,7 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C371D6FD1D134072987F0ECC72C600FA"
+        "OwnerKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -312,7 +312,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SNI_setup"
         "ProductCode" = "8:{B3726B13-804E-4F9C-ADAF-B8D45BA1A907}"
-        "PackageCode" = "8:{D2C4AD60-F763-45E9-BB89-12E4A8B73571}"
+        "PackageCode" = "8:{67895911-CF31-496D-A3C1-BEC93FD94A8C}"
         "UpgradeCode" = "8:{4ABB7BC3-B9CE-43C0-8AE4-6B1076A0E309}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -831,7 +831,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C371D6FD1D134072987F0ECC72C600FA"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5355F97B7D55417DBD06C20187B5BC27"
             {
             "SourcePath" = "8:..\\SNI\\obj\\Release\\SNI.exe"
             "TargetName" = "8:"

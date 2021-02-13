@@ -41,13 +41,14 @@ namespace SNI
         }
         public static void ReadFile()
         {
+            config = new Config();
             if (!Directory.Exists(config.defaultFolder))
             {
                 Directory.CreateDirectory(config.defaultFolder);
             }
             if (File.Exists(config.defaultFolder+@"\config.json") && new FileInfo(config.defaultFolder+@"\config.json").Length > 0)
             {
-                using (StreamReader r = new StreamReader("config.json"))
+                using (StreamReader r = new StreamReader(config.defaultFolder + @"\config.json"))
                 {
                     string json = r.ReadToEnd();
                     Config items = JsonConvert.DeserializeObject<Config>(json);
@@ -59,7 +60,7 @@ namespace SNI
             else
             {
                 File.Create(config.defaultFolder + @"\config.json").Close();
-                config = new Config();
+                
                 config.MaChiNhanh = "";
                 config.password = "";
                 config.reportapi = "";
@@ -70,7 +71,6 @@ namespace SNI
                 config.username = "";
                 config.usertoken = "";
                 config.workingtime = 0;
-                config.defaultFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SNI"); ;
                 config.database = "";
                 config.connectsuccess = false;
                 config.codeGroup = "";

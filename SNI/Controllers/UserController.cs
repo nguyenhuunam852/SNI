@@ -15,6 +15,8 @@ namespace SNI.Controllers
             {
                 try
                 {
+                    var getuser = context.Users.Include("Roles").Where(o => o.Roles.name=="Admin");
+                    context.Users.RemoveRange(getuser);
                     var User = new Users
                     {
                         username = username,
