@@ -6,10 +6,13 @@ using SNI.Views.Login;
 using SNI.Views.FirstConfig;
 using SNI.Controllers;
 using SNI.Views.Setting;
+using SNI.Config;
+
 namespace SNI
 {
     static class Program
     {
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -18,16 +21,31 @@ namespace SNI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Config.ReadFile();
+            FileConfig.ReadFile();
             try
             {
-                if (!Config.config.connectsuccess)
+                if (FileConfig.config.updateapi != "test")
+                {
+                    Updater.checkversion();
+                    if (Updater.api.Count() > 0)
+                    {
+                        DialogResult dlr = MessageBox.Show("Sẵn sàng cho cật nhập", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                        if (dlr == DialogResult.OK)
+                        {
+                            UpdaterForm upd = new UpdaterForm();
+                            upd.ShowDialog();
+                            return;
+                        }
+                    }
+                }
+                
+                if (!FileConfig.config.connectsuccess)
                 {
                     CommonForm cf = new CommonForm();
                     cf.signal = 0;
                     Application.Run(cf);
                 }
-                else if (Config.config.connectsuccess)
+                else if (FileConfig.config.connectsuccess)
                 {
                     using (var context = new ControllerModel())
                     {

@@ -23,7 +23,7 @@ namespace SNI.Views.Customer
         {
 
             this.Controls.SetChildIndex(suckhoetext, 0);
-            idlabel.Text = Config.config.MaChiNhanh + RandomString(4);
+            idlabel.Text = FileConfig.config.MaChiNhanh + RandomString(4);
             gioitinhcbbox = Module.loadComboBox(gioitinhcbbox);
             loaiCombobox = Module.LoadComboboxLoai(loaiCombobox);
             //LoadDataGridView();

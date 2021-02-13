@@ -80,7 +80,7 @@ namespace SNI
                         TimeSpan datesub = convertInttoDateTime(intsub);
                         lb.Text = addZero(datesub.Hours)+":" +addZero(datesub.Minutes)+":"+addZero(datesub.Seconds);
                         lb.BackColor = Color.LightGreen;
-                        if (datesub.Hours*3600+datesub.Minutes*60+datesub.Seconds>=Config.config.workingtime)
+                        if (datesub.Hours*3600+datesub.Minutes*60+datesub.Seconds>= FileConfig.config.workingtime)
                         {
                             lb.Text = "Hết giờ";
                             lb.BackColor = Color.Red;
@@ -241,7 +241,7 @@ namespace SNI
             }
             else
             {
-                ff.time = Config.config.workingtime;
+                ff.time = FileConfig.config.workingtime;
                 if (ff.ShowDialog() == DialogResult.OK)
                 {
                     load();
@@ -369,7 +369,7 @@ namespace SNI
                 int mm = Convert.ToInt32(time[1]);
                 int ss = Convert.ToInt32(time[2]);
 
-                if (hh * 3600 + mm * 60 + ss == Config.config.workingtime)
+                if (hh * 3600 + mm * 60 + ss == FileConfig.config.workingtime)
                 {
                     lb.Text = "Hết giờ";
                     lb.BackColor = Color.Red;

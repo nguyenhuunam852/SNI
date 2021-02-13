@@ -10,9 +10,9 @@ using System.Text;
 
 namespace SNI
 {
-    class Config
+    class FileConfig
     {
-        public static Config config;
+        public static FileConfig config;
 
         public string MaChiNhanh;
         public int workingtime;
@@ -41,7 +41,7 @@ namespace SNI
         }
         public static void ReadFile()
         {
-            config = new Config();
+            config = new FileConfig();
             if (!Directory.Exists(config.defaultFolder))
             {
                 Directory.CreateDirectory(config.defaultFolder);
@@ -51,7 +51,7 @@ namespace SNI
                 using (StreamReader r = new StreamReader(config.defaultFolder + @"\config.json"))
                 {
                     string json = r.ReadToEnd();
-                    Config items = JsonConvert.DeserializeObject<Config>(json);
+                    FileConfig items = JsonConvert.DeserializeObject<FileConfig>(json);
                     config = items;
                     connect = getconnect();
                     r.Close();
@@ -83,10 +83,10 @@ namespace SNI
         {
             try
             {
-                Config.config.workingtime = int.Parse(list[0]) * 60 + int.Parse(list[1]);
-                Config.config.reportstart = a;
-                Config.config.reportfinish = b;
-                Config.WriteFile();
+                FileConfig.config.workingtime = int.Parse(list[0]) * 60 + int.Parse(list[1]);
+                FileConfig.config.reportstart = a;
+                FileConfig.config.reportfinish = b;
+                FileConfig.WriteFile();
                 return true;
             }
             catch (Exception ex)
@@ -98,9 +98,9 @@ namespace SNI
         {
             try
             {
-                Config.config.MaChiNhanh = branchid;
-             
-                Config.WriteFile();
+                FileConfig.config.MaChiNhanh = branchid;
+
+                FileConfig.WriteFile();
                 return true;
             }
             catch (Exception ex)
@@ -112,14 +112,14 @@ namespace SNI
         {
             try
             {
-                
-                Config.config.reportapi = reportapi;
-                Config.config.updateapi = updateapi;
-                Config.config.apptoken = apptoken;
-                Config.config.usertoken = usetoken;
-                Config.config.codeGroup = codegroup;
 
-                Config.WriteFile();
+                FileConfig.config.reportapi = reportapi;
+                FileConfig.config.updateapi = updateapi;
+                FileConfig.config.apptoken = apptoken;
+                FileConfig.config.usertoken = usetoken;
+                FileConfig.config.codeGroup = codegroup;
+
+                FileConfig.WriteFile();
                 return true;
             }
             catch (Exception ex)
@@ -150,10 +150,10 @@ namespace SNI
 
         public static void CreateConnect(string servername, string username, string password,string database,int save)
         {
-            Config.config.servername = servername;
-            Config.config.username = username;
-            Config.config.password = password;
-            Config.config.database = database;
+            FileConfig.config.servername = servername;
+            FileConfig.config.username = username;
+            FileConfig.config.password = password;
+            FileConfig.config.database = database;
             if(save==1)
              WriteFile();
            

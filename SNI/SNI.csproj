@@ -73,8 +73,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\Config.cs" />
+    <Compile Include="FileConfig.cs" />
     <Compile Include="Config\ControllerModel.cs" />
+    <Compile Include="Config\LocalSystemCheck.cs" />
+    <Compile Include="Config\Updater.cs" />
+    <Compile Include="Config\XMLreader.cs" />
     <Compile Include="Controllers\BackupController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HealthController.cs" />
@@ -88,12 +91,14 @@
     <Compile Include="Models\CustomerHealth.cs" />
     <Compile Include="Models\CustomerMachine.cs" />
     <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\Hasher.cs" />
     <Compile Include="Models\Health.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\Machines.cs" />
     <Compile Include="Models\Reports.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\StopMachine.cs" />
+    <Compile Include="Models\TempFile.cs" />
     <Compile Include="Models\Types.cs" />
     <Compile Include="Models\TypesReports.cs" />
     <Compile Include="Models\Users.cs" />
@@ -280,6 +285,12 @@
     <Compile Include="Views\Setting\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Setting\UpdaterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Setting\UpdaterForm.Designer.cs">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Type\AddTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Setting\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Setting\UpdaterForm.resx">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Type\AddTypeForm.resx">
       <DependentUpon>AddTypeForm.cs</DependentUpon>

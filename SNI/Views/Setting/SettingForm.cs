@@ -30,10 +30,10 @@ namespace SNI.Views.Setting
             database_update.Enabled = !signal;
             database_save.Enabled = signal;
             database_close.Enabled = signal;
-            servername_txt.Text = Config.config.servername;
-            username_txt.Text = Config.config.username;
-            password_txt.Text = Config.config.password;
-            database_txt.Text = Config.config.database;
+            servername_txt.Text = FileConfig.config.servername;
+            username_txt.Text = FileConfig.config.username;
+            password_txt.Text = FileConfig.config.password;
+            database_txt.Text = FileConfig.config.database;
         }
         private void branch_control(bool signal)
         {
@@ -47,7 +47,7 @@ namespace SNI.Views.Setting
             branch_update.Enabled = !signal;
             branch_save.Enabled = signal;
             branch_close.Enabled = signal;
-            branchid_txt.Text = Config.config.MaChiNhanh;
+            branchid_txt.Text = FileConfig.config.MaChiNhanh;
             
         }
         private void api_control(bool signal)
@@ -63,11 +63,11 @@ namespace SNI.Views.Setting
             api_save.Enabled = signal;
             api_close.Enabled = signal;
 
-            report_api_txt.Text = Config.config.reportapi;
-            update_api_txt.Text = Config.config.updateapi;
-            usetoken.Text = Config.config.usertoken;
-            apptoken.Text = Config.config.apptoken;
-            codeGroup_txt.Text = Config.config.codeGroup;
+            report_api_txt.Text = FileConfig.config.reportapi;
+            update_api_txt.Text = FileConfig.config.updateapi;
+            usetoken.Text = FileConfig.config.usertoken;
+            apptoken.Text = FileConfig.config.apptoken;
+            codeGroup_txt.Text = FileConfig.config.codeGroup;
         }
         private void active_time_control(bool signal)
         {
@@ -82,12 +82,12 @@ namespace SNI.Views.Setting
             activetime_Save.Enabled = signal;
             activetime_close.Enabled = signal;
 
-            int minute = Config.config.workingtime / 60;
-            int second = Config.config.workingtime - minute * 60;
+            int minute = FileConfig.config.workingtime / 60;
+            int second = FileConfig.config.workingtime - minute * 60;
 
             activetime_mask.Text = AddZero(minute)+":"+AddZero(second);
-            reporttime_picker.Value = Config.config.reportstart;
-            finishreport_picker.Value = Config.config.reportfinish;
+            reporttime_picker.Value = FileConfig.config.reportstart;
+            finishreport_picker.Value = FileConfig.config.reportfinish;
 
         }
         private string AddZero(int a)
@@ -116,26 +116,26 @@ namespace SNI.Views.Setting
 
         private void database_save_Click(object sender, EventArgs e)
         {
-            Config.CreateConnect(servername_txt.Text, username_txt.Text, password_txt.Text, database_txt.Text,0);
-            if (Config.testConnect())
+            FileConfig.CreateConnect(servername_txt.Text, username_txt.Text, password_txt.Text, database_txt.Text,0);
+            if (FileConfig.testConnect())
             {
                 MessageBox.Show("Connect thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (Config.CheckDatabase())
+                if (FileConfig.CheckDatabase())
                 {
                     MessageBox.Show("Tạo Database Thành Công!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Config.CreateConnect(servername_txt.Text, username_txt.Text, password_txt.Text, database_txt.Text, 1);
+                    FileConfig.CreateConnect(servername_txt.Text, username_txt.Text, password_txt.Text, database_txt.Text, 1);
                     parent.Close();
                 }
                 else
                 {
                     MessageBox.Show("Tạo Database Thất Bại", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Config.ReadFile();
+                    FileConfig.ReadFile();
                 }
             }
             else
             {
                 MessageBox.Show("Connect thất bại", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Config.ReadFile();
+                FileConfig.ReadFile();
             }
         }
 
@@ -154,7 +154,7 @@ namespace SNI.Views.Setting
             var list = activetime_mask.Text.Split(':');
             try
             {
-                if (Config.SaveTime(list, reporttime_picker.Value, finishreport_picker.Value))
+                if (FileConfig.SaveTime(list, reporttime_picker.Value, finishreport_picker.Value))
                 {
                     MessageBox.Show("Lưu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     active_time_control(false);
@@ -177,7 +177,7 @@ namespace SNI.Views.Setting
 
         private void branch_save_Click(object sender, EventArgs e)
         {
-            if (Config.SaveBranch(branchid_txt.Text))
+            if (FileConfig.SaveBranch(branchid_txt.Text))
             {
                 MessageBox.Show("Lưu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 branch_control(false);
@@ -202,7 +202,7 @@ namespace SNI.Views.Setting
 
         private void api_save_Click(object sender, EventArgs e)
         {
-            if (Config.SaveApi(report_api_txt.Text, update_api_txt.Text, apptoken.Text, usetoken.Text, codeGroup_txt.Text))
+            if (FileConfig.SaveApi(report_api_txt.Text, update_api_txt.Text, apptoken.Text, usetoken.Text, codeGroup_txt.Text))
             {
                 MessageBox.Show("Lưu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 api_control(false);

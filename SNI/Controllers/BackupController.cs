@@ -20,7 +20,7 @@ namespace SNI.Controllers
         {
             try
             {
-                SqlConnection con = new SqlConnection(Config.masterconnect());
+                SqlConnection con = new SqlConnection(FileConfig.masterconnect());
                 con.Open();
                 string path = Path.GetDirectoryName(v);
                 if (Directory.Exists(path) == true)
@@ -39,7 +39,7 @@ namespace SNI.Controllers
         }
         public static int RestoreDatabase(string text, string text1, string text2)
         {
-            using (SqlConnection cn = new SqlConnection(Config.masterconnect()))
+            using (SqlConnection cn = new SqlConnection(FileConfig.masterconnect()))
             {
                 cn.Open();
                 string path = text2 + "\\" + text1;
@@ -56,7 +56,7 @@ namespace SNI.Controllers
         }
         public static int RestoreDatabase1(string text, string text1, string text2)
         {
-            using (SqlConnection cn = new SqlConnection(Config.masterconnect()))
+            using (SqlConnection cn = new SqlConnection(FileConfig.masterconnect()))
             {
                 cn.Open();
                 string path = text2 + "\\" + text1;
@@ -71,7 +71,7 @@ namespace SNI.Controllers
             {
                 DataTable ds = new DataTable();
                 string path = txtFolder + "\\" + txtFileName;
-                SqlConnection con = new SqlConnection(Config.masterconnect());
+                SqlConnection con = new SqlConnection(FileConfig.masterconnect());
                 con.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = "restore filelistonly from disk= N'" + path + "'";
@@ -88,7 +88,7 @@ namespace SNI.Controllers
 
         public static int BackupDatabase(string folder)
         {
-            using (SqlConnection cn = new SqlConnection(Config.connect))
+            using (SqlConnection cn = new SqlConnection(FileConfig.connect))
             {
                 string name =
                    addzero(DateTime.Now.Day)
@@ -100,7 +100,7 @@ namespace SNI.Controllers
                    + addzero(DateTime.Now.Second);
                 cn.Open();
                 string path = folder + "\\" + name + ".bak";
-                string sql = "Backup database " + Config.config.database + " to disk= N'" + path + "'";
+                string sql = "Backup database " + FileConfig.config.database + " to disk= N'" + path + "'";
                 SqlCommand cmd = new SqlCommand(sql, cn);
                 return cmd.ExecuteNonQuery();
             }

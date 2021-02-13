@@ -8,7 +8,7 @@ namespace SNI
 {
     class ControllerModel : DbContext
     {
-        public ControllerModel() : base(Config.connect)
+        public ControllerModel() : base(FileConfig.connect)
         {
             //Database.SetInitializer<ControllerModel>(null);
         }

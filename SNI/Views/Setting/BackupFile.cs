@@ -20,9 +20,9 @@ namespace SNI.Views.Setting
        
         private void button3_Click(object sender, EventArgs e)
         {
-            textBox1.Text = Config.config.defaultFolder;
+            textBox1.Text = FileConfig.config.defaultFolder;
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.SelectedPath = Config.config.defaultFolder ;
+            fbd.SelectedPath = FileConfig.config.defaultFolder ;
             if(fbd.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = fbd.SelectedPath;
@@ -89,7 +89,7 @@ namespace SNI.Views.Setting
 
         private void BackupFile_Load(object sender, EventArgs e)
         {
-            textBox1.Text = Config.config.defaultFolder;
+            textBox1.Text = FileConfig.config.defaultFolder;
             dataGridView1 = Module.MydataGridView(dataGridView1);
             dataGridView1.DataSource = loadFile();
         }
@@ -120,7 +120,7 @@ namespace SNI.Views.Setting
             string database = "";
             if (s == 1)
             {
-                database = Config.config.database;
+                database = FileConfig.config.database;
                 ncheck = BackupController.RestoreDatabase(database,selected_file, textBox1.Text);
             }
             else
@@ -131,7 +131,7 @@ namespace SNI.Views.Setting
             if (ncheck >= -1)
             {
                 MessageBox.Show("Restore thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Config.config.database = database;
+                FileConfig.config.database = database;
                 this.Close();
             }
             else

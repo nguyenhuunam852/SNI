@@ -22,7 +22,7 @@ namespace SNI.Views.FirstConfig
             var list = activetime_mask.Text.Split(':');
             try
             {
-                if (Config.SaveTime(list, reporttime_picker.Value, finishreport_picker.Value))
+                if (FileConfig.SaveTime(list, reporttime_picker.Value, finishreport_picker.Value))
                 {
                     MessageBox.Show("Lưu thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     BranchSetting bs = new BranchSetting();

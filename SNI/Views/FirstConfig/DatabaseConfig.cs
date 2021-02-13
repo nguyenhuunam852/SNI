@@ -19,10 +19,10 @@ namespace SNI.Views.FirstConfig
         
         private void button1_Click(object sender, EventArgs e)
         {
-            Config.CreateConnect(servername_txt.Text, username_txt.Text, password_txt.Text, database_txt.Text,1);
+            FileConfig.CreateConnect(servername_txt.Text, username_txt.Text, password_txt.Text, database_txt.Text,1);
            
                 MessageBox.Show("Connect thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (Config.CheckDatabase())
+                if (FileConfig.CheckDatabase())
                 {
                     MessageBox.Show("Tạo Database Thành Công!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Panel.Controls.Clear();
