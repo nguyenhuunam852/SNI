@@ -51,6 +51,9 @@
             this.bt_add_customer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.keycustomerText = new System.Windows.Forms.TextBox();
+            this.lịchSửToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thốngKêTheoThángToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thốngKêTheoNămToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -140,6 +143,10 @@
             // 
             // thốngKêVàLịchSửToolStripMenuItem
             // 
+            this.thốngKêVàLịchSửToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lịchSửToolStripMenuItem,
+            this.thốngKêTheoThángToolStripMenuItem,
+            this.thốngKêTheoNămToolStripMenuItem});
             this.thốngKêVàLịchSửToolStripMenuItem.Name = "thốngKêVàLịchSửToolStripMenuItem";
             this.thốngKêVàLịchSửToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.thốngKêVàLịchSửToolStripMenuItem.Text = "Thống Kê và Lịch Sử";
@@ -285,6 +292,26 @@
             this.keycustomerText.TextChanged += new System.EventHandler(this.keycustomerText_TextChanged);
             this.keycustomerText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keycustomerText_KeyDown);
             // 
+            // lịchSửToolStripMenuItem
+            // 
+            this.lịchSửToolStripMenuItem.Name = "lịchSửToolStripMenuItem";
+            this.lịchSửToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.lịchSửToolStripMenuItem.Text = "Lịch Sử";
+            this.lịchSửToolStripMenuItem.Click += new System.EventHandler(this.lịchSửToolStripMenuItem_Click);
+            // 
+            // thốngKêTheoThángToolStripMenuItem
+            // 
+            this.thốngKêTheoThángToolStripMenuItem.Name = "thốngKêTheoThángToolStripMenuItem";
+            this.thốngKêTheoThángToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.thốngKêTheoThángToolStripMenuItem.Text = "Thống kê theo Tháng";
+            this.thốngKêTheoThángToolStripMenuItem.Click += new System.EventHandler(this.thốngKêTheoThángToolStripMenuItem_Click);
+            // 
+            // thốngKêTheoNămToolStripMenuItem
+            // 
+            this.thốngKêTheoNămToolStripMenuItem.Name = "thốngKêTheoNămToolStripMenuItem";
+            this.thốngKêTheoNămToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.thốngKêTheoNămToolStripMenuItem.Text = "Thống kê theo Năm";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,6 +364,9 @@
         private System.Windows.Forms.ToolStripMenuItem quảnLíUsersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thốngKêVàLịchSửToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lịchSửToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thốngKêTheoThángToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thốngKêTheoNămToolStripMenuItem;
     }
 }
 

@@ -615,8 +615,19 @@ namespace SNI
 
         private void thốngKêVàLịchSửToolStripMenuItem_Click(object sender, EventArgs e)
         {
+          
+        }
+
+        private void lịchSửToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             Views.History.HistoryForm hf = new Views.History.HistoryForm();
             hf.ShowDialog();
+        }
+
+        private void thốngKêTheoThángToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Views.History.Statical_Month sm = new Views.History.Statical_Month();
+            sm.ShowDialog();
         }
     }
 }

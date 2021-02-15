@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -176,6 +177,12 @@
     </Compile>
     <Compile Include="Views\History\HistoryForm.Designer.cs">
       <DependentUpon>HistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\History\Statical_Month.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\History\Statical_Month.Designer.cs">
+      <DependentUpon>Statical_Month.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\LoginForm.cs">
       <SubType>Form</SubType>
@@ -341,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\History\HistoryForm.resx">
       <DependentUpon>HistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\History\Statical_Month.resx">
+      <DependentUpon>Statical_Month.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

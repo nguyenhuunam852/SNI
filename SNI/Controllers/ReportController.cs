@@ -43,7 +43,7 @@ namespace SNI.Controllers
                     var amountofcustomers = context.Histories.Include("Customers").Where(o => o.dayadd.Day == dt.Day
                            && o.dayadd.Month == dt.Month
                            && o.dayadd.Year == dt.Year
-                           ).Select(o => o.Customers).Distinct().ToList();
+                           && o.Customers.available==true).Select(o => o.Customers).Distinct().ToList();
 
                     int count = 0;
                     var test = amountofcustomers.Where(o => o.typeid == ty.typeid).ToList();
@@ -97,7 +97,7 @@ namespace SNI.Controllers
                     var amountofcustomers = context.Histories.Include("Customers").Where(o => o.dayadd.Day == dt.Day
                        && o.dayadd.Month == dt.Month
                        && o.dayadd.Year == dt.Year
-                       ).Select(o => o.Customers).Distinct().ToList();
+                       && o.Customers.available == true).Select(o => o.Customers).Distinct().ToList();
 
                     var newCustomer = context.Customers.Where(o => o.dayadd.Day == dt.Day
                     && o.dayadd.Month == dt.Month
@@ -191,6 +191,32 @@ namespace SNI.Controllers
                     return false;
                 }
             }
+        }
+
+        public static DataTable getStaticalinMonth(int month,int year)
+        {
+            int days = DateTime.DaysInMonth(year, month);
+            DataTable dtb = new DataTable();
+            dtb.Columns.Add("Ngày");
+            dtb.Columns.Add("Khách hàng mới");
+            dtb.Columns.Add("Khách hàng trong ngày");
+            using (var context = new ControllerModel())
+            {
+                for (int i = 1; i <= days; i++)
+                {
+                    var his = context.Reports.Where(o => o.datereport.Day == i && o.datereport.Month == month && o.datereport.Year == year).FirstOrDefault();
+                    if (his != null)
+                    {
+                        DataRow data = dtb.NewRow();
+                        data["Ngày"] = i.ToString();
+                        data["Khách hàng mới"] = his.amountofnewcustomer.ToString();
+                        data["Khách hàng trong ngày"] = his.amountofactivecustomer.ToString();
+
+                        dtb.Rows.Add(data);
+                    }
+                }
+            }
+            return dtb;
         }
     }
 }
