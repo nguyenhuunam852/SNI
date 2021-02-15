@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SNI.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,11 +28,10 @@ namespace SNI.Views.History
             label1.Text = Module.addzero(a.Day) + "/" + Module.addzero(a.Month) + "/" + a.Year.ToString();
             DataTable dtb = SNI.Controllers.HistoryController.GetListHistoryinDay(a);
             dataGridView1.DataSource = dtb;
-            dataGridView2.DataSource = SNI.Controllers.ReportController.getTypeamountbyDay(a);
+            dataGridView2.DataSource = ReportController.getTypeReport(a);
 
-            Models.Reports rp = Controllers.ReportController.getReportbyDay(a);
-            amount_lb.Text = rp.amountofactivecustomer.ToString();
-            new_lb.Text = rp.amountofnewcustomer.ToString();
+            amount_lb.Text = ReportController.getamountofday(a).ToString();
+            new_lb.Text = ReportController.getnewamountofday(a).ToString();
         }
 
         private void HistoryForm_Load(object sender, EventArgs e)
@@ -46,8 +46,8 @@ namespace SNI.Views.History
             new_lb.Text = rp.amountofnewcustomer.ToString();
 
 
-            dataGridView1.DataSource = SNI.Controllers.HistoryController.GetListHistoryinDay(monthCalendar1.SelectionStart);
-            dataGridView2.DataSource = SNI.Controllers.ReportController.getTypeamountbyDay(dt);
+            dataGridView1.DataSource = HistoryController.GetListHistoryinDay(monthCalendar1.SelectionStart);
+            dataGridView2.DataSource = ReportController.getTypeReport(dt);
 
         }
     }

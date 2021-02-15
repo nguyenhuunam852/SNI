@@ -34,10 +34,18 @@ namespace SNI.Config
                     {
                         if (lc.filepath == xml.FilePath)
                         {
-                            if (lc.version < xml.Version || new FileInfo(lc.filepath).Length != xml.Size)
+                            if (lc.version < xml.Version)
                             {
                                 ready.Add(xml);
                                 break;
+                            }
+                            else if(lc.version == new Version("0.0.0.0"))
+                            {
+                                if(new FileInfo(lc.filepath).Length != xml.Size)
+                                {
+                                    ready.Add(xml);
+                                    break;
+                                }
                             }
                         }
                     }

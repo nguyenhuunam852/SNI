@@ -55,6 +55,7 @@ namespace SNI.Views.Setting
             if(BackupController.BackupDatabase(textBox1.Text)>=-1)
             {
                 MessageBox.Show("Backup thành công !", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dataGridView1.DataSource = loadFile();
             }
         }
         
@@ -132,6 +133,7 @@ namespace SNI.Views.Setting
             {
                 MessageBox.Show("Restore thành công", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FileConfig.config.database = database;
+                dataGridView1.DataSource = loadFile();
                 this.Close();
             }
             else

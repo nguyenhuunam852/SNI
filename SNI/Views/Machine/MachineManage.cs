@@ -19,6 +19,7 @@ namespace SNI.Views
         }
         private Point MouseDownLocation;
         private Point PanelMouseLocation;
+        private List<Models.CustomerMachine> listcustomermachine = new List<Models.CustomerMachine>();
         double scalew = 0;
         double scaleh = 0;
         Models.Machines machineob;
@@ -36,6 +37,17 @@ namespace SNI.Views
                 {
                     Label lb = createLabel(mch.machineid,mch.name, mch.status, Convert.ToInt32(mch.locationx / scalew), Convert.ToInt32(mch.locationy / scaleh));
                     panel1.Controls.Add(lb);
+                }
+            }
+            listcustomermachine = ServiceController.getlistworking();
+            foreach (Models.CustomerMachine cusmachine in listcustomermachine)
+            {
+                foreach (Label lb in panel1.Controls)
+                {
+                    if (Convert.ToInt16(lb.Name) == cusmachine.machineid)
+                    {
+                        lb.BackColor = Color.Yellow;
+                    }
                 }
             }
             ContextMenu cm = new ContextMenu();
@@ -172,25 +184,34 @@ namespace SNI.Views
             }
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
+                var listworking = listcustomermachine.Select(o => o.machineid).ToList();
 
-                ContextMenu cm = new ContextMenu();
-                idmachine = Convert.ToInt16(lb.Name);
-                machineob = MachineController.getinfor(idmachine);
-                MenuItem item = cm.MenuItems.Add("Xóa ghế");
-                item.Click += Item_Click;
-
-                if (machineob.status == 1)
+                if (!listworking.Contains(int.Parse(lb.Name)))
                 {
+                    ContextMenu cm = new ContextMenu();
+                    idmachine = Convert.ToInt16(lb.Name);
+                    machineob = MachineController.getinfor(idmachine);
+                    MenuItem item = cm.MenuItems.Add("Xóa ghế");
+                    item.Click += Item_Click;
 
-                    MenuItem item1 = cm.MenuItems.Add("Bảo trì");
-                    item1.Click += Item1_Click;
+                    if (machineob.status == 1)
+                    {
+
+                        MenuItem item1 = cm.MenuItems.Add("Bảo trì");
+                        item1.Click += Item1_Click;
+                    }
+                    else
+                    {
+                        MenuItem item2 = cm.MenuItems.Add("Hoạt động");
+                        item2.Click += Item2_Click;
+                    }
+                    lb.ContextMenu = cm;
                 }
                 else
                 {
-                    MenuItem item2 = cm.MenuItems.Add("Hoạt động");
-                    item2.Click += Item2_Click;
+                    ContextMenu cm = new ContextMenu();
+                    lb.ContextMenu = cm;
                 }
-                lb.ContextMenu = cm;
             }
         }
         private void Item2_Click(object sender, EventArgs e)

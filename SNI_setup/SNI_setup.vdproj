@@ -16,7 +16,7 @@
         "Entry"
         {
         "MsmKey" = "8:_2F7304EAE91CED0856A4792F0DC40547"
-        "OwnerKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
+        "OwnerKey" = "8:_3B2AF92B2524497C96BE462EFFC5AB0F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -28,19 +28,31 @@
         "Entry"
         {
         "MsmKey" = "8:_304CF0FF079E739337177FFB34125FD5"
-        "OwnerKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
+        "OwnerKey" = "8:_3B2AF92B2524497C96BE462EFFC5AB0F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
+        "MsmKey" = "8:_304CF0FF079E739337177FFB34125FD5"
+        "OwnerKey" = "8:_B847536BE31E43FD9FD2E05BDD2FC34B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3B2AF92B2524497C96BE462EFFC5AB0F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AD764EE867C08A771790EB16212849A1"
-        "OwnerKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
+        "OwnerKey" = "8:_3B2AF92B2524497C96BE462EFFC5AB0F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B847536BE31E43FD9FD2E05BDD2FC34B"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,7 +64,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5355F97B7D55417DBD06C20187B5BC27"
+        "OwnerKey" = "8:_B847536BE31E43FD9FD2E05BDD2FC34B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3B2AF92B2524497C96BE462EFFC5AB0F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -253,6 +271,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B847536BE31E43FD9FD2E05BDD2FC34B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:updater, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B847536BE31E43FD9FD2E05BDD2FC34B"
+                    {
+                    "Name" = "8:updater.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\SNI\\bin\\Release\\updater.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E1B42083E30A4BC2952BC46F32E1080B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -831,7 +880,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5355F97B7D55417DBD06C20187B5BC27"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3B2AF92B2524497C96BE462EFFC5AB0F"
             {
             "SourcePath" = "8:..\\SNI\\obj\\Release\\SNI.exe"
             "TargetName" = "8:"

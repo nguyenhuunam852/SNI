@@ -143,26 +143,32 @@ namespace SNI
         {
             Label lb = sender as Label;
             selected_label = lb;
-            if (!wotkinglabel.Contains(lb) && !stoplabel.Contains(lb))
+            if (!repairlist.Contains(lb))
             {
-                showname.Text = lb.Text;
-                hidden_machine_id.Text = lb.Name;
-                if (dtshowcustomer_find.DataSource != null)
+                if (!wotkinglabel.Contains(lb) && !stoplabel.Contains(lb))
                 {
-                    bt_accept.Enabled = true;
+                    showname.Text = lb.Text;
+                    hidden_machine_id.Text = lb.Name;
+                    if (dtshowcustomer_find.DataSource != null)
+                    {
+                        bt_accept.Enabled = true;
+                    }
+                    bt_finish.Enabled = false;
                 }
-                bt_finish.Enabled = false;
+                else
+                {
+                    keycustomerText.Text = "";
+                    showname.Text = "###";
+                    var select_machine = MachineController.getinfor(Convert.ToInt16(lb.Name));
+                    showname.Text = select_machine.name;
+                    bt_finish.Enabled = true;
+                    bt_accept.Enabled = false;
+                    bt_finish.Focus();
+                }
             }
             else
             {
-                keycustomerText.Text = "";
-                showname.Text = "###";
-                var select_machine = MachineController.getinfor(Convert.ToInt16(lb.Name));
-                showname.Text = select_machine.name;
-                bt_finish.Enabled = true;
-                bt_accept.Enabled = false;
-                bt_finish.Focus();
-
+                MessageBox.Show("Máy đang bảo trì", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private Label selected_label;
@@ -198,6 +204,7 @@ namespace SNI
                
             }
         }
+        List<Label> repairlist = new List<Label>();
         private void Item1_Click(object sender, EventArgs e)
         {
             ChangeMachineForm cmf = new ChangeMachineForm();
@@ -283,6 +290,10 @@ namespace SNI
                 {
                     Label lb = createLabel(machine.name,machine.machineid.ToString(), machine.status, machine.locationx, machine.locationy);
                     panel1.Controls.Add(lb);
+                    if(machine.status==0)
+                    {
+                        repairlist.Add(lb);
+                    }
                 }
             }
             keycustomerText.Focus();

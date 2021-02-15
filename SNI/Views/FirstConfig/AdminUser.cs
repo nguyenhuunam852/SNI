@@ -21,6 +21,8 @@ namespace SNI.Views.FirstConfig
             if(UserController.AddUser(username_txt.Text, password_txt.Text, name_txt.Text, email_txt.Text, sdt_txt.Text,"Admin"))
             {
                 MessageBox.Show("Thành công!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FileConfig.config.connectsuccess = true;
+                FileConfig.WriteFile();
                 parent.Close();
             }
             else
