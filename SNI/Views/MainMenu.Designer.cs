@@ -38,6 +38,9 @@
             this.quảnLíUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêVàLịchSửToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lịchSửToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thốngKêTheoThángToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thốngKêTheoNămToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtshowcustomer_find = new System.Windows.Forms.DataGridView();
@@ -51,9 +54,7 @@
             this.bt_add_customer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.keycustomerText = new System.Windows.Forms.TextBox();
-            this.lịchSửToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thốngKêTheoThángToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thốngKêTheoNămToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -152,6 +153,26 @@
             this.thốngKêVàLịchSửToolStripMenuItem.Text = "Thống Kê và Lịch Sử";
             this.thốngKêVàLịchSửToolStripMenuItem.Click += new System.EventHandler(this.thốngKêVàLịchSửToolStripMenuItem_Click);
             // 
+            // lịchSửToolStripMenuItem
+            // 
+            this.lịchSửToolStripMenuItem.Name = "lịchSửToolStripMenuItem";
+            this.lịchSửToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.lịchSửToolStripMenuItem.Text = "Lịch Sử";
+            this.lịchSửToolStripMenuItem.Click += new System.EventHandler(this.lịchSửToolStripMenuItem_Click);
+            // 
+            // thốngKêTheoThángToolStripMenuItem
+            // 
+            this.thốngKêTheoThángToolStripMenuItem.Name = "thốngKêTheoThángToolStripMenuItem";
+            this.thốngKêTheoThángToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.thốngKêTheoThángToolStripMenuItem.Text = "Thống kê theo Tháng";
+            this.thốngKêTheoThángToolStripMenuItem.Click += new System.EventHandler(this.thốngKêTheoThángToolStripMenuItem_Click);
+            // 
+            // thốngKêTheoNămToolStripMenuItem
+            // 
+            this.thốngKêTheoNămToolStripMenuItem.Name = "thốngKêTheoNămToolStripMenuItem";
+            this.thốngKêTheoNămToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.thốngKêTheoNămToolStripMenuItem.Text = "Thống kê theo Năm";
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -185,6 +206,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.bt_chotca);
             this.panel3.Controls.Add(this.bt_finish);
             this.panel3.Controls.Add(this.hidden_machine_id);
@@ -292,25 +314,15 @@
             this.keycustomerText.TextChanged += new System.EventHandler(this.keycustomerText_TextChanged);
             this.keycustomerText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keycustomerText_KeyDown);
             // 
-            // lịchSửToolStripMenuItem
+            // button1
             // 
-            this.lịchSửToolStripMenuItem.Name = "lịchSửToolStripMenuItem";
-            this.lịchSửToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.lịchSửToolStripMenuItem.Text = "Lịch Sử";
-            this.lịchSửToolStripMenuItem.Click += new System.EventHandler(this.lịchSửToolStripMenuItem_Click);
-            // 
-            // thốngKêTheoThángToolStripMenuItem
-            // 
-            this.thốngKêTheoThángToolStripMenuItem.Name = "thốngKêTheoThángToolStripMenuItem";
-            this.thốngKêTheoThángToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.thốngKêTheoThángToolStripMenuItem.Text = "Thống kê theo Tháng";
-            this.thốngKêTheoThángToolStripMenuItem.Click += new System.EventHandler(this.thốngKêTheoThángToolStripMenuItem_Click);
-            // 
-            // thốngKêTheoNămToolStripMenuItem
-            // 
-            this.thốngKêTheoNămToolStripMenuItem.Name = "thốngKêTheoNămToolStripMenuItem";
-            this.thốngKêTheoNămToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.thốngKêTheoNămToolStripMenuItem.Text = "Thống kê theo Năm";
+            this.button1.Location = new System.Drawing.Point(238, 168);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(56, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Camera";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainMenu
             // 
@@ -367,6 +379,7 @@
         private System.Windows.Forms.ToolStripMenuItem lịchSửToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thốngKêTheoThángToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thốngKêTheoNămToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }
 

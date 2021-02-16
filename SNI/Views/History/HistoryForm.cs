@@ -41,10 +41,9 @@ namespace SNI.Views.History
 
             monthCalendar1.SelectionStart = dt;
             label1.Text = Module.addzero(dt.Day) + "/" + Module.addzero(dt.Month)+"/" + dt.Year.ToString();
-            Models.Reports rp = Controllers.ReportController.getReportbyDay(dt);
-            amount_lb.Text = rp.amountofactivecustomer.ToString();
-            new_lb.Text = rp.amountofnewcustomer.ToString();
 
+            amount_lb.Text = ReportController.getamountofday(dt).ToString();
+            new_lb.Text = ReportController.getnewamountofday(dt).ToString();
 
             dataGridView1.DataSource = HistoryController.GetListHistoryinDay(monthCalendar1.SelectionStart);
             dataGridView2.DataSource = ReportController.getTypeReport(dt);

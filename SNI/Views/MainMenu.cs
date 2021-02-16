@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Data;
 using SNI.Views.FirstConfig;
 using SNI.Views.User;
+using SNI.Views.Setting;
+
 namespace SNI
 {
     public partial class MainMenu : Form
@@ -640,6 +642,12 @@ namespace SNI
         {
             Views.History.Statical_Month sm = new Views.History.Statical_Month();
             sm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CameraBarCodeForm cb = new CameraBarCodeForm();
+            cb.ShowDialog();
         }
     }
 }
