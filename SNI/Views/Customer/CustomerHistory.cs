@@ -21,6 +21,10 @@ namespace SNI.Views.Customer
         {
             dt_history = Module.MydataGridView(dt_history);
             dt_history.DataSource = HistoryController.getHistorybyCustomerId(idcustomer);
+            Models.Customers cus = CustomerController.getinformation(idcustomer);
+            label2.Text = cus.name;
+            label3.Text = cus.phone;
+            label4.Text = cus.address;
 
         }
     }

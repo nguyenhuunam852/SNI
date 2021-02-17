@@ -29,5 +29,10 @@ namespace SNI.Views.Type
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void AddTypeForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

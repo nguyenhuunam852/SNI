@@ -83,6 +83,7 @@
             this.Name = "AddTypeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddTypeForm";
+            this.Load += new System.EventHandler(this.AddTypeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

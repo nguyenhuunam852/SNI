@@ -45,6 +45,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtshowcustomer_find = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.bt_chotca = new System.Windows.Forms.Button();
             this.bt_finish = new System.Windows.Forms.Button();
             this.hidden_machine_id = new System.Windows.Forms.TextBox();
@@ -54,7 +55,6 @@
             this.bt_add_customer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.keycustomerText = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -222,6 +222,16 @@
             this.panel3.Size = new System.Drawing.Size(302, 205);
             this.panel3.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(238, 168);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(56, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Camera";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // bt_chotca
             // 
             this.bt_chotca.Enabled = false;
@@ -313,16 +323,6 @@
             this.keycustomerText.Click += new System.EventHandler(this.keycustomerText_Click);
             this.keycustomerText.TextChanged += new System.EventHandler(this.keycustomerText_TextChanged);
             this.keycustomerText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keycustomerText_KeyDown);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(238, 168);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Camera";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainMenu
             // 

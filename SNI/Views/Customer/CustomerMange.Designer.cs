@@ -173,6 +173,7 @@
             // idtext
             // 
             this.idtext.AutoSize = true;
+            this.idtext.ForeColor = System.Drawing.Color.Red;
             this.idtext.Location = new System.Drawing.Point(32, 24);
             this.idtext.Name = "idtext";
             this.idtext.Size = new System.Drawing.Size(28, 13);
