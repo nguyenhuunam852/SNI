@@ -31,7 +31,8 @@ namespace SNI.Views.User
 
         private void UserAddForm_Load(object sender, EventArgs e)
         {
-            
+            sdt_txt =  Module.createPhone(sdt_txt);
+
         }
     }
 }

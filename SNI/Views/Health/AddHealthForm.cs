@@ -36,5 +36,10 @@ namespace SNI.Views.Health
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void AddHealthForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

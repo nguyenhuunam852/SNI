@@ -86,7 +86,7 @@ namespace SNI.Views.User
         {
             panel_control(false);
             loadDataGridView();
-
+            sdt_txt = Module.createPhone(sdt_txt);
         }
 
         private void update_bt_Click(object sender, EventArgs e)

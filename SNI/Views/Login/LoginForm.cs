@@ -35,5 +35,18 @@ namespace SNI.Views.Login
         {
             this.Close();
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                button1.PerformClick();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }

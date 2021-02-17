@@ -83,6 +83,7 @@
             this.Name = "AddHealthForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddHealthForm";
+            this.Load += new System.EventHandler(this.AddHealthForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

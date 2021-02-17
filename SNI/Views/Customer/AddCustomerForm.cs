@@ -21,7 +21,7 @@ namespace SNI.Views.Customer
         }
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
-
+            sdttext = Module.createPhone(sdttext);
             this.Controls.SetChildIndex(suckhoetext, 0);
             idlabel.Text = FileConfig.config.MaChiNhanh + RandomString(4);
             gioitinhcbbox = Module.loadComboBox(gioitinhcbbox);

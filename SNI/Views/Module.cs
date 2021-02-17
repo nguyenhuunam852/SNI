@@ -15,6 +15,37 @@ namespace SNI.Views
             if (a < 10) return "0" + a.ToString();
             return a.ToString();
         }
+        public static TextBox createPhone(TextBox tb)
+        {
+            tb.KeyPress += textBox1_KeyPress;
+            return tb;
+        }
+
+        private static void Tb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+
+        private static void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private static void Tb_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
         public static List<ComboBox> createMonthComboBox(ComboBox cbx,ComboBox cbx1)
         {
             using (var context = new ControllerModel())

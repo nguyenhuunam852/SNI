@@ -161,6 +161,7 @@
             this.Controls.Add(this.name_txt);
             this.Name = "AdminUser";
             this.Size = new System.Drawing.Size(492, 321);
+            this.Load += new System.EventHandler(this.AdminUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

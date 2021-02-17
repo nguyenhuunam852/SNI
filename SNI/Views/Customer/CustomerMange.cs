@@ -68,6 +68,7 @@ namespace SNI.Views.Customer
         {
             suckhoetext.TextChanged += Suckhoetext_TextChanged;
             suckhoetext.KeyDown += Suckhoetext_KeyDown;
+            sdttext = Module.createPhone(sdttext);
             comboBox1.SelectionChangeCommitted += ComboBox1_SelectionChangeCommitted;
             loadDataGridView();
             dataGridView1.CellClick += DataGridView1_CellClick;

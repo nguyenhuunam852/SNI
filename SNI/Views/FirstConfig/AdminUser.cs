@@ -36,5 +36,10 @@ namespace SNI.Views.FirstConfig
         {
             parent.Close();
         }
+
+        private void AdminUser_Load(object sender, EventArgs e)
+        {
+            sdt_txt = Module.createPhone(sdt_txt);
+        }
     }
 }
