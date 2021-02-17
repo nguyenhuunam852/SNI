@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using SNI.Models;
 
 namespace SNI.Controllers
@@ -17,7 +18,7 @@ namespace SNI.Controllers
             {
                 try
                 {
-                    var listcustomer = context.Customers.Where(cus => cus.available == true).OrderBy(cus => cus.dayadd).Take(10).ToList();
+                    var listcustomer = context.Customers.Where(cus => cus.available == true).OrderByDescending(cus => cus.dayupdate).Take(20).ToList();
                     return loadCustomer(listcustomer);
                     
                 }
@@ -33,7 +34,7 @@ namespace SNI.Controllers
             {
                 try
                 {
-                    var listcustomer = context.Customers.Include("Types").Where(cus => cus.available == true).OrderBy(cus => cus.dayadd).Take(10).ToList();
+                    var listcustomer = context.Customers.Include("Types").Where(cus => cus.available == true).OrderBy(cus => cus.dayupdate).ToList();
                     return loadExcelCustomer(listcustomer);
 
                 }
@@ -400,15 +401,17 @@ namespace SNI.Controllers
                         worksheet.Cells[i + 2, j + 1] = dtb.Rows[i][j].ToString();
                     }
                 }
-                // save the application  
                 workbook.SaveAs(location+@"\"+name, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 // Exit from the application  
                 app.Visible = false;
                 app.Quit();
+                // save the application 
                 return true;
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
+
                 return false;
             }
         }
