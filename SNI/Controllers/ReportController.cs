@@ -217,6 +217,22 @@ namespace SNI.Controllers
             }
             return dtb;
         }
+        public static int getCustomerActiveinMonth(int month,int year)
+        {
+            using (var context = new ControllerModel())
+            {
+                var customer = context.Reports.Where(o => o.datereport.Month == month && o.datereport.Year == year).Sum(o=>o.amountofactivecustomer);
+                return customer;
+            }
+        }
+        public static int getNewCustomerActiveinMonth(int month, int year)
+        {
+            using (var context = new ControllerModel())
+            {
+                var customer = context.Reports.Where(o => o.datereport.Month == month && o.datereport.Year == year).Sum(o => o.amountofnewcustomer);
+                return customer;
+            }
+        }
         public static DataTable getTypeamountbyDay(DateTime dt)
         {
            

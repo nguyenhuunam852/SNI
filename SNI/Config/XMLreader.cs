@@ -61,6 +61,7 @@ namespace SNI
             }
             catch(Exception ex)
             {
+                Console.Write(ex);
                 return null;
             }
         }

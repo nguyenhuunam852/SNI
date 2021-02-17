@@ -53,7 +53,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(2, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(728, 347);
+            this.panel1.Size = new System.Drawing.Size(728, 351);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -97,6 +97,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(749, 430);
             this.MinimizeBox = false;

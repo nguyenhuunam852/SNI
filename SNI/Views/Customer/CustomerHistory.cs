@@ -19,6 +19,7 @@ namespace SNI.Views.Customer
         public string idcustomer;
         private void CustomerHistory_Load(object sender, EventArgs e)
         {
+            label1.Text = idcustomer;
             dt_history = Module.MydataGridView(dt_history);
             dt_history.DataSource = HistoryController.getHistorybyCustomerId(idcustomer);
             Models.Customers cus = CustomerController.getinformation(idcustomer);

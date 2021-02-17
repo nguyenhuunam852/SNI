@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAddForm));
             this.close_button = new System.Windows.Forms.Button();
             this.accept_button = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -161,6 +162,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.name_txt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserAddForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UserAddForm";

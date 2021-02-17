@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SNI.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -74,6 +75,8 @@ namespace SNI.Views.History
                     year = int.Parse(comboBox2.SelectedValue.ToString());
                     month = int.Parse(comboBox1.SelectedValue.ToString());
                     ChangeChart(month, year);
+                    label3.Text = ReportController.getCustomerActiveinMonth(month, year).ToString();
+                    label4.Text = ReportController.getNewCustomerActiveinMonth(month, year).ToString();
                 }
                 catch (Exception ex)
                 {
@@ -90,8 +93,11 @@ namespace SNI.Views.History
                     year = int.Parse(comboBox2.SelectedValue.ToString());
                     month = int.Parse(comboBox1.SelectedValue.ToString());
                     ChangeChart(month, year);
+                    label3.Text = ReportController.getCustomerActiveinMonth(month, year).ToString();
+                    label4.Text = ReportController.getNewCustomerActiveinMonth(month, year).ToString();
+
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 { 
                 }
             }

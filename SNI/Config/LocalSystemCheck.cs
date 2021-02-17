@@ -26,14 +26,21 @@ namespace SNI
             string[] folder_new = Directory.GetFiles(root, "*", SearchOption.AllDirectories);
             foreach (string file in folder_new)
             {
-                string extension = Path.GetExtension(file);
                 LocalSystemCheck lsc = new LocalSystemCheck();
-                lsc.filepath = file.Replace(root+@"\","");
-                if (extension == ".exe" || extension == ".dll")
+                try
                 {
-                    lsc.version = Version.Parse(AssemblyName.GetAssemblyName(file).Version.ToString());
+                    string extension = Path.GetExtension(file);
+                    lsc.filepath = file.Replace(root + @"\", "");
+                    if (extension == ".exe" || extension == ".dll")
+                    {
+                        lsc.version = Version.Parse(AssemblyName.GetAssemblyName(file).Version.ToString());
+                    }
+                    else
+                    {
+                        lsc.version = Version.Parse("0.0.0.0");
+                    }
                 }
-                else
+                catch(Exception ex)
                 {
                     lsc.version = Version.Parse("0.0.0.0");
                 }
