@@ -145,41 +145,55 @@ namespace SNI.Controllers
                     }
                     else
                     {
-                        var report1 = context.Reports.Where(o => o.dayadd.Day == dt.Day
-                        && o.dayadd.Month == dt.Month
-                        && o.dayadd.Year == dt.Year);
+                        var report1 = context.Reports.Where(o => o.datereport.Day == dt.Day
+                        && o.datereport.Month == dt.Month
+                        && o.datereport.Year == dt.Year).FirstOrDefault();
 
-                        context.Reports.RemoveRange(report1);
+                        report1.amountofactivecustomer = amountofcustomers.Count();
+                        report1.amountofnewcustomer = newCustomer;
+                        report1.serverreport = false;
+                        report1.datereport = dt;
+                        report1.dayupdate = DateTime.Now;
 
-                        var report = new Reports
-                        {
-                            amountofactivecustomer = amountofcustomers.Count(),
-                            amountofnewcustomer = newCustomer,
-                            serverreport = false,
-                            datereport = dt,
-                            dayadd = DateTime.Now,
-                            dayupdate = DateTime.Now
-                        };
-
-                        context.Reports.Add(report);
 
                         var listtype = TypeController.getList();
                         foreach (Types ty in listtype)
                         {
                             int count = 0;
                             var test = amountofcustomers.Where(o => o.typeid == ty.typeid).ToList();
+
                             if (test.Count > 0)
                             {
+                                var check1 = context.TypesReports.Where(o => o.typeid == ty.typeid && o.reportid == report1.reportid).Count();
                                 count = test.Count();
-                                var tr = new SNI.Models.TypesReports
+                                
+                                if (check1 == 0)
                                 {
-                                    Types = context.Types.Where(o => o.typeid == ty.typeid).FirstOrDefault(),
-                                    Reports = report,
-                                    amounts = count,
-                                    dayadd = DateTime.Now,
-                                    dayupdate = DateTime.Now
-                                };
-                                context.TypesReports.Add(tr);
+                                    var tr = new SNI.Models.TypesReports
+                                    {
+                                        Types = context.Types.Where(o => o.typeid == ty.typeid).FirstOrDefault(),
+                                        Reports = report1,
+                                        amounts = count,
+                                        dayadd = DateTime.Now,
+                                        dayupdate = DateTime.Now
+                                    };
+                                    context.TypesReports.Add(tr);
+
+                                }
+                                else
+                                {
+                                    var typer =  context.TypesReports.Where(o => o.typeid == ty.typeid && o.reportid == report1.reportid).FirstOrDefault();
+                                    typer.amounts = count;
+                                    
+                                }
+                            }
+                            else
+                            {
+                                var gettpyr = context.TypesReports.Where(o => o.typeid == ty.typeid && o.reportid == report1.reportid).FirstOrDefault();
+                                if (gettpyr!=null)
+                                {
+                                    context.TypesReports.Remove(gettpyr);
+                                }
                             }
                         }
                         context.SaveChanges();
