@@ -184,6 +184,7 @@ namespace SNI.Controllers
                         }
                         context.SaveChanges();
                     }
+                    JsonPost.PostAPI(dt);
                     return true;
                 }
                 catch(Exception ex)
@@ -261,6 +262,18 @@ namespace SNI.Controllers
                 return context.Reports.Where(o => o.datereport.Day == dt.Day
                 && o.datereport.Month == dt.Month
                 && o.datereport.Year == dt.Year).FirstOrDefault();
+            }
+        }
+        public static void servercheck(DateTime dt)
+        {
+            using (var context = new ControllerModel())
+            {
+                var rp = context.Reports.Where(o => o.datereport.Day == dt.Day
+                && o.datereport.Month == dt.Month
+                && o.datereport.Year == dt.Year).FirstOrDefault();
+
+                rp.serverreport = true;
+                context.SaveChanges();
             }
         }
 

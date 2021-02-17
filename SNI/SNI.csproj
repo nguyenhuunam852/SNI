@@ -86,6 +86,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -122,6 +123,7 @@
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="JsonPost.cs" />
     <Compile Include="Models\CustomerHealth.cs" />
     <Compile Include="Models\CustomerMachine.cs" />
     <Compile Include="Models\Customers.cs" />

@@ -51,6 +51,14 @@ namespace SNI.Controllers
                     int[] array = new int[] { i.Day, i.Month, i.Year };
                     htr.Add(array);
                 }
+
+                var getserverreport = context.Reports.Where(o => o.serverreport == false).ToList();
+                foreach(Reports rp in getserverreport)
+                {
+                    int[] array = new int[] { rp.datereport.Day,rp.datereport.Month,rp.datereport.Year };
+                    htr.Add(array);
+                }
+                    
                 return htr;
             }
         }
