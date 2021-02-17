@@ -49,23 +49,26 @@ namespace SNI.Views.Machine
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["recovery"].Index)
+            if (e.RowIndex != -1)
             {
-                int type = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
-                if (type == 1)
+                if (e.ColumnIndex == dataGridView1.Columns["recovery"].Index)
                 {
-                    if (MachineController.Recovery(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value)) == true)
+                    int type = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[3].Value);
+                    if (type == 1)
                     {
-                        this.DialogResult = DialogResult.OK;
+                        if (MachineController.Recovery(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value)) == true)
+                        {
+                            this.DialogResult = DialogResult.OK;
+                        }
                     }
-                }
-                else
-                {
-                    if (MachineController.RecoveryTemp(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value)) == true)
+                    else
                     {
-                        this.DialogResult = DialogResult.OK;
-                    }
+                        if (MachineController.RecoveryTemp(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value)) == true)
+                        {
+                            this.DialogResult = DialogResult.OK;
+                        }
 
+                    }
                 }
             }
         }

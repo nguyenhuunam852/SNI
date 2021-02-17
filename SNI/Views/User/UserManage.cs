@@ -113,25 +113,29 @@ namespace SNI.Views.User
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            selected = Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString());
-            if (e.ColumnIndex == dataGridView1.Columns["delete"].Index)
+            if (e.RowIndex != -1)
             {
-                DialogResult dlr = MessageBox.Show("Bạn có muốn xóa không", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (dlr == DialogResult.Yes)
+                selected = Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString());
+            
+                if (e.ColumnIndex == dataGridView1.Columns["delete"].Index)
                 {
-                    if (UserController.RemoveUser(selected) == true)
+                    DialogResult dlr = MessageBox.Show("Bạn có muốn xóa không", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dlr == DialogResult.Yes)
                     {
-                        loadDataGridView();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (UserController.RemoveUser(selected) == true)
+                        {
+                            loadDataGridView();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
-            }
-            else
-            {
-                showinfor(selected);
+                else
+                {
+                    showinfor(selected);
+                }
             }
         }
 

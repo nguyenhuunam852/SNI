@@ -40,7 +40,6 @@
             this.thốngKêVàLịchSửToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lịchSửToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêTheoThángToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thốngKêTheoNămToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtshowcustomer_find = new System.Windows.Forms.DataGridView();
@@ -146,8 +145,7 @@
             // 
             this.thốngKêVàLịchSửToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lịchSửToolStripMenuItem,
-            this.thốngKêTheoThángToolStripMenuItem,
-            this.thốngKêTheoNămToolStripMenuItem});
+            this.thốngKêTheoThángToolStripMenuItem});
             this.thốngKêVàLịchSửToolStripMenuItem.Name = "thốngKêVàLịchSửToolStripMenuItem";
             this.thốngKêVàLịchSửToolStripMenuItem.Size = new System.Drawing.Size(126, 20);
             this.thốngKêVàLịchSửToolStripMenuItem.Text = "Thống Kê và Lịch Sử";
@@ -166,12 +164,6 @@
             this.thốngKêTheoThángToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.thốngKêTheoThángToolStripMenuItem.Text = "Thống kê theo Tháng";
             this.thốngKêTheoThángToolStripMenuItem.Click += new System.EventHandler(this.thốngKêTheoThángToolStripMenuItem_Click);
-            // 
-            // thốngKêTheoNămToolStripMenuItem
-            // 
-            this.thốngKêTheoNămToolStripMenuItem.Name = "thốngKêTheoNămToolStripMenuItem";
-            this.thốngKêTheoNămToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.thốngKêTheoNămToolStripMenuItem.Text = "Thống kê theo Năm";
             // 
             // panel2
             // 
@@ -378,7 +370,6 @@
         private System.Windows.Forms.ToolStripMenuItem thốngKêVàLịchSửToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lịchSửToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thốngKêTheoThángToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thốngKêTheoNămToolStripMenuItem;
         private System.Windows.Forms.Button button1;
     }
 }

@@ -34,16 +34,19 @@ namespace SNI.Views.Customer
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dt_history.Columns["recovery"].Index)
+            if (e.RowIndex != -1)
             {
-                string id = dt_history.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
-                if(CustomerController.Recovery(id)==true)
+                if (e.ColumnIndex == dt_history.Columns["recovery"].Index)
                 {
-                    this.DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string id = dt_history.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
+                    if (CustomerController.Recovery(id) == true)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

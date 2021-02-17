@@ -99,19 +99,22 @@ namespace SNI.Views.Setting
         string selected_file = "";
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string path = textBox1.Text;
-            selected_file = dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString();
-            DataTable dtb = BackupController.getDTB(dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString(), path);
-            string database = BackupController.getbase(dtb.Rows[0][1].ToString());
-            if (database != null)
+            if (e.RowIndex != -1)
             {
-                txtDatabaseName.Text = database;
-                s = 1;
-            }
-            else
-            {
-                txtDatabaseName.Text = "Database không tồn tại";
-                s = 2;
+                string path = textBox1.Text;
+                selected_file = dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                DataTable dtb = BackupController.getDTB(dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString(), path);
+                string database = BackupController.getbase(dtb.Rows[0][1].ToString());
+                if (database != null)
+                {
+                    txtDatabaseName.Text = database;
+                    s = 1;
+                }
+                else
+                {
+                    txtDatabaseName.Text = "Database không tồn tại";
+                    s = 2;
+                }
             }
         }
 

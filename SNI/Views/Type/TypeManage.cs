@@ -64,19 +64,22 @@ namespace SNI.Views.Type
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["delete"].Index)
+            if (e.RowIndex != -1)
             {
-                DialogResult dlr = MessageBox.Show("Bạn có muốn xóa không", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (dlr == DialogResult.Yes)
+                if (e.ColumnIndex == dataGridView1.Columns["delete"].Index)
                 {
-                    string id = dataGridView1.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
-                    if (TypeController.RemoveType(Convert.ToInt16(id)) == true)
+                    DialogResult dlr = MessageBox.Show("Bạn có muốn xóa không", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dlr == DialogResult.Yes)
                     {
-                        loadDataGridView();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string id = dataGridView1.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
+                        if (TypeController.RemoveType(Convert.ToInt16(id)) == true)
+                        {
+                            loadDataGridView();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }

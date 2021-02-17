@@ -95,8 +95,18 @@ namespace SNI.Views
             dtg.AllowUserToResizeRows = false;
             dtg.MultiSelect = false;
             dtg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtg.CellClick += Dtg_CellClick;
+           
             return dtg;
         }
+
+        private static void Dtg_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex == -1) return;
+       
+        }
+
         public static Panel pn;
         public static Label getbuttonx(Label label1,string id)
         {

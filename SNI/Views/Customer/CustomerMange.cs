@@ -315,9 +315,12 @@ namespace SNI.Views.Customer
             }
             else
             {
-                selected_customer = dataGridView1.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
-                var customer = CustomerController.getinformation(selected_customer);
-                showinfor(customer);
+                if (e.RowIndex != -1)
+                {
+                    selected_customer = dataGridView1.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
+                    var customer = CustomerController.getinformation(selected_customer);
+                    showinfor(customer);
+                }
             }
         }
         private void loadTag()

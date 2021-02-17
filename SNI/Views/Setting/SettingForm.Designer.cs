@@ -62,6 +62,8 @@
             this.usetoken = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.api_gb = new System.Windows.Forms.GroupBox();
+            this.codeGroup_txt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.api_close = new System.Windows.Forms.Button();
             this.api_save = new System.Windows.Forms.Button();
             this.api_update = new System.Windows.Forms.Button();
@@ -69,8 +71,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.report_api_txt = new System.Windows.Forms.TextBox();
-            this.codeGroup_txt = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.DataBase_gb.SuspendLayout();
             this.activetime_gb.SuspendLayout();
             this.branch_gb.SuspendLayout();
@@ -195,6 +196,7 @@
             // 
             // activetime_gb
             // 
+            this.activetime_gb.Controls.Add(this.label14);
             this.activetime_gb.Controls.Add(this.activetime_close);
             this.activetime_gb.Controls.Add(this.activetime_Save);
             this.activetime_gb.Controls.Add(this.activetime_update);
@@ -244,7 +246,7 @@
             // 
             // activetime_mask
             // 
-            this.activetime_mask.Location = new System.Drawing.Point(133, 44);
+            this.activetime_mask.Location = new System.Drawing.Point(133, 50);
             this.activetime_mask.Mask = "90:00";
             this.activetime_mask.Name = "activetime_mask";
             this.activetime_mask.Size = new System.Drawing.Size(35, 20);
@@ -306,7 +308,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 51);
+            this.label7.Location = new System.Drawing.Point(24, 54);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 13);
             this.label7.TabIndex = 44;
@@ -426,6 +428,22 @@
             this.api_gb.TabStop = false;
             this.api_gb.Text = "Api Setting";
             // 
+            // codeGroup_txt
+            // 
+            this.codeGroup_txt.Location = new System.Drawing.Point(97, 204);
+            this.codeGroup_txt.Name = "codeGroup_txt";
+            this.codeGroup_txt.Size = new System.Drawing.Size(200, 20);
+            this.codeGroup_txt.TabIndex = 57;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(14, 211);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 13);
+            this.label13.TabIndex = 56;
+            this.label13.Text = "Code Group";
+            // 
             // api_close
             // 
             this.api_close.Location = new System.Drawing.Point(151, 251);
@@ -488,21 +506,14 @@
             this.report_api_txt.Size = new System.Drawing.Size(200, 20);
             this.report_api_txt.TabIndex = 42;
             // 
-            // codeGroup_txt
+            // label14
             // 
-            this.codeGroup_txt.Location = new System.Drawing.Point(97, 204);
-            this.codeGroup_txt.Name = "codeGroup_txt";
-            this.codeGroup_txt.Size = new System.Drawing.Size(200, 20);
-            this.codeGroup_txt.TabIndex = 57;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 211);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 13);
-            this.label13.TabIndex = 56;
-            this.label13.Text = "Code Group";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(174, 54);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(56, 13);
+            this.label14.TabIndex = 53;
+            this.label14.Text = "(phút:giây)";
             // 
             // SettingForm
             // 
@@ -575,5 +586,6 @@
         private System.Windows.Forms.Button api_update;
         private System.Windows.Forms.TextBox codeGroup_txt;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }

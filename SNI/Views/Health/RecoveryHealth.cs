@@ -39,16 +39,19 @@ namespace SNI.Views.Health
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["recovery"].Index)
+            if (e.RowIndex != -1)
             {
-                string id = dataGridView1.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
-                if (HealthController.Recovery(Convert.ToInt32(id)) == true)
+                if (e.ColumnIndex == dataGridView1.Columns["recovery"].Index)
                 {
-                    this.DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string id = dataGridView1.Rows[e.RowIndex].Cells["Mã Số"].Value.ToString();
+                    if (HealthController.Recovery(Convert.ToInt32(id)) == true)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

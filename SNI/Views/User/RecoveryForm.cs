@@ -41,16 +41,19 @@ namespace SNI.Views.User
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["recovery"].Index)
+            if (e.RowIndex != -1)
             {
-                int id = Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString());
-                if (UserController.RecoveryUser(id) == true)
+                if (e.ColumnIndex == dataGridView1.Columns["recovery"].Index)
                 {
-                    this.DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    int id = Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToString());
+                    if (UserController.RecoveryUser(id) == true)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi xảy ra!!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
