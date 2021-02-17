@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using SNI.Models;
+using SNI.Views;
+
 namespace SNI.Controllers
 {
     class HistoryController
@@ -57,7 +59,20 @@ namespace SNI.Controllers
             using (var context = new ControllerModel())
             {
                 var getlist =  context.Histories.Include("Customers").Include("Machines").Where(o => o.Customers.localid == id).ToList();
-                return getHistoryData(getlist);
+                DataTable dtb = new DataTable();
+                dtb.Columns.Add("Tên Ghế");
+                dtb.Columns.Add("Thời gian hoạt động");
+                dtb.Columns.Add("Thời gian bắt đầu");
+                foreach(History his in getlist)
+                {
+                    DataRow dtr = dtb.NewRow();
+                    dtr["Tên Ghế"] = his.Machines.name;
+                    int[] hour = Module.convertSecond(his.activetime);
+                    dtr["Thời gian hoạt động"] = Module.addzero(hour[0])+":"+Module.addzero(hour[1])+":"+Module.addzero(hour[2]);
+                    dtr["Thời gian bắt đầu"] = his.dayadd.ToString();
+                    dtb.Rows.Add(dtr);
+                }
+                return dtb;
             }
         }
         public static DataTable getHistoryData(List<History> listhistory)

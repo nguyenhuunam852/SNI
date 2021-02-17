@@ -20,6 +20,7 @@ namespace SNI.Views.Service
         double scaleh = 0;
         public int oldid;
         int selected_id;
+        Label selected_label;
         private Label createLabel(int id, String name, int status, int locationx, int locationy)
         {
             Label lb = new Label();
@@ -41,9 +42,15 @@ namespace SNI.Views.Service
 
         private void Lb_Click(object sender, EventArgs e)
         {
-            Label lb = sender as Label;
+            if(selected_label!=null)
+            {
+                selected_label.BackColor = Color.FromArgb(135, 206, 250);
+            }
+            Label lb = sender as Label;           
             if (!workinglist.Contains(lb))
             {
+                selected_label = lb;
+                selected_label.BackColor = Color.Red;
                 selected_id = Convert.ToInt16(lb.Name);
                 trans_machine.Text = lb.Text;
                 bt_accept.Enabled = true;

@@ -10,6 +10,14 @@ namespace SNI.Views
 {
     class Module
     {
+        public static int[] convertSecond(int second)
+        {
+            int hour = second / 3600;
+            second = second - hour * 3600;
+            int minute = second / 60;
+            second = second - minute * 60;
+            return new int[] { hour, minute, second };
+        }
         public static string addzero(int a)
         {
             if (a < 10) return "0" + a.ToString();
