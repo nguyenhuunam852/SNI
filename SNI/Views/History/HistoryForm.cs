@@ -46,7 +46,14 @@ namespace SNI.Views.History
             new_lb.Text = ReportController.getnewamountofday(dt).ToString();
 
             dataGridView1.DataSource = HistoryController.GetListHistoryinDay(monthCalendar1.SelectionStart);
-            dataGridView2.DataSource = ReportController.getTypeReport(dt);
+            if (!ReportController.checkDay(dt))
+            {
+                dataGridView2.DataSource = ReportController.getTypeReport(dt);
+            }
+            else
+            {
+                dataGridView2.DataSource = ReportController.getTypeamountbyDay(dt);
+            }
 
         }
     }

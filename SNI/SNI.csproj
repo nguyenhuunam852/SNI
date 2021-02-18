@@ -351,6 +351,12 @@
     <Compile Include="Views\Type\TypeManage.Designer.cs">
       <DependentUpon>TypeManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\PersonalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\User\PersonalForm.Designer.cs">
+      <DependentUpon>PersonalForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\RecoveryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -483,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Type\TypeManage.resx">
       <DependentUpon>TypeManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\User\PersonalForm.resx">
+      <DependentUpon>PersonalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User\RecoveryForm.resx">
       <DependentUpon>RecoveryForm.cs</DependentUpon>

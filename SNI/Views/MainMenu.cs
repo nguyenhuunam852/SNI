@@ -346,10 +346,14 @@ namespace SNI
             
            
         }
-
+        int signal=0;
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
-            parent.Close();
+            if (signal == 0)
+            {
+                parent.Close();
+            }
+            
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -436,20 +440,7 @@ namespace SNI
         }
         private void quảnLíGhếToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MachineManage machine = new MachineManage();
-            machine.setPanelSize(startSize.Width, startSize.Height,scaleww,scalewh);
-            if (machine.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show("Lưu thành công!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                panel1.Controls.Clear();
-                load();
-                loadState();
-            }
-            else
-            {
-                load();
-                loadState();
-            }
+          
         }
         private void quảnLíKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -648,6 +639,69 @@ namespace SNI
         {
             CameraBarCodeForm cb = new CameraBarCodeForm();
             cb.ShowDialog();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void quanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MachineManage machine = new MachineManage();
+            machine.setPanelSize(startSize.Width, startSize.Height, scaleww, scalewh);
+            if (machine.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Lưu thành công!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                panel1.Controls.Clear();
+                load();
+                loadState();
+            }
+            else
+            {
+                load();
+                loadState();
+            }
+        }
+
+        private void quảnLíKháchHàngToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CustomerMange cm = new CustomerMange();
+            if (cm.ShowDialog() == DialogResult.OK)
+            {
+                load();
+                loadState();
+            }
+        }
+
+        private void quảnLíSứcKhỏeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            HealthManage hm = new HealthManage();
+            hm.ShowDialog();
+        }
+
+        private void quảnLíLoạiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TypeManage typeManage = new TypeManage();
+            typeManage.ShowDialog();
+        }
+
+        private void đăngXuấtToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            signal = 1;
+            this.Close();
+            
+            UserController.current = null;
+
+            parent.TopMost = true;
+            parent.Refresh();
+            parent.Show();
+        }
+
+        private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PersonalForm pf = new PersonalForm();
+            pf.ShowDialog();
         }
     }
 }

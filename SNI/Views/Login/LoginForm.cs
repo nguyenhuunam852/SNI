@@ -35,10 +35,15 @@ namespace SNI.Views.Login
         {
             this.Close();
         }
-
+        public void fload()
+        {
+            username_txt.Text = "";
+            password_txt.Text = "";
+        }
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            username_txt.Text = "";
+            password_txt.Text = "";
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -47,6 +52,18 @@ namespace SNI.Views.Login
                 button1.PerformClick();
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void LoginForm_Shown(object sender, EventArgs e)
+        {
+            username_txt.Text = "";
+            password_txt.Text = "";
+        }
+
+        private void LoginForm_VisibleChanged(object sender, EventArgs e)
+        {
+            username_txt.Text = "";
+            password_txt.Text = "";
         }
     }
 }

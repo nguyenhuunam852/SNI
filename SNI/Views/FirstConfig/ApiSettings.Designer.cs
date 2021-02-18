@@ -47,7 +47,7 @@
             this.button2.Location = new System.Drawing.Point(211, 264);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 45;
+            this.button2.TabIndex = 6;
             this.button2.Text = "Hủy";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -57,7 +57,7 @@
             this.button1.Location = new System.Drawing.Point(118, 264);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 44;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Xác nhận";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -67,7 +67,7 @@
             this.update_api_txt.Location = new System.Drawing.Point(184, 98);
             this.update_api_txt.Name = "update_api_txt";
             this.update_api_txt.Size = new System.Drawing.Size(211, 20);
-            this.update_api_txt.TabIndex = 41;
+            this.update_api_txt.TabIndex = 1;
             // 
             // label2
             // 
@@ -92,14 +92,14 @@
             this.report_api_txt.Location = new System.Drawing.Point(184, 57);
             this.report_api_txt.Name = "report_api_txt";
             this.report_api_txt.Size = new System.Drawing.Size(211, 20);
-            this.report_api_txt.TabIndex = 38;
+            this.report_api_txt.TabIndex = 0;
             // 
             // apptoken
             // 
             this.apptoken.Location = new System.Drawing.Point(184, 175);
             this.apptoken.Name = "apptoken";
             this.apptoken.Size = new System.Drawing.Size(211, 20);
-            this.apptoken.TabIndex = 49;
+            this.apptoken.TabIndex = 3;
             // 
             // label3
             // 
@@ -115,7 +115,7 @@
             this.usetoken.Location = new System.Drawing.Point(184, 138);
             this.usetoken.Name = "usetoken";
             this.usetoken.Size = new System.Drawing.Size(211, 20);
-            this.usetoken.TabIndex = 47;
+            this.usetoken.TabIndex = 2;
             // 
             // label4
             // 
@@ -131,7 +131,7 @@
             this.codeGroup_txt.Location = new System.Drawing.Point(184, 210);
             this.codeGroup_txt.Name = "codeGroup_txt";
             this.codeGroup_txt.Size = new System.Drawing.Size(211, 20);
-            this.codeGroup_txt.TabIndex = 59;
+            this.codeGroup_txt.TabIndex = 4;
             // 
             // label13
             // 

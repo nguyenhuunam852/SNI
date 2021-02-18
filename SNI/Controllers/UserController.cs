@@ -15,8 +15,12 @@ namespace SNI.Controllers
             {
                 try
                 {
-                    var getuser = context.Users.Include("Roles").Where(o => o.Roles.name=="Admin");
-                    context.Users.RemoveRange(getuser);
+                    if (role == "Admin")
+                    {
+                        var getuser = context.Users.Include("Roles").Where(o => o.Roles.name == "Admin");
+                        context.Users.RemoveRange(getuser);
+                    }
+                    
                     var User = new Users
                     {
                         username = username,
@@ -40,6 +44,7 @@ namespace SNI.Controllers
             }
 
         }
+       
         public static bool UpdateUser(int id,string username, string password, string name, string email, string phone,string role)
         {
             using (var context = new ControllerModel())
@@ -53,6 +58,29 @@ namespace SNI.Controllers
                     user.email = email;
                     user.phone = phone;
                     user.Roles = context.Roles.Where(o => o.name == role).FirstOrDefault();
+                    context.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+        }
+        public static bool UpdateUser(int id, string username, string password, string name, string email, string phone)
+        {
+            using (var context = new ControllerModel())
+            {
+                try
+                {
+                    var user = context.Users.Where(o => o.userid == id).FirstOrDefault();
+                    user.username = username;
+                    user.password = password;
+                    user.name = name;
+                    user.email = email;
+                    user.phone = phone;
+                    current = user;
                     context.SaveChanges();
                     return true;
                 }

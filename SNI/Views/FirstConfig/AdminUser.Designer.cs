@@ -47,7 +47,7 @@
             this.name_txt.Location = new System.Drawing.Point(276, 92);
             this.name_txt.Name = "name_txt";
             this.name_txt.Size = new System.Drawing.Size(196, 20);
-            this.name_txt.TabIndex = 0;
+            this.name_txt.TabIndex = 2;
             // 
             // label1
             // 
@@ -79,7 +79,7 @@
             this.password_txt.Location = new System.Drawing.Point(68, 133);
             this.password_txt.Name = "password_txt";
             this.password_txt.Size = new System.Drawing.Size(100, 20);
-            this.password_txt.TabIndex = 7;
+            this.password_txt.TabIndex = 1;
             this.password_txt.UseSystemPasswordChar = true;
             // 
             // label3
@@ -105,7 +105,7 @@
             this.username_txt.Location = new System.Drawing.Point(68, 92);
             this.username_txt.Name = "username_txt";
             this.username_txt.Size = new System.Drawing.Size(100, 20);
-            this.username_txt.TabIndex = 4;
+            this.username_txt.TabIndex = 0;
             // 
             // label6
             // 
@@ -121,14 +121,14 @@
             this.sdt_txt.Location = new System.Drawing.Point(276, 171);
             this.sdt_txt.Name = "sdt_txt";
             this.sdt_txt.Size = new System.Drawing.Size(196, 20);
-            this.sdt_txt.TabIndex = 8;
+            this.sdt_txt.TabIndex = 4;
             // 
             // accept_button
             // 
             this.accept_button.Location = new System.Drawing.Point(68, 244);
             this.accept_button.Name = "accept_button";
             this.accept_button.Size = new System.Drawing.Size(75, 23);
-            this.accept_button.TabIndex = 10;
+            this.accept_button.TabIndex = 5;
             this.accept_button.Text = "Chấp nhận";
             this.accept_button.UseVisualStyleBackColor = true;
             this.accept_button.Click += new System.EventHandler(this.accept_button_Click);
@@ -138,7 +138,7 @@
             this.close_button.Location = new System.Drawing.Point(177, 244);
             this.close_button.Name = "close_button";
             this.close_button.Size = new System.Drawing.Size(75, 23);
-            this.close_button.TabIndex = 11;
+            this.close_button.TabIndex = 6;
             this.close_button.Text = "Hủy";
             this.close_button.UseVisualStyleBackColor = true;
             this.close_button.Click += new System.EventHandler(this.close_button_Click);

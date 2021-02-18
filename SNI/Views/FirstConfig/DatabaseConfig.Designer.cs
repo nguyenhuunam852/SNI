@@ -45,7 +45,7 @@
             this.database_txt.Location = new System.Drawing.Point(177, 184);
             this.database_txt.Name = "database_txt";
             this.database_txt.Size = new System.Drawing.Size(211, 20);
-            this.database_txt.TabIndex = 29;
+            this.database_txt.TabIndex = 3;
             // 
             // label4
             // 
@@ -61,7 +61,7 @@
             this.button2.Location = new System.Drawing.Point(201, 228);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 27;
+            this.button2.TabIndex = 5;
             this.button2.Text = "Hủy";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -71,7 +71,7 @@
             this.button1.Location = new System.Drawing.Point(108, 228);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 26;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Xác nhận";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -82,7 +82,7 @@
             this.password_txt.Name = "password_txt";
             this.password_txt.PasswordChar = '*';
             this.password_txt.Size = new System.Drawing.Size(211, 20);
-            this.password_txt.TabIndex = 25;
+            this.password_txt.TabIndex = 2;
             this.password_txt.UseSystemPasswordChar = true;
             // 
             // label3
@@ -99,7 +99,7 @@
             this.username_txt.Location = new System.Drawing.Point(177, 111);
             this.username_txt.Name = "username_txt";
             this.username_txt.Size = new System.Drawing.Size(211, 20);
-            this.username_txt.TabIndex = 23;
+            this.username_txt.TabIndex = 1;
             // 
             // label2
             // 
@@ -124,7 +124,7 @@
             this.servername_txt.Location = new System.Drawing.Point(177, 70);
             this.servername_txt.Name = "servername_txt";
             this.servername_txt.Size = new System.Drawing.Size(211, 20);
-            this.servername_txt.TabIndex = 20;
+            this.servername_txt.TabIndex = 0;
             // 
             // DatabaseConfig
             // 

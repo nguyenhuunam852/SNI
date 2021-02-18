@@ -36,7 +36,6 @@ namespace SNI
                 if (result.status == "True")
                 {
                     ReportController.servercheck(date);
-                    MessageBox.Show("Done");
                     return 1;
                 }
                 else
@@ -47,7 +46,6 @@ namespace SNI
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
                 return 0;
             }
         }

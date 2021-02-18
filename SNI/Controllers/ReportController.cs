@@ -248,6 +248,22 @@ namespace SNI.Controllers
                 return customer;
             }
         }
+        public static bool checkDay(DateTime dt)
+        {
+            using (var context = new ControllerModel())
+            {
+                var listDate = context.Reports.Select(o => new { o.datereport.Day, o.datereport.Month, o.datereport.Year }).ToList();
+                var current = new { dt.Day, dt.Month, dt.Year };
+                if(listDate.Contains(current))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
         public static DataTable getTypeamountbyDay(DateTime dt)
         {
            
