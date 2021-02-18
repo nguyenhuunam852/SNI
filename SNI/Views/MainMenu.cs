@@ -306,13 +306,13 @@ namespace SNI
             this.FormClosed += MainMenu_FormClosed;
             if(UserController.current.Roles.name=="Admin")
             {
-                settingsToolStripMenuItem.Visible = true;
-                quảnLíUsersToolStripMenuItem.Visible = true;
+                settingsToolStripMenuItem1.Visible = true;
+                quảnLíUserToolStripMenuItem.Visible = true;
             }
             else
             {
-                settingsToolStripMenuItem.Visible = false;
-                quảnLíUsersToolStripMenuItem.Visible = false;
+                settingsToolStripMenuItem1.Visible = false;
+                quảnLíUserToolStripMenuItem.Visible = false;
             }
                 DateTime current = DateTime.Now;
                 var listnotcheck = HistoryController.CheckListNotCheck();
@@ -600,21 +600,17 @@ namespace SNI
 
         private void quảnLíUsersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserManage um = new UserManage();
-            um.ShowDialog();
+           
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Views.Setting.SettingForm sf = new Views.Setting.SettingForm();
-            sf.parent = this;
-            sf.ShowDialog();
+           
         }
 
         private void backupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Views.Setting.BackupFile bf = new Views.Setting.BackupFile();
-            bf.ShowDialog();
+            
         }
 
         private void thốngKêVàLịchSửToolStripMenuItem_Click(object sender, EventArgs e)
@@ -702,6 +698,38 @@ namespace SNI
         {
             PersonalForm pf = new PersonalForm();
             pf.ShowDialog();
+        }
+
+        private void quảnLíUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UserManage um = new UserManage();
+            um.ShowDialog();
+        }
+
+        private void lịchSửToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Views.History.HistoryForm hf = new Views.History.HistoryForm();
+            hf.dt = DateTime.Now;
+            hf.ShowDialog();
+        }
+
+        private void thốngKêTheoThángToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Views.History.Statical_Month sm = new Views.History.Statical_Month();
+            sm.ShowDialog();
+        }
+
+        private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Views.Setting.SettingForm sf = new Views.Setting.SettingForm();
+            sf.parent = this;
+            sf.ShowDialog();
+        }
+
+        private void backupToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Views.Setting.BackupFile bf = new Views.Setting.BackupFile();
+            bf.ShowDialog();
         }
     }
 }
