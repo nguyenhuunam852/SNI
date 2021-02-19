@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -11,7 +12,104 @@ namespace SNI.Controllers
 {
     class CustomerController
     {
+
         public static Customers addedCustomer;
+        public static DataTable PullData()
+        {
+            DataTable dtb = new DataTable();
+            string connString = @"Data Source=NAM-PC\SQLEXPRESS;Initial Catalog=btx;User ID=sa;Password=123456";
+            string query = "select * from Customer";
+
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand(query, conn);
+            conn.Open();
+
+            // create data adapter
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            // this will query your database and return the result to your datatable
+            da.Fill(dtb);
+            conn.Close();
+            da.Dispose();
+            return dtb;
+
+        }
+        public static DataTable PullData1()
+        {
+            DataTable dtb = new DataTable();
+            string connString = @"Data Source=NAM-PC\SQLEXPRESS;Initial Catalog=btx;User ID=sa;Password=123456";
+            string query = "select * from TypeCustomer";
+
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand(query, conn);
+            conn.Open();
+
+            // create data adapter
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            // this will query your database and return the result to your datatable
+            da.Fill(dtb);
+            conn.Close();
+            da.Dispose();
+            return dtb;
+
+        }
+        
+        public static void getOldData()
+        {
+            DataTable dtb = PullData();
+            DataTable dtb1 = PullData1();
+            
+            using (var context = new ControllerModel())
+            {
+                foreach (DataRow dtr in dtb1.Rows)
+                {
+                    var type = new Types
+                    {
+                        name = dtr["name"].ToString(),
+                        available = true,
+                        dayadd = DateTime.Now,
+                        dayupdate = DateTime.Now
+                    };
+                    context.Types.Add(type);
+                }
+                context.SaveChanges();
+               
+                foreach (DataRow dtr in dtb.Rows)
+                {
+                    int sex;
+                    int birth;
+                    int t;
+                    Types type;
+                    Customers cust;
+                    try
+                    {
+                        sex = Convert.ToInt16(dtr["sex"]);
+                        birth = Convert.ToInt16(dtr["birthday"].ToString().Split('/')[2]);
+                        t = Convert.ToInt16(dtr["type"].ToString());
+                        type = context.Types.Where(o => o.typeid == t).FirstOrDefault();
+                        cust = new Customers
+                        {
+                            localid = dtr["code"].ToString(),
+                            name = dtr["lastname"].ToString() + " " + dtr["firstname"].ToString(),
+                            phone = dtr["phone"].ToString(),
+                            address = dtr["address"].ToString(),
+                            gender = sex,
+                            age = birth,
+                            available = true,
+                            Types = type,
+                            dayadd = DateTime.Now,
+                            dayupdate = DateTime.Now
+                        };
+                        context.Customers.Add(cust);
+                    }
+                    catch(Exception ex)
+                    {
+
+                      
+                    }
+                }
+                context.SaveChanges();
+            }
+        }
         public static DataTable getListCustomer()
         {
             using (var context = new ControllerModel())

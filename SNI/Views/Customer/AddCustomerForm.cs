@@ -23,7 +23,7 @@ namespace SNI.Views.Customer
         {
             sdttext = Module.createPhone(sdttext);
             this.Controls.SetChildIndex(suckhoetext, 0);
-            idlabel.Text = FileConfig.config.MaChiNhanh + RandomString(4);
+            idlabel.Text = RandomString(5)+FileConfig.config.MaChiNhanh;
             gioitinhcbbox = Module.loadComboBox(gioitinhcbbox);
             loaiCombobox = Module.LoadComboboxLoai(loaiCombobox);
             //LoadDataGridView();

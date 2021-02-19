@@ -9,9 +9,9 @@ using SNI.Views.Health;
 using SNI.Views.Type;
 using System.Collections.Generic;
 using System.Data;
-using SNI.Views.FirstConfig;
 using SNI.Views.User;
 using SNI.Views.Setting;
+
 
 namespace SNI
 {
@@ -730,6 +730,11 @@ namespace SNI
         {
             Views.Setting.BackupFile bf = new Views.Setting.BackupFile();
             bf.ShowDialog();
+        }
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CustomerController.getOldData();
         }
     }
 }
