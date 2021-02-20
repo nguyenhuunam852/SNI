@@ -11,6 +11,14 @@ namespace SNI.Controllers
     class HealthController
     {
         public static Health addedhealth;
+        public static bool ContainsHealth(string heal)
+        {
+            using (var context = new ControllerModel())
+            {
+
+                return context.Healths.Where(o => o.name == "heal").Count() > 0;
+            }
+        }
         public static Health getinformation(int id)
         {
             using (var context = new ControllerModel())

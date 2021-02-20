@@ -19,8 +19,10 @@ namespace SNI.Views.Customer
         {
             InitializeComponent();
         }
+        
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
+            
             sdttext = Module.createPhone(sdttext);
             this.Controls.SetChildIndex(suckhoetext, 0);
             idlabel.Text = RandomString(5)+FileConfig.config.MaChiNhanh;
@@ -201,13 +203,17 @@ namespace SNI.Views.Customer
             else
             {
                 bool check = HealthController.checkExist(suckhoetext.Text);
-                if(check==true)
+                int count = listWithout.Where(o => o.name == suckhoetext.Text).Count();
+                if (count == 0)
                 {
-                    createTag();
-                }
-                else
-                {
-                    createNotExistTag();
+                    if (check == true)
+                    {
+                        createTag();
+                    }
+                    else
+                    {
+                        createNotExistTag();
+                    }
                 }
             }
             comboBox1.DroppedDown = false;

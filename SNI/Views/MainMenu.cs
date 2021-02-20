@@ -333,7 +333,8 @@ namespace SNI
                 scalew = 1 * scaleww;
                 scaleh = 1 * scalewh;
                 startSize = panel1.Size;
-                bt_chotca.Enabled = true;
+                bt_chotca.Enabled = false;
+                            
 
                 load();
                 loadState();
@@ -369,6 +370,10 @@ namespace SNI
         }
         private void Time_Tick(object sender, EventArgs e)
         {
+            if(DateTime.Now.Hour>FileConfig.config.reportstart.Hour && DateTime.Now.Hour<FileConfig.config.reportfinish.Hour)
+            {
+                bt_chotca.Enabled = true;
+            }
             foreach (Label lb in wotkinglabel)
             {
                 if (!stoplabel.Contains(lb))

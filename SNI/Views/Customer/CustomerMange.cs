@@ -135,17 +135,19 @@ namespace SNI.Views.Customer
         }
         private void ComboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (suckhoetext.Text != "" && comboBox1.SelectedIndex != -1)
+            if (suckhoetext.Text != "" && comboBox1.SelectedIndex != -1 && show == 0)
             {
                 acceptChoose();
             }
         }
         //
+        int show = 0;
         private void createNotExistTag()
         {
             var listname = listWithout.Select(o => o.name);
             if (!listname.Contains(suckhoetext.Text))
             {
+                show = 1;
                 DialogResult dlt = MessageBox.Show("Bạn có muốn tạo mới không!", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dlt == DialogResult.Yes)
                 {
@@ -159,6 +161,7 @@ namespace SNI.Views.Customer
                         }
                     }
                 }
+                show = 0;
             }
             else
             {
@@ -167,24 +170,17 @@ namespace SNI.Views.Customer
         }
         private void createTag()
         {
-            var listname = listWithout.Select(o => o.name);
             if (comboBox1.SelectedValue != null)
             {
                 selected_health = HealthController.getinformation(Convert.ToInt16(comboBox1.SelectedValue.ToString()));
-                if (!listname.Contains(selected_health.name))
-                {
-                    listWithout.Add(selected_health);
-                    loadTag();
-                }
+                listWithout.Add(selected_health);
+                loadTag();
             }
             else
             {
                 selected_health = HealthController.getinformationbyName(suckhoetext.Text);
-                if (!listname.Contains(selected_health.name))
-                {
-                    listWithout.Add(selected_health);
-                    loadTag();
-                }
+                listWithout.Add(selected_health);
+                loadTag();
             }
         }
         private void acceptChoose()
@@ -196,13 +192,17 @@ namespace SNI.Views.Customer
             else
             {
                 bool check = HealthController.checkExist(suckhoetext.Text);
-                if (check == true)
+                int count = listWithout.Where(o => o.name == suckhoetext.Text).Count();
+                if (count == 0)
                 {
-                    createTag();
-                }
-                else
-                {
-                    createNotExistTag();
+                    if (check == true)
+                    {
+                        createTag();
+                    }
+                    else
+                    {
+                        createNotExistTag();
+                    }
                 }
             }
             comboBox1.DroppedDown = false;

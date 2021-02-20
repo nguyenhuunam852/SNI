@@ -82,7 +82,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(384, 516);
+            this.dataGridView1.Size = new System.Drawing.Size(384, 566);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -92,7 +92,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(390, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 516);
+            this.panel1.Size = new System.Drawing.Size(344, 566);
             this.panel1.TabIndex = 1;
             // 
             // panel3
@@ -103,7 +103,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(344, 516);
+            this.panel3.Size = new System.Drawing.Size(344, 566);
             this.panel3.TabIndex = 8;
             // 
             // information_panel
@@ -136,13 +136,13 @@
             this.information_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.information_panel.Location = new System.Drawing.Point(0, 105);
             this.information_panel.Name = "information_panel";
-            this.information_panel.Size = new System.Drawing.Size(344, 411);
+            this.information_panel.Size = new System.Drawing.Size(344, 461);
             this.information_panel.TabIndex = 2;
             this.information_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.information_panel_Paint);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(181, 380);
+            this.button5.Location = new System.Drawing.Point(147, 435);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(116, 23);
             this.button5.TabIndex = 80;
@@ -152,7 +152,7 @@
             // 
             // close_bt
             // 
-            this.close_bt.Location = new System.Drawing.Point(59, 380);
+            this.close_bt.Location = new System.Drawing.Point(25, 435);
             this.close_bt.Name = "close_bt";
             this.close_bt.Size = new System.Drawing.Size(116, 23);
             this.close_bt.TabIndex = 79;
@@ -460,7 +460,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 516);
+            this.ClientSize = new System.Drawing.Size(734, 566);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
