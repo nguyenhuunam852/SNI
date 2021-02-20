@@ -58,40 +58,47 @@ namespace SNI.Views
         {
             using (var context = new ControllerModel())
             {
-                var min = context.Reports.Min(o => o.datereport);
-                var max = context.Reports.Max(o => o.datereport);
-
-                DataTable dtb_year = new DataTable();
-                dtb_year.Columns.Add("Value");
-                DataTable dtb_month = new DataTable();
-                dtb_month.Columns.Add("Display");
-                dtb_month.Columns.Add("Value");
-                for(int i=min.Year;i <=max.Year;i++)
+                if (context.Reports.Count() > 0)
                 {
-                    DataRow dtr = dtb_year.NewRow();
-                    dtr["value"] = i.ToString();
-                    dtb_year.Rows.Add(dtr);
-                }
-                cbx.DataSource = dtb_year;
-                cbx.DisplayMember = "value";
-                cbx.ValueMember = "value";
-                cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+                    var min = context.Reports.Min(o => o.datereport);
+                    var max = context.Reports.Max(o => o.datereport);
 
-                for (int i =1; i <= 12; i++)
+                    DataTable dtb_year = new DataTable();
+                    dtb_year.Columns.Add("Value");
+                    DataTable dtb_month = new DataTable();
+                    dtb_month.Columns.Add("Display");
+                    dtb_month.Columns.Add("Value");
+                    for (int i = min.Year; i <= max.Year; i++)
+                    {
+                        DataRow dtr = dtb_year.NewRow();
+                        dtr["value"] = i.ToString();
+                        dtb_year.Rows.Add(dtr);
+                    }
+                    cbx.DataSource = dtb_year;
+                    cbx.DisplayMember = "value";
+                    cbx.ValueMember = "value";
+                    cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                    for (int i = 1; i <= 12; i++)
+                    {
+                        DataRow dtr = dtb_month.NewRow();
+                        dtr["display"] = "Tháng " + i.ToString();
+                        dtr["value"] = i.ToString();
+
+                        dtb_month.Rows.Add(dtr);
+                    }
+                    cbx1.DataSource = dtb_month;
+                    cbx1.DisplayMember = "display";
+                    cbx1.ValueMember = "value";
+                    cbx1.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                    List<ComboBox> cblist = new List<ComboBox>() { cbx, cbx1 };
+                    return cblist;
+                }
+                else
                 {
-                    DataRow dtr = dtb_month.NewRow();
-                    dtr["display"] = "Tháng "+i.ToString();
-                    dtr["value"] = i.ToString();
-
-                    dtb_month.Rows.Add(dtr);
+                    return null;
                 }
-                cbx1.DataSource = dtb_month;
-                cbx1.DisplayMember = "display";
-                cbx1.ValueMember = "value";
-                cbx1.DropDownStyle = ComboBoxStyle.DropDownList;
-
-                List<ComboBox> cblist = new List<ComboBox>() { cbx, cbx1 };
-                 return cblist;
 
             }
         }

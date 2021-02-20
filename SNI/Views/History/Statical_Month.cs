@@ -39,13 +39,18 @@ namespace SNI.Views.History
             chart1.ChartAreas[0].AxisX.LabelStyle.Enabled = true;
             chart1.ChartAreas[0].AxisX.IsLabelAutoFit = true;
             chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -90;
-
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             var getlist = Module.createMonthComboBox(comboBox1, comboBox2);
-            comboBox2 = getlist[0]; // Năm
-            comboBox1 = getlist[1]; // Tháng
+            if (getlist != null)
+            {
+                comboBox2 = getlist[0]; // Năm
+                comboBox1 = getlist[1]; // Tháng
 
-            comboBox2.SelectedValue = DateTime.Now.Year.ToString();
-            comboBox1.SelectedValue = DateTime.Now.Month.ToString();
+
+                comboBox2.SelectedValue = DateTime.Now.Year.ToString();
+                comboBox1.SelectedValue = DateTime.Now.Month.ToString();
+            }
 
         }
 
