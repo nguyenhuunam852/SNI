@@ -749,5 +749,10 @@ namespace SNI
         {
             CustomerController.getOldData();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            CustomerController.getOldData();
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace SNI.Controllers
         public static DataTable PullData()
         {
             DataTable dtb = new DataTable();
-            string connString = @"Data Source=NAM-PC\SQLEXPRESS;Initial Catalog=btx;User ID=sa;Password=123456";
+            string connString = @"Data Source=NAM-PC\SQLEXPRESS;Initial Catalog=huynhtinhcua;User ID=sa;Password=123456";
             string query = "select * from Customer";
 
             SqlConnection conn = new SqlConnection(connString);
@@ -36,7 +36,7 @@ namespace SNI.Controllers
         public static DataTable PullData1()
         {
             DataTable dtb = new DataTable();
-            string connString = @"Data Source=NAM-PC\SQLEXPRESS;Initial Catalog=btx;User ID=sa;Password=123456";
+            string connString = @"Data Source=NAM-PC\SQLEXPRESS;Initial Catalog=huynhtinhcua;User ID=sa;Password=123456";
             string query = "select * from TypeCustomer";
 
             SqlConnection conn = new SqlConnection(connString);
