@@ -370,9 +370,17 @@ namespace SNI
         }
         private void Time_Tick(object sender, EventArgs e)
         {
-            if(DateTime.Now.Hour>FileConfig.config.reportstart.Hour && DateTime.Now.Hour<FileConfig.config.reportfinish.Hour)
+            DateTime check = new DateTime(DateTime.Now.Year,DateTime.Now.Month, DateTime.Now.Day,DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second);
+            DateTime check1 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, FileConfig.config.reportstart.Hour, FileConfig.config.reportstart.Minute, FileConfig.config.reportstart.Second);
+            DateTime check2 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, FileConfig.config.reportfinish.Hour, FileConfig.config.reportfinish.Minute, FileConfig.config.reportfinish.Second);
+
+            if (check1<check && check<check2)
             {
                 bt_chotca.Enabled = true;
+            }
+            else
+            {
+                bt_chotca.Enabled = false;
             }
             foreach (Label lb in wotkinglabel)
             {

@@ -114,9 +114,9 @@ namespace SNI.Views
 
 
             dtr["display"] = "Nam";
-            dtr["value"] = 0;
+            dtr["value"] = 1;
             dtr1["display"] = "Nữ";
-            dtr1["value"] = 1;
+            dtr1["value"] = 0;
             dtr2["display"] = "Khác";
             dtr2["value"] = 2;
 
