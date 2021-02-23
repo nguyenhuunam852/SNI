@@ -18,6 +18,7 @@ namespace SNI.Controllers
                 dtb.Columns.Add("Tên Khách Hàng");
                 dtb.Columns.Add("Tên Máy");
                 dtb.Columns.Add("Thời gian hoạt động");
+                dtb.Columns.Add("Thời gian bắt đầu");
                 List<History> lh = context.Histories.Include("Customers").Include("Machines").Where(o => 
                 o.daystart.Year == dt.Year
                 && o.daystart.Month == dt.Month
@@ -30,6 +31,7 @@ namespace SNI.Controllers
                     int minute = h.activetime / 60;
                     int secone = h.activetime - minute * 60;
                     dtr["Thời gian hoạt động"] = minute.ToString() + ":" + secone.ToString();
+                    dtr["thời gian bắt đầu"] = h.dayadd.Hour + ":" + h.dayadd.Minute + ":" + h.dayadd.Second; 
                     dtb.Rows.Add(dtr);
                 }
                 return dtb;
